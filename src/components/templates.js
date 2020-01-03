@@ -28,7 +28,7 @@ class Templates extends React.Component {
 
   render() {
     const { isLoad } = this.state;
-    if (!isLoad) return <div class="loading">loading..</div>
+    if (!isLoad) return <div className="loading">loading..</div>
 
     const { template } = this.props;
 
