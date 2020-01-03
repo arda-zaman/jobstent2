@@ -5,6 +5,7 @@ import Toggle from './toggle';
 import Textfield from './textfield';
 import Button from './button';
 import Icon from './icon';
+import IconLibrary from './iconLibrary';
 
 
 export {
@@ -14,5 +15,6 @@ export {
   Toggle,
   Textfield,
   Button,
-  Icon
+  Icon,
+  IconLibrary
 }

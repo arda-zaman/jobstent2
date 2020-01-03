@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Select, ColorPicker } from '../components/fields';
 import Icon from '../components/fields/icon';
-import IconLibrary from '../components/fields/iconLibrary';
+import { IconLibrary } from '../components/fields';
 
 export const RenderFieldGroup = ({ panelType, title, icon, subFieldGroup, fields = '' }) => {
   const fieldsArr = fields.split(',');

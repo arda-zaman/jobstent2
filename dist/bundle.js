@@ -330,9 +330,203 @@ module.exports = Router;
   !*** ./server/helpers/index.js ***!
   \*********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/ardazaman/Documents/jbtnew/server/helpers/index.js: Identifier 'generatePDF' has already been declared (52:6)\n\n\u001b[0m \u001b[90m 50 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 51 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 | \u001b[39m\u001b[36mconst\u001b[39m generatePDF \u001b[33m=\u001b[39m async (templateID\u001b[33m,\u001b[39m userID) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 53 | \u001b[39m  \u001b[36mtry\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 54 | \u001b[39m    \u001b[36mconst\u001b[39m browser \u001b[33m=\u001b[39m await puppeteer\u001b[33m.\u001b[39mlaunch({\u001b[0m\n\u001b[0m \u001b[90m 55 | \u001b[39m      headless\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Object.raise (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:7012:17)\n    at ScopeHandler.checkRedeclarationInScope (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:4288:12)\n    at ScopeHandler.declareName (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:4254:12)\n    at Object.checkLVal (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:8852:22)\n    at Object.parseVarId (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:11363:10)\n    at Object.parseVar (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:11338:12)\n    at Object.parseVarStatement (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:11160:10)\n    at Object.parseStatementContent (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:10757:21)\n    at Object.parseStatement (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:10690:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:11266:25)\n    at Object.parseBlockBody (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:11253:10)\n    at Object.parseTopLevel (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:10621:10)\n    at Object.parse (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:12131:10)\n    at parse (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/parser/lib/index.js:12182:38)\n    at parser (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/core/lib/transformation/normalize-file.js:187:34)\n    at normalizeFile (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/core/lib/transformation/normalize-file.js:113:11)\n    at runSync (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/Users/ardazaman/Documents/jbtnew/node_modules/@babel/core/lib/transform.js:34:34)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "@babel/runtime/helpers/interopRequireDefault");
+
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "@babel/runtime/helpers/asyncToGenerator"));
+
+var _puppeteer = _interopRequireDefault(__webpack_require__(/*! puppeteer */ "puppeteer"));
+
+var PUPPETEER_OPTIONS = {
+  headless: true,
+  args: ['--disable-gpu', '--disable-dev-shm-usage', '--disable-setuid-sandbox', '--timeout=30000', '--no-first-run', '--no-sandbox', '--no-zygote', '--single-process', "--proxy-server='direct://'", '--proxy-bypass-list=*', '--deterministic-fetch']
+};
+
+var openConnection =
+/*#__PURE__*/
+function () {
+  var _ref = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee() {
+    var browser, page;
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return _puppeteer["default"].launch(PUPPETEER_OPTIONS);
+
+          case 2:
+            browser = _context.sent;
+            _context.next = 5;
+            return browser.newPage();
+
+          case 5:
+            page = _context.sent;
+            _context.next = 8;
+            return page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
+
+          case 8:
+            _context.next = 10;
+            return page.setViewport({
+              width: 1920,
+              height: 1080
+            });
+
+          case 10:
+            return _context.abrupt("return", {
+              browser: browser,
+              page: page
+            });
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function openConnection() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var closeConnection =
+/*#__PURE__*/
+function () {
+  var _ref2 = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee2(page, browser) {
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.t0 = page;
+
+            if (!_context2.t0) {
+              _context2.next = 4;
+              break;
+            }
+
+            _context2.next = 4;
+            return page.close();
+
+          case 4:
+            _context2.t1 = browser;
+
+            if (!_context2.t1) {
+              _context2.next = 8;
+              break;
+            }
+
+            _context2.next = 8;
+            return browser.close();
+
+          case 8:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function closeConnection(_x, _x2) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var generatePDF =
+/*#__PURE__*/
+function () {
+  var _ref3 = (0, _asyncToGenerator2["default"])(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee3(templateID, userID) {
+    var _ref4, browser, page, pdf;
+
+    return _regenerator["default"].wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return openConnection();
+
+          case 2:
+            _ref4 = _context3.sent;
+            browser = _ref4.browser;
+            page = _ref4.page;
+            pdf = null;
+            _context3.prev = 6;
+            _context3.next = 9;
+            return page["goto"]("http://localhost:3000/templates/".concat(templateID, "/").concat(userID), {
+              waitUntil: 'networkidle2'
+            });
+
+          case 9:
+            _context3.next = 11;
+            return page.waitForSelector('.g-resume-container');
+
+          case 11:
+            _context3.next = 13;
+            return page.pdf({
+              format: 'A4',
+              printBackground: true
+            });
+
+          case 13:
+            pdf = _context3.sent;
+            _context3.next = 19;
+            break;
+
+          case 16:
+            _context3.prev = 16;
+            _context3.t0 = _context3["catch"](6);
+            res.status(400).json({
+              message: 'Couldn\'t generated'
+            });
+
+          case 19:
+            _context3.prev = 19;
+            _context3.next = 22;
+            return closeConnection(page, browser);
+
+          case 22:
+            res.status(200).contentType('application/pdf').send("data:application/pdf;base64,".concat(new Buffer.from(pdf).toString('base64')));
+            return _context3.finish(19);
+
+          case 24:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[6, 16, 19, 24]]);
+  }));
+
+  return function generatePDF(_x3, _x4) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+module.exports = {
+  http_build_query: http_build_query,
+  generatePDF: generatePDF
+};
+
+var http_build_query = function http_build_query(jsonObj) {
+  var keys = Object.keys(jsonObj);
+  var values = keys.map(function (key) {
+    return jsonObj[key];
+  });
+  return keys.map(function (key, index) {
+    return "".concat(key, "=").concat(values[index]);
+  }).join("&");
+};
 
 /***/ }),
 
@@ -3563,6 +3757,12 @@ Object.defineProperty(exports, "Icon", {
     return _icon["default"];
   }
 });
+Object.defineProperty(exports, "IconLibrary", {
+  enumerable: true,
+  get: function get() {
+    return _iconLibrary["default"];
+  }
+});
 
 var _card = _interopRequireDefault(__webpack_require__(/*! ./card */ "./src/components/fields/card.js"));
 
@@ -3577,6 +3777,8 @@ var _textfield = _interopRequireDefault(__webpack_require__(/*! ./textfield */ "
 var _button = _interopRequireDefault(__webpack_require__(/*! ./button */ "./src/components/fields/button.js"));
 
 var _icon = _interopRequireDefault(__webpack_require__(/*! ./icon */ "./src/components/fields/icon.js"));
+
+var _iconLibrary = _interopRequireDefault(__webpack_require__(/*! ./iconLibrary */ "./src/components/fields/iconLibrary.js"));
 
 /***/ }),
 
@@ -12597,8 +12799,6 @@ var _fields = __webpack_require__(/*! ../components/fields */ "./src/components/
 
 var _icon = _interopRequireDefault(__webpack_require__(/*! ../components/fields/icon */ "./src/components/fields/icon.js"));
 
-var _iconLibrary = _interopRequireDefault(__webpack_require__(/*! ../components/fields/iconLibrary */ "./src/components/fields/iconLibrary.js"));
-
 var RenderFieldGroup = function RenderFieldGroup(_ref) {
   var panelType = _ref.panelType,
       title = _ref.title,
@@ -12661,7 +12861,7 @@ var _ref4 =
   className: "panel-item field",
   type: "icon-library",
   name: "iconLibrary"
-}, void 0, (0, _jsx2["default"])(_iconLibrary["default"], {}));
+}, void 0, (0, _jsx2["default"])(_fields.IconLibrary, {}));
 
 var _ref5 =
 /*#__PURE__*/
@@ -13445,6 +13645,17 @@ module.exports = require("path");
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types");
+
+/***/ }),
+
+/***/ "puppeteer":
+/*!****************************!*\
+  !*** external "puppeteer" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("puppeteer");
 
 /***/ }),
 
