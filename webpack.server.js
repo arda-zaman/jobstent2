@@ -13,6 +13,9 @@ module.exports = {
     publicPath: "/"
   },
   devtool: "source-map",
+  engines: {
+    node: "^10 || ^8"
+  },
   module: {
     rules: [
       {

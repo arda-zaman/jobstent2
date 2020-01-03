@@ -17,6 +17,9 @@ module.exports = {
   },
   devtool: "source-map",
   mode: 'development',
+  engines: {
+    node: "^10 || ^8"
+  },
   module: {
     rules: [
       {
