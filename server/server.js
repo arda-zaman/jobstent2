@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // app.use('/assets', Express.static('assets'));
-app.use(Express.static('dist/public'));
+app.use(Express.static('public'));
 // app.use(Express.static(path.resolve(__dirname, '/public')));
 
 Middlewares(app);
