@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Select, ColorPicker } from '../components/fields';
 import Icon from '../components/fields/icon';
-import { IconLibrary } from '../components/fields';
+// import { IconLibrary } from '../components/fields';
 
 export const RenderFieldGroup = ({ panelType, title, icon, subFieldGroup, fields = '' }) => {
   const fieldsArr = fields.split(',');
@@ -119,7 +119,8 @@ export const renderField = ({
     case 'icon-library':
       field = (
         <div className="panel-item field" type="icon-library" name="iconLibrary">
-          <IconLibrary />
+          asd
+          {/* <IconLibrary /> */}
         </div>
       );
       return field;
