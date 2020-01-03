@@ -1342,25 +1342,29 @@ throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may 
   !*** ./src/assets/js/polyfill.js ***!
   \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /* eslint-disable no-undef */
-
-
 if (global.window && window.Element && !Element.prototype.closest) {
-  Element.prototype.closest =
-    function (s) {
-      var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+  Element.prototype.closest = function (s) {
+    var matches = (this.document || this.ownerDocument).querySelectorAll(s),
         i,
         el = this;
-      do {
-        i = matches.length;
-        while (--i >= 0 && matches.item(i) !== el) { };
-      } while ((i < 0) && (el = el.parentElement));
-      return el;
-    };
-}
 
+    do {
+      i = matches.length;
+
+      while (--i >= 0 && matches.item(i) !== el) {}
+
+      ;
+    } while (i < 0 && (el = el.parentElement));
+
+    return el;
+  };
+}
 
 /***/ }),
 

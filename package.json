@@ -9,7 +9,8 @@
     "webpack:start": "nodemon --watch build dist/bundle.js",
     "build": "webpack --config webpack.client.js && webpack --config webpack.server.js",
     "dev": "npm-run-all --parallel webpack:*",
-    "heroku-postbuild": "webpack --config webpack.server.js && webpack --config webpack.client.js"
+    "heroku-postbuild": "webpack --config webpack.server.js && webpack --config webpack.client.js",
+    "start": "node dist/bundle.js"
   },
   "keywords": [],
   "author": "",
