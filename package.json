@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "public/index.js",
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
-  },
   "scripts": {
     "webpack:client": "webpack --config webpack.client.js --watch --mode development",
     "webpack:server": "webpack --config webpack.server.js --watch --mode development",
