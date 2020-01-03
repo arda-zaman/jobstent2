@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Icon from "./Icon";
+import Icon from "./icon";
 
 // const LoadingSVG = require("./../../assets/img/loading.svg");
 class Button extends React.Component {

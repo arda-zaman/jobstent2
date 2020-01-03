@@ -3030,111 +3030,6 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ "./src/components/fields/Icon.js":
-/*!***************************************!*\
-  !*** ./src/components/fields/Icon.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _jsx2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/jsx */ "@babel/runtime/helpers/jsx"));
-
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "@babel/runtime/helpers/createClass"));
-
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "@babel/runtime/helpers/getPrototypeOf"));
-
-var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "@babel/runtime/helpers/assertThisInitialized"));
-
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "@babel/runtime/helpers/inherits"));
-
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "@babel/runtime/helpers/defineProperty"));
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "prop-types"));
-
-var Icon =
-/*#__PURE__*/
-function (_React$Component) {
-  (0, _inherits2["default"])(Icon, _React$Component);
-
-  function Icon(props) {
-    var _this;
-
-    (0, _classCallCheck2["default"])(this, Icon);
-    _this = (0, _possibleConstructorReturn2["default"])(this, (0, _getPrototypeOf2["default"])(Icon).call(this, props));
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "iconClick", function (e) {
-      var onClick = _this.props.onClick;
-
-      if (onClick) {
-        onClick({
-          type: 'icon',
-          element: e.target,
-          original: e
-        });
-      }
-    });
-    return _this;
-  }
-
-  (0, _createClass2["default"])(Icon, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          icon = _this$props.icon,
-          clickable = _this$props.clickable,
-          onClick = _this$props.onClick,
-          style = _this$props.style,
-          fid = _this$props.fid;
-      return (0, _jsx2["default"])("div", {
-        className: "icon resume-icon",
-        style: style
-      }, void 0, (0, _jsx2["default"])("i", {
-        className: icon.type === "material-icons" ? "material-icons" : icon.text,
-        onClick: this.iconClick,
-        "data-clickable": clickable,
-        id: fid,
-        "field-type": "icon"
-      }, void 0, icon.type === 'material-icons' && icon.text));
-    }
-  }]);
-  return Icon;
-}(_react["default"].Component);
-
-Icon.propTypes = {
-  icon: _propTypes["default"].object.isRequired,
-  onClick: _propTypes["default"].func,
-  clickable: _propTypes["default"].bool,
-  style: _propTypes["default"].object,
-  fid: _propTypes["default"].number
-};
-Icon.defaultProps = {
-  onClick: function onClick() {
-    return console.log("Icon Clicked");
-  },
-  clickable: true,
-  style: {},
-  fid: -1
-};
-var _default = Icon;
-exports["default"] = _default;
-
-/***/ }),
-
 /***/ "./src/components/fields/button.js":
 /*!*****************************************!*\
   !*** ./src/components/fields/button.js ***!
@@ -3168,7 +3063,7 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 
 var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "prop-types"));
 
-var _Icon = _interopRequireDefault(__webpack_require__(/*! ./Icon */ "./src/components/fields/Icon.js"));
+var _icon = _interopRequireDefault(__webpack_require__(/*! ./icon */ "./src/components/fields/icon.js"));
 
 // const LoadingSVG = require("./../../assets/img/loading.svg");
 var Button =
@@ -3205,9 +3100,9 @@ function (_React$Component) {
         type: type,
         className: "".concat(classNames, " ").concat(iconPosition),
         onClick: click
-      }, void 0, iconData && !loading ? iconPosition === "left" ? (0, _jsx2["default"])(_react["default"].Fragment, {}, void 0, (0, _jsx2["default"])(_Icon["default"], {
+      }, void 0, iconData && !loading ? iconPosition === "left" ? (0, _jsx2["default"])(_react["default"].Fragment, {}, void 0, (0, _jsx2["default"])(_icon["default"], {
         icon: iconData
-      }), (0, _jsx2["default"])("span", {}, void 0, text)) : (0, _jsx2["default"])(_react["default"].Fragment, {}, void 0, (0, _jsx2["default"])("span", {}, void 0, text), (0, _jsx2["default"])(_Icon["default"], {
+      }), (0, _jsx2["default"])("span", {}, void 0, text)) : (0, _jsx2["default"])(_react["default"].Fragment, {}, void 0, (0, _jsx2["default"])("span", {}, void 0, text), (0, _jsx2["default"])(_icon["default"], {
         icon: iconData
       })) : text));
     }
@@ -3278,7 +3173,7 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 
 var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "prop-types"));
 
-var _Icon = _interopRequireDefault(__webpack_require__(/*! ./Icon */ "./src/components/fields/Icon.js"));
+var _icon = _interopRequireDefault(__webpack_require__(/*! ./icon */ "./src/components/fields/icon.js"));
 
 var Card =
 /*#__PURE__*/
@@ -3301,7 +3196,7 @@ function (_React$Component) {
         className: "card ".concat(additionalClass)
       }, void 0, title && (0, _jsx2["default"])("div", {
         className: "card-title"
-      }, void 0, title.icon && (0, _jsx2["default"])(_Icon["default"], {
+      }, void 0, title.icon && (0, _jsx2["default"])(_icon["default"], {
         icon: title.icon
       }), title.text && (0, _jsx2["default"])("strong", {}, void 0, title.text)), (0, _jsx2["default"])("div", {
         className: "card-content"
@@ -4130,7 +4025,7 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 
 var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "prop-types"));
 
-var _Icon = _interopRequireDefault(__webpack_require__(/*! ./Icon */ "./src/components/fields/Icon.js"));
+var _icon = _interopRequireDefault(__webpack_require__(/*! ./icon */ "./src/components/fields/icon.js"));
 
 var Toggle =
 /*#__PURE__*/
@@ -4160,9 +4055,9 @@ function (_React$Component) {
         className: "jToggle ".concat(additionalClass)
       }, void 0, (0, _jsx2["default"])("span", {
         className: "drag"
-      }, void 0, offIcon && (0, _jsx2["default"])(_Icon["default"], {
+      }, void 0, offIcon && (0, _jsx2["default"])(_icon["default"], {
         icon: offIcon
-      }), onIcon && (0, _jsx2["default"])(_Icon["default"], {
+      }), onIcon && (0, _jsx2["default"])(_icon["default"], {
         icon: onIcon
       })));
     }
