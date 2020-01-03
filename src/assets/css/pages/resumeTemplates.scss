@@ -1,0 +1,47 @@
+@import '../variables.scss';
+@import '../functions.scss';
+
+.resume-templates {
+  .resume-templates-container {
+    .content-container {
+      .left-area {
+        .filter-box {
+          .box-content {
+            .box-item {
+              &:not(:first-child) {
+                @include x3('margin-top');
+              }
+
+              &.rating {
+                .star-group {
+                  @include x1('margin-top');
+                  i {
+                    color: $yellow;
+                    font-size: 22px;
+                    cursor: pointer;
+
+                    &.selected {
+                      color: $red;
+                    }
+
+                    &:hover {
+                      color: darken($yellow, 15%);
+                    }
+                  }
+
+                  small {
+                    @include x2('margin-left');
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .advertiseBox {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

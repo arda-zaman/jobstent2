@@ -1,0 +1,154 @@
+@import './variables.scss';
+@import './fonts.scss';
+@import './functions.scss';
+
+
+body,
+html {
+	background-color: #f6f9fc;
+  font-family: Helvetica Neue, Helvetica, Arial, $main-font, sans-serif;
+  padding:0;
+  margin:0;
+}
+
+.flex {
+  display: flex;
+
+  &.f-100 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  &.f-auto {
+    flex: auto;
+    max-width: 100%;
+  }
+
+  &.f-half {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  &.nw {
+    flex-wrap: nowrap;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.j-center {
+    justify-content: center;
+  }
+
+  &.j-space-around {
+    justify-content: space-around;
+  }
+
+  &.j-space-between {
+    justify-content: space-between;
+  }
+
+  &.a-center {
+    align-items: center;
+  }
+
+  &.a-start {
+    align-items: flex-start;
+  }
+
+  &.a-end {
+    align-items: flex-end;
+  }
+
+  &.f-center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .col-md-1 {
+    flex: 0 0 10%;
+    max-width: 10%;
+  }
+
+  .col-md-2 {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+
+  .col-md-3 {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+
+  .col-md-4 {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+
+  .col-md-5 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col-md-6 {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  input {
+    opacity: 0;
+    display: none;
+    width: 0!important;
+
+    &:checked + .box {
+      background: $green;
+      color: #fff;
+      
+      i {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  .box {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    max-width: 18px;
+    border: 1px solid $green;
+    background: #fff;
+    border-radius:2px;
+    display: block;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+
+    i {
+      opacity: 0;
+      transform:scale(0.1);
+      font-size:11px;
+      transition: 150ms ease-out transform;
+    }
+  }
+
+}
+

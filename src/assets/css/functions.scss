@@ -1,0 +1,265 @@
+
+/*
+**************************************         Margin and Padding..        ************************************** 
+*/
+
+@mixin x1($property) {
+  #{$property}: 4px;
+}
+
+@mixin x2($property) {
+  #{$property}: 8px;
+}
+
+@mixin x3($property) {
+  #{$property}: 12px;
+}
+
+@mixin x4($property) {
+  #{$property}: 16px;
+}
+
+@mixin x5($property) {
+  #{$property}: 20px;
+}
+
+@mixin x6($property) {
+  #{$property}: 24px;
+}
+
+@mixin x7($property) {
+  #{$property}: 28px;
+}
+
+@mixin x10($property) {
+  #{$property}: 100px;
+}
+
+
+.margin-left {
+  &.x1 {
+    @include x1('margin-left');
+  }
+
+  &.x2 {
+    @include x2('margin-left');
+  }
+
+  &.x3 {
+    @include x3('margin-left');
+  }
+
+  &.x4 {
+    @include x4('margin-left');
+  }
+}
+
+.margin-right {
+  &.x1 {
+    @include x1('margin-right');
+  }
+
+  &.x2 {
+    @include x2('margin-right');
+  }
+
+  &.x3 {
+    @include x3('margin-right');
+  }
+
+  &.x4 {
+    @include x4('margin-right');
+  }
+}
+
+.margin-top {
+  &.x1 {
+    @include x1('margin-top');
+  }
+
+  &.x2 {
+    @include x2('margin-top');
+  }
+
+  &.x3 {
+    @include x3('margin-top');
+  }
+
+  &.x4 {
+    @include x4('margin-top');
+  }
+}
+
+.margin-bottom {
+  &.x1 {
+    @include x1('margin-bottom');
+  }
+
+  &.x2 {
+    @include x2('margin-bottom');
+  }
+
+  &.x3 {
+    @include x3('margin-bottom');
+  }
+
+  &.x4 {
+    @include x4('margin-bottom');
+  }
+}
+
+/* Padding */
+
+
+.padding-left {
+  &.x1 {
+    @include x1('padding-left');
+  }
+
+  &.x2 {
+    @include x2('padding-left');
+  }
+
+  &.x3 {
+    @include x3('padding-left');
+  }
+
+  &.x4 {
+    @include x4('padding-left');
+  }
+}
+
+.padding-right {
+  &.x1 {
+    @include x1('padding-right');
+  }
+
+  &.x2 {
+    @include x2('padding-right');
+  }
+
+  &.x3 {
+    @include x3('padding-right');
+  }
+
+  &.x4 {
+    @include x4('padding-right');
+  }
+}
+
+.padding-top {
+  &.x1 {
+    @include x1('padding-top');
+  }
+
+  &.x2 {
+    @include x2('padding-top');
+  }
+
+  &.x3 {
+    @include x3('padding-top');
+  }
+
+  &.x4 {
+    @include x4('padding-top');
+  }
+}
+
+.padding-bottom {
+  &.x1 {
+    @include x1('padding-bottom');
+  }
+
+  &.x2 {
+    @include x2('padding-bottom');
+  }
+
+  &.x3 {
+    @include x3('padding-bottom');
+  }
+
+  &.x4 {
+    @include x4('padding-bottom');
+  }
+}
+
+
+/*
+**************************************         Font Size        ************************************** 
+*/
+
+.fs-0 {
+  font-size: 30px;
+}
+
+.fs-1 {
+  font-size: 26px;
+}
+
+.fs-2 {
+  font-size: 20px;
+}
+
+.fs-3 {
+  font-size: 16px;
+}
+
+.fs-4 {
+  font-size: 14px;
+}
+
+.fs-5 {
+  font-size: 12px;
+}
+
+.fs-6 {
+  font-size: 10px;
+}
+
+/*
+**************************************         Box Shadow        ************************************** 
+*/
+
+@mixin boxShadowv1() {
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+
+/*
+**************************************         Border Radius        ************************************** 
+*/
+
+@mixin br1() {
+  border-radius: 4px;
+}
+
+@mixin br2() {
+  border-radius: 8px;
+}
+
+@mixin br3() {
+  border-radius: 12px;
+}
+
+@mixin br4() {
+  border-radius: 16px;
+}
+
+
+
+
+/*
+**************************************         Flex        ************************************** 
+*/
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-h-start(){
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

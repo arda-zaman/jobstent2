@@ -1,0 +1,28 @@
+
+/*
+* BASE CSS
+*/
+
+@import './general.scss';
+@import './variables.scss';
+@import './fonts.scss';
+@import './normalize.scss';
+@import './functions.scss';
+@import './container.scss';
+
+/*
+* PAGES
+*/
+
+@import './fields.scss';
+@import './pages/header.scss';
+@import './pages/home.scss';
+@import './pages/resumeTemplates.scss';
+@import './pages/builder.scss';
+@import './pages/login.scss';
+
+/*
+* PARTIALS
+*/
+
+@import './partials/uploadImage.scss';
