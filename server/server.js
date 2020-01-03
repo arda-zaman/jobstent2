@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 // app.use('/assets', Express.static('assets'));
 app.use(Express.static('dist/public'));
+// app.use(Express.static(path.resolve(__dirname, '/public')));
 
 Middlewares(app);
 app.use('/api/template', Template);
