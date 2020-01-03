@@ -7,7 +7,7 @@
     "webpack:client": "webpack --config webpack.client.js --watch --mode development",
     "webpack:server": "webpack --config webpack.server.js --watch --mode development",
     "webpack:start": "nodemon --watch build dist/bundle.js",
-    "build": "webpack --config webpack.client.js && webpack --config webpack.server.js",
+    "build": "webpack --config webpack.server.js && webpack --config webpack.client.js",
     "dev": "npm-run-all --parallel webpack:*",
     "heroku-postbuild": "webpack --config webpack.server.js && webpack --config webpack.client.js",
     "start": "node dist/bundle.js"

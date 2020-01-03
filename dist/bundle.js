@@ -1309,9 +1309,9 @@ exports.userLogout = userLogout;
   !*** ./src/assets/images/arda.jpeg ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+module.exports = __webpack_require__.p + "/Users/ardazaman/Documents/jbtnew/dist/public/27ba995a6fdd9f0db5f5fe3522a202ea.jpeg";
 
 /***/ }),
 
@@ -1320,9 +1320,9 @@ throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may 
   !*** ./src/assets/images/loginpic.jpeg ***!
   \*****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+module.exports = __webpack_require__.p + "/Users/ardazaman/Documents/jbtnew/dist/public/843c386420bc5ef7df6fcd68b04edb8f.jpeg";
 
 /***/ }),
 
@@ -1331,9 +1331,9 @@ throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may 
   !*** ./src/assets/images/logo.png ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+module.exports = __webpack_require__.p + "/Users/ardazaman/Documents/jbtnew/dist/public/b2724e9704314f7f8d3bb0a78aa63da6.png";
 
 /***/ }),
 
@@ -1373,9 +1373,9 @@ if (global.window && window.Element && !Element.prototype.closest) {
   !*** ./src/assets/svgs/google.svg ***!
   \************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n| <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n| <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"");
+module.exports = __webpack_require__.p + "/Users/ardazaman/Documents/jbtnew/dist/public/09aea0f59807f6f4f66af7f5719cba9e.svg";
 
 /***/ }),
 
@@ -1384,9 +1384,9 @@ throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an ap
   !*** ./src/assets/svgs/linkedin.svg ***!
   \**************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n| <!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n| <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">");
+module.exports = __webpack_require__.p + "/Users/ardazaman/Documents/jbtnew/dist/public/14f7b6753cb58692c0da571c41b33210.svg";
 
 /***/ }),
 

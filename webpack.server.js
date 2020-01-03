@@ -1,5 +1,7 @@
 const path = require("path");
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   target: "node",
@@ -25,7 +27,25 @@ module.exports = {
           }
         }
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              esModule: false,
+              outputPath: path.resolve(__dirname, "dist/public"),
+            },
+          }
+        ]
+      }
     ]
   },
   externals: [nodeExternals()],
+  plugins: [
+    // new webpack.IgnorePlugin(/\.(css|less|png|jpg|jpeg|gif|ico|svg|.scss)$/),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")]
+    })
+  ]
 };
