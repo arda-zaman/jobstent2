@@ -50,7 +50,7 @@ module.exports = () => {
               options: {
                 esModule: false,
                 outputPath: "/assets",
-                publicPath: isProduction ? '' : '/assets',
+                publicPath: isProduction ? 'https://jobstent.herokuapp.com/assets' : '/assets',
                 name(file) {
                   return '[name]_[hash].[ext]'
                 },
