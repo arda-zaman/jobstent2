@@ -6,7 +6,7 @@
   "scripts": {
     "webpack:client": "webpack --config webpack.client.js --watch",
     "webpack:server": "webpack --config webpack.server.js --watch",
-    "webpack:start": "nodemon --watch build dist/bundle.js",
+    "webpack:start": "nodemon --watch dist dist/bundle.js",
     "build": "webpack --config webpack.server.js && webpack --config webpack.client.js",
     "dev": "npm-run-all --parallel webpack:*",
     "heroku-postbuild": "webpack --config webpack.server.js && webpack --config webpack.client.js",

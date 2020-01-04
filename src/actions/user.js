@@ -1,9 +1,13 @@
 import * as constant from '../constants/ActionTypes';
 import 'firebase/auth';
 import firebase from 'firebase/app';
+import _ from 'lodash';
 
 export const checkUserConnection = () => (dispatch, getState) => {
-  return dispatch({ type: constant.CHECK_USER_CONNECTION, payload: true });
+  const user = _.cloneDeep(getState().user);
+  const isLoggedIn = !(!_.isUndefined(firebase.auth().currentUser) || user.login == false);
+  user.login = isLoggedIn;
+  return dispatch({ type: constant.CHECK_USER_CONNECTION, payload: user });
 };
 
 export const userConnectionChecked = (data) => (dispatch, getState) => {

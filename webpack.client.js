@@ -50,7 +50,7 @@ module.exports = () => {
               options: {
                 esModule: false,
                 outputPath: "/assets",
-                publicPath: '/assets',
+                publicPath: isProduction ? '' : '/assets',
                 name(file) {
                   return '[name]_[hash].[ext]'
                 },

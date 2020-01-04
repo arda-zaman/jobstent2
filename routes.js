@@ -10,6 +10,8 @@ import Login from './src/components/sign/login';
 import Register from './src/components/sign/register';
 
 const Routes = props => {
+  // const firstLevelPath = typeof window !== "undefined" && window.location.pathname.split("/")[1];
+
   return (
     <div>
       <Header url={props} />

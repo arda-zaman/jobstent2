@@ -34,11 +34,12 @@ class App extends React.Component {
     console.log("DIDCATCH::", err);
   }
 
-  routeHandler = () => {
+  getAppType = () => {
     const { location } = this.props;
     if (!location) return '';
 
-    switch (location.pathname) {
+
+    switch (firstLevelPath) {
       case '/builder':
         return 'app';
       default:
@@ -48,9 +49,11 @@ class App extends React.Component {
 
   render() {
     const { children, user, location } = this.props;
+    const firstLevelPath = location.pathname.split("/")[1];
 
-    if (user.checked || location.pathname.indexOf('/templates/') > -1) {
-      return <main className="app" app-type={this.routeHandler()}>{children}</main>;
+    if (user.login == true || user.login == false) {
+      const appType = firstLevelPath == 'templates' ? 'app' : '';
+      return <main className="main" app-type={appType}>{children}</main>;
     }
 
     return <div>Loading</div>;
