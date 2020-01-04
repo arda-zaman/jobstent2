@@ -26,10 +26,11 @@ const closeConnection = async (page, browser) => {
 const generatePDF = async (templateID, userID) => {
   let { browser, page } = await openConnection();
   let pdf = null;
-
+  
   try {
-    await page.setRequestInterception(true);
-    await page.goto(`http://localhost:3000/templates/${templateID}/${userID}`, { waitUntil: 'networkidle2', timeout: 30000 });
+    console.log(`${process.env.HOST}/templates/${templateID}/${userID}`);
+    // await page.setRequestInterception(true);
+    await page.goto(`${process.env.HOST}/templates/${templateID}/${userID}`, { waitUntil: 'networkidle2', timeout: 30000 });
     await page.waitForSelector('.g-resume-container');
 
     pdf = await page.pdf({ format: 'A4', printBackground: true });

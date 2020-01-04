@@ -9,7 +9,6 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 module.exports = () => {
   const isProduction = process.env.NODE_ENV === "production" ? true : false;
-  console.log("ISPRODUCTION::", isProduction);
   return {
     target: 'web',
     entry: ["@babel/polyfill", "./src/index.js"],
@@ -50,7 +49,7 @@ module.exports = () => {
               options: {
                 esModule: false,
                 outputPath: "/assets",
-                publicPath: isProduction ? 'https://jobstent.herokuapp.com/assets' : '/assets',
+                publicPath: isProduction ? `${process.env.HOST}/assets` : '/assets',
                 name(file) {
                   return '[name]_[hash].[ext]'
                 },

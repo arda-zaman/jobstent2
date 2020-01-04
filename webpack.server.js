@@ -37,7 +37,7 @@ module.exports = () => {
               options: {
                 esModule: false,
                 outputPath: "public/assets",
-                publicPath: isProduction ? 'https://jobstent.herokuapp.com/assets' : '/assets',
+                publicPath: isProduction ? `${process.env.HOST}/assets` : '/assets',
                 name(file) {
                   return '[name]_[hash].[ext]'
                 },
@@ -52,6 +52,10 @@ module.exports = () => {
       // new webpack.IgnorePlugin(/\.(css|less|png|jpg|jpeg|gif|ico|svg|.scss)$/),
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")]
+      }),
+      new webpack.DefinePlugin({
+        "process.env.HOST": process.env.HOST || JSON.stringify('http://localhost:3000'),
+        "process.env.ENVIRONMENT": process.env.NODE_ENV || "development"
       })
     ]
   }
