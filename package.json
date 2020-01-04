@@ -12,6 +12,9 @@
     "heroku-postbuild": "webpack --config webpack.server.js && webpack --config webpack.client.js",
     "start": "node dist/bundle.js"
   },
+  "engines": {
+    "node": "8.2.1"
+  },
   "keywords": [],
   "author": "",
   "dependencies": {
