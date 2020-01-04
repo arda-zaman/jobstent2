@@ -28,7 +28,7 @@ const generatePDF = async (templateID, userID) => {
   let pdf = null;
 
   try {
-    await page.goto(`http://localhost:3000/templates/${templateID}/${userID}`, { waitUntil: 'networkidle2', timeout: 0 });
+    await page.goto(`http://localhost:3000/templates/${templateID}/${userID}`, { waitUntil: 'load', timeout: 0 });
     await page.waitForSelector('.g-resume-container');
 
     pdf = await page.pdf({ format: 'A4', printBackground: true });
