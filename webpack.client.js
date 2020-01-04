@@ -8,7 +8,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = () => {
-  const isProduction = process.env.NODE_ENV === "production" ? true : false;
+  const isProduction = process.env.NODE_ENV !== "production" ? true : false;
   console.log("ISPRODUCTION::", isProduction);
   return {
     target: 'web',
@@ -24,7 +24,7 @@ module.exports = () => {
       rules: [
         {
           test: /\.js$/,
-          exclude: /node_modules|functions/,
+          exclude: /node_modules/,
           use: {
             loader: "babel-loader",
             options: {

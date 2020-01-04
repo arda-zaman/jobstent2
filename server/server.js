@@ -17,9 +17,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use('/assets', Express.static('assets'));
-app.use(Express.static('public'));
-// app.use(Express.static(path.resolve(__dirname, '/public')));
+app.use(Express.static("dist/public"));
 
 Middlewares(app);
 app.use('/api/template', Template);

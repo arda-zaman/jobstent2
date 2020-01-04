@@ -49,7 +49,6 @@ class App extends React.Component {
   render() {
     const { children, user, location } = this.props;
 
-    console.log("USERrr:", user.checked);
     if (user.checked || location.pathname.indexOf('/templates/') > -1) {
       return <main className="app" app-type={this.routeHandler()}>{children}</main>;
     }

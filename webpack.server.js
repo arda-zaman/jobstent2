@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = () => {
-  const isProduction = process.env.NODE_ENV === "production" ? true : false;
+  const isProduction = process.env.NODE_ENV !== "production" ? true : false;
 
   return {
     target: "node",
@@ -13,7 +13,7 @@ module.exports = () => {
     output: {
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist"),
-      publicPath: "/"
+      publicPath: "/public"
     },
     module: {
       rules: [
@@ -36,7 +36,7 @@ module.exports = () => {
               loader: 'file-loader',
               options: {
                 esModule: false,
-                outputPath: path.resolve(__dirname, "dist/public"),
+                outputPath: "public",
               },
             }
           ]

@@ -31,8 +31,6 @@ const Renderer = (req, res) => {
     </script>
   `;
 
-  console.log(path.resolve('./server/index.html'));
-
   const html = fs.readFile(path.resolve('./dist/public/index.html'), 'utf8', (err, data) => {
     if (err) {
       console.error('Something went wrong:', err);
