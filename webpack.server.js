@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = () => {
-  const isProduction = process.env.NODE_ENV !== "production" ? true : false;
+  const isProduction = process.env.NODE_ENV === "production" ? true : false;
 
   return {
     target: "node",
