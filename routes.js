@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
 import App from "./src/components/App";
 import Home from './src/components/Home';
 import Header from './src/components/header';
