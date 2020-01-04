@@ -5,6 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = () => {
   const isProduction = process.env.NODE_ENV === "production" ? true : false;
+  const HOST = process.env.HOST ? process.env.HOST : 'http://localhost:3000';
+  const ENVIRONMENT = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
 
   return {
     target: "node",
@@ -52,6 +54,12 @@ module.exports = () => {
       // new webpack.IgnorePlugin(/\.(css|less|png|jpg|jpeg|gif|ico|svg|.scss)$/),
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")]
+      }),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'HOST': JSON.stringify(HOST),
+          'ENVIRONMENT': JSON.stringify(ENVIRONMENT)
+        }
       }),
     ]
   }

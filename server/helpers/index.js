@@ -26,7 +26,7 @@ const closeConnection = async (page, browser) => {
 const generatePDF = async (templateID, userID) => {
   let { browser, page } = await openConnection();
   let pdf = null;
-  
+
   try {
     console.log(`${process.env.HOST}/templates/${templateID}/${userID}`);
     // await page.setRequestInterception(true);
