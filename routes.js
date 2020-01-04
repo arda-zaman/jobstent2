@@ -14,13 +14,15 @@ const Routes = props => {
     <div>
       <Header url={props} />
       <App>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/resume-templates" component={ResumeTemplates} />
-        <Route exact path="/builder" component={ResumeBuilder} />
-        <Route exact path="/builder/:id" render={(prop) => <ResumeBuilder resumeID={prop.match.params.id} />} />
-        <Route exact path="/templates/:id/:uid" render={(prop) => <Templates templateID={prop.match.params.id} userID={prop.match.params.uid} />} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/resume-templates" component={ResumeTemplates} />
+          <Route exact path="/builder" component={ResumeBuilder} />
+          <Route exact path="/builder/:id" render={(prop) => <ResumeBuilder resumeID={prop.match.params.id} />} />
+          <Route exact path="/templates/:id/:uid" render={(prop) => <Templates templateID={prop.match.params.id} userID={prop.match.params.uid} />} />
+        </Switch>
       </App>
     </div>
   );
