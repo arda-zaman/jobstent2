@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { renderField, RenderFieldGroup } from '../../helpers/builder';
 import { Button, Icon } from '../fields';
 import * as builderActions from '../../actions/builder';
+import { Modal } from '../partials';
 
 
 class RightPanel extends React.Component {
@@ -298,6 +299,13 @@ class RightPanel extends React.Component {
             click={this.generatePDF}
           />
         </div>
+
+        <Modal
+          type="download"
+          title="Resume PDF Generate"
+          active={true}
+          pdfGenerateStatus="generating"
+        />
       </aside>
     )
   }
