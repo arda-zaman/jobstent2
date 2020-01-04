@@ -54,9 +54,9 @@ module.exports = () => {
         cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")]
       }),
       new webpack.DefinePlugin({
-        "process.env.HOST": process.env.HOST || 'http://localhost:3000',
-        "process.env.ENVIRONMENT": process.env.NODE_ENV || "development"
-      })
+        "process.env.HOST": process.env.HOST ? process.env.HOST : 'http://localhost:3000',
+        "process.env.ENVIRONMENT": process.env.NODE_ENV ? process.env.NODE_ENV : "development"
+      }),
     ]
   }
 };
