@@ -33,10 +33,10 @@ const generatePDF = async (templateID, userID) => {
 
     pdf = await page.pdf({ format: 'A4', printBackground: true });
   } catch (err) {
-    res.status(400).json({ message: 'Couldn\'t generated' });
+    return err;
   } finally {
     await closeConnection(page, browser);
-    res.status(200).contentType('application/pdf').send(`data:application/pdf;base64,${new Buffer.from(pdf).toString('base64')}`);
+    return pdf;
   }
 }
 
