@@ -1,7 +1,7 @@
 import Modal from './modal';
-import Loading from './loading';
+import Loader from './loader';
 
 export {
   Modal,
-  Loading
+  Loader
 }

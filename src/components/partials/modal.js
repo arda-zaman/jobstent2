@@ -1,7 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from './loading';
+import Loader from './loader';
 
 class Modal extends React.Component {
 
@@ -22,7 +22,7 @@ class Modal extends React.Component {
             <p>Your resume is creating.</p>
             <span className="bold lowText">Please Wait...</span>
 
-            <Loading
+            <Loader
               type="material_line"
               active={true}
               color="red"

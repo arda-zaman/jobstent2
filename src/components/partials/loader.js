@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Loading extends React.PureComponent {
+class Loader extends React.PureComponent {
 
   materialLineLoading = () => {
     const { color } = this.props;
@@ -42,16 +42,16 @@ class Loading extends React.PureComponent {
   }
 };
 
-Loading.propTypes = {
+Loader.propTypes = {
   type: PropTypes.string.isRequired,
   active: PropTypes.bool,
   color: PropTypes.string
 };
 
-Loading.defaultProps = {
+Loader.defaultProps = {
   type: '',
   active: false,
   color: 'red'
 };
 
-export default Loading;
+export default Loader;
