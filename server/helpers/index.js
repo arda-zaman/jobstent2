@@ -28,6 +28,7 @@ const generatePDF = async (templateID, userID) => {
   let pdf = null;
 
   try {
+    await page.setRequestInterception(true);
     await page.goto(`http://localhost:3000/templates/${templateID}/${userID}`, { waitUntil: 'load', timeout: 0 });
     await page.waitForSelector('.g-resume-container');
 
