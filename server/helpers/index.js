@@ -33,6 +33,7 @@ const generatePDF = async (templateID, userID) => {
 
     pdf = await page.pdf({ format: 'A4', printBackground: true });
   } catch (err) {
+    console.log("ERROR::", err);
     return err;
   } finally {
     await closeConnection(page, browser);
