@@ -10,15 +10,14 @@ export const checkUserConnection = () => (dispatch, getState) => {
   return dispatch({ type: constant.CHECK_USER_CONNECTION, payload: user });
 };
 
-export const userConnectionChecked = (data) => (dispatch, getState) => {
+export const userConnectionChecked = (data, isUserLoggedIn) => (dispatch, getState) => {
   const user = { ...getState().user };
 
   if (data) {
     user.userCredentials = data;
-    user.login = true;
   }
 
-  user.checked = true;
+  user.login = isUserLoggedIn;
   dispatch({ type: constant.INIT_USER, payload: user });
 }
 

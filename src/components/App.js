@@ -21,12 +21,10 @@ class App extends React.Component {
   authListener = async () => {
     const { onUserConnectionChecked, onUserCheckConnection } = this.props;
 
-    await onUserCheckConnection();
+    // await onUserCheckConnection();
     firebase.auth().onAuthStateChanged(user => {
-      // console.log("USER::", user);
-      if (user) {
-        onUserConnectionChecked(user);
-      }
+      const isLoggedIn = user ? true : false;
+      onUserConnectionChecked(user, isLoggedIn);
     });
   }
 
