@@ -2,6 +2,10 @@
   "name": "jbtnew",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.x"
+  },
   "main": "public/index.js",
   "scripts": {
     "webpack:client": "webpack --config webpack.client.js --watch",
