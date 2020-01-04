@@ -49,6 +49,11 @@ module.exports = () => {
               loader: 'file-loader',
               options: {
                 esModule: false,
+                outputPath: "/assets",
+                publicPath: '/assets',
+                name(file) {
+                  return '[name]_[hash].[ext]'
+                },
               },
             }
           ]

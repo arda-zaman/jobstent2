@@ -13,7 +13,7 @@ module.exports = () => {
     output: {
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist"),
-      publicPath: "/public"
+      publicPath: '/'
     },
     module: {
       rules: [
@@ -36,7 +36,11 @@ module.exports = () => {
               loader: 'file-loader',
               options: {
                 esModule: false,
-                outputPath: "public",
+                outputPath: "public/assets",
+                publicPath: '/assets',
+                name(file) {
+                  return '[name]_[hash].[ext]'
+                },
               },
             }
           ]
