@@ -56,10 +56,8 @@ module.exports = () => {
         cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")]
       }),
       new webpack.DefinePlugin({
-        'process.env': {
-          'HOST': JSON.stringify(HOST),
-          'ENVIRONMENT': JSON.stringify(ENVIRONMENT)
-        }
+        'process.env.HOST': JSON.stringify(HOST),
+        'process.env.ENVIRONMENT': JSON.stringify(ENVIRONMENT)
       }),
     ]
   }
