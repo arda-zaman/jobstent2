@@ -140,19 +140,22 @@ class TemplateContainer extends React.Component {
                 </div>
               </div>
 
-              {(page.fid === pages.length && !renderPDF) && (
-                <div
-                  className="add-new-page"
-                  onClick={actions && actions.addNewPage}
-                  style={{
-                    width: `${8.27 * (zoom.percent / 100)}in`
-                  }}
-                >
-                  <hr />
-                  <span>+ Add New Page</span>
-                  <hr />
+              {(!renderPDF) && (
+                <div className="page-actions">
+                  <div className="action-item add" onClick={actions && actions.addNewPage}>
+                    <i className="fas fa-plus-circle"></i>
+                    <span>Add New Page</span>
+                  </div>
+
+                  <span className="seperator">/</span>
+
+                  <div className="action-item remove">
+                    <i className="fas fa-trash-alt"></i>
+                    <span>Remove Page</span>
+                  </div>
                 </div>
               )}
+
             </div>
           ))}
         </div>

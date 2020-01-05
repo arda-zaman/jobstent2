@@ -166,6 +166,73 @@
                       }
                     }
                   }
+
+                  .page-actions {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #9b9b9b;
+                    margin: 20px auto 30px auto;
+                    cursor: pointer;
+                    text-align: center;
+                    font-weight: bold;
+                    transition: 200ms ease-in-out;
+                    font-size: 14px;
+
+                    .action-item {
+                      display: flex;
+                      align-items: center;
+                      justify-content: flex-start;
+                      flex-wrap: nowrap;
+
+                      i {
+                        margin-right: 5px;
+                      }
+
+                      &:hover {
+                        &.add { color: green; }
+                        &.remove { color: $red }
+                      }
+                    }
+
+                    .seperator {
+                      margin: 0 6px;
+                    }
+                  }
+
+                  .add-new-page {
+                    color: #9b9b9b;
+                    display: block;
+                    margin: 20px auto 30px auto;
+                    cursor: pointer;
+                    text-align: center;
+                    font-weight: bold;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    transition: 200ms ease-in-out;
+                  
+                    span {
+                      margin: 0 15px;
+                      flex:0 0 150px;
+                      max-width: 150px;
+                    }
+                  
+                    hr {
+                      flex: auto;
+                      max-width: 100%;
+                      border-style: dashed;
+                    }
+                  
+                    &:hover {
+                      color: #ba5b5b;
+                    }
+                  }
+                  
+                  &:not(:first-child) {
+                    margin-top: 100px;
+                  }
                 }
               }
             }

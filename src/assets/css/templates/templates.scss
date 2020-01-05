@@ -44,38 +44,3 @@
     }
   }
 }
-
-
-.page .add-new-page {
-  color: #9b9b9b;
-  display: block;
-  margin: 30px auto 30px auto;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  transition: 200ms ease-in-out;
-
-  span {
-    margin: 0 15px;
-    flex:0 0 150px;
-    max-width: 150px;
-  }
-
-  hr {
-    flex: auto;
-    max-width: 100%;
-    border-style: dashed;
-  }
-
-  &:hover {
-    color: #ba5b5b;
-  }
-}
-
-.page:not(:first-child) {
-  margin-top: 40px;
-}
