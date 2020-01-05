@@ -40,6 +40,7 @@ class Content extends React.Component {
           addNewPage: this.props.onAddNewResumePage,
           removePage: this.props.onRemoveResumePage,
           makeFieldActive: this.props.onMakeFieldActive,
+          removeFieldActive: this.props.onRemoveFieldActive,
         }}
         helpers={{
           getFieldDefault: builderActions.getFieldDefault
@@ -150,7 +151,8 @@ const mapDispatchToProps = {
   onUpdateResumeItem: templateActions.updateResumeItem,
   onAddNewResumePage: templateActions.addNewResumePage,
   onRemoveResumePage: templateActions.removeResumePage,
-  onMakeFieldActive: builderActions.makeFieldActive
+  onMakeFieldActive: builderActions.makeFieldActive,
+  onRemoveFieldActive: builderActions.removeFieldActive,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

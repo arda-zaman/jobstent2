@@ -191,8 +191,7 @@
 
                       &:hover {
                         &.add { color: green; }
-                        &.remove { color: $red; }
-                        &.order { color: $orange; }
+                        &.remove { color: $red }
                       }
                     }
 

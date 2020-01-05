@@ -6,6 +6,24 @@ class TemplateContainer extends React.Component {
     super(props);
   }
 
+
+  componentDidMount() {
+    document.querySelector('.g-resume-container').addEventListener('mouseup', this.windowClickEvents);
+  }
+
+  componentWillUnmount() {
+    document.querySelector('.g-resume-container').removeEventListener('mouseup', this.windowClickEvents);
+  }
+
+  windowClickEvents = (e) => {
+    const { removeFieldActive } = this.props.actions;
+    const fieldLine = e.target.closest('.field-line');
+
+    if (!fieldLine && removeFieldActive) {
+      removeFieldActive();
+    }
+  };
+
   pageDropzone = async (pagex, event) => {
     event.preventDefault();
     const { actions: { createItem, updateItem }, helpers } = this.props;

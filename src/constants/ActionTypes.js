@@ -37,8 +37,8 @@ export const REMOVE_PAGE = "remove_page";
   */
 
 export const ACTIVE_PATH_CHANGE = "active_path_change";
-export const SET_ACTIVE_LAYOUT = "set_active_layout";
 export const SET_ACTIVE_FIELD = "set_active_field";
+export const REMOVE_ACTIVE_FIELD = "remove_active_field";
 
 
 /**

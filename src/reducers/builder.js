@@ -7,9 +7,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.SET_ACTIVE_LAYOUT:
     case ActionTypes.ACTIVE_PATH_CHANGE:
     case ActionTypes.SET_ACTIVE_FIELD:
+    case ActionTypes.REMOVE_ACTIVE_FIELD:
     case ActionTypes.LEFT_PANEL_MENU_HANDLER:
       return action.payload || false
     default:

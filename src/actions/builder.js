@@ -50,6 +50,14 @@ export const makeFieldActive = (fieldID) => async (dispatch, getState) => {
   return false;
 };
 
+export const removeFieldActive = (fieldID) => async (dispatch, getState) => {
+  const builder = _.cloneDeep(getState().builder);
+
+  builder.activeField = "";
+  builder.activePage = "";
+  return dispatch({ type: ActionTypes.SET_ACTIVE_FIELD, payload: builder });
+};
+
 export const leftPanelListHandler = (panelType) => (dispatch, getState) => {
   const builder = _.cloneDeep(getState().builder);
   builder[panelType] = builder[panelType] == 'open' ? 'closed' : 'open';
