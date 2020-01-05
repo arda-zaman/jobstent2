@@ -107,6 +107,7 @@ class TemplateContainer extends React.Component {
             <div
               className="page"
               id={`page_${page.fid}`}
+              order={page.order}
               onDrop={this.pageDropzone.bind(this, page)}
               onDragOver={this.fieldDragOver.bind(this, page)}
             >

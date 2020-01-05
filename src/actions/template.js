@@ -65,7 +65,8 @@ export const generateResume = (resumeID) => async (dispatch, getState) => {
     template.id = `${timestamp}`;
     template.pages = [{
       type: 'page',
-      fid: 1
+      fid: 1,
+      order: 1
     }];
 
     const url = window.location.protocol + "//" + window.location.host + window.location.pathname + '/' + template.id;
@@ -84,7 +85,7 @@ export const generateResume = (resumeID) => async (dispatch, getState) => {
 export const createResumeItem = ({ type, page, value, style }) => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
   const user = _.cloneDeep(getState().user);
-  const { resume, docRef } = await getResumeFromDB(template, user);
+  // const { resume, docRef } = await getResumeFromDB(template, user);
 
   const fid = template.items ? template.items.length + 1 : 1;
   const payload = {
@@ -95,62 +96,76 @@ export const createResumeItem = ({ type, page, value, style }) => async (dispatc
     pageID: page
   };
 
-  if (!resume.items) {
-    resume.items = [];
+  if (!template.items) {
+    template.items = [];
   }
 
-  resume.items.push(payload);
-  docRef.update({
-    [template.id]: resume
-  });
+  template.items.push(payload);
+  // docRef.update({
+  //   [template.id]: template
+  // });
 
-  return dispatch({ type: ActionTypes.FIELD_ITEM_CREATED, payload: resume });
+  return dispatch({ type: ActionTypes.FIELD_ITEM_CREATED, payload: template });
 };
 
 export const updateResumeItem = ({ fid, pageID, value, style }) => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
   const user = _.cloneDeep(getState().user);
-  const { resume, docRef } = await getResumeFromDB(template, user);
+  // const { resume, docRef } = await getResumeFromDB(template, user);
 
-  const itemIndex = resume.items.findIndex(f => f.fid == fid);
+  const itemIndex = template.items.findIndex(f => f.fid == fid);
   if (itemIndex == -1) return;
 
-  const currentItem = _.cloneDeep(resume.items[itemIndex]);
+  const currentItem = _.cloneDeep(template.items[itemIndex]);
 
-  resume.items[itemIndex] = Object.assign(
+  template.items[itemIndex] = Object.assign(
     {},
-    resume.items[itemIndex],
+    template.items[itemIndex],
     value,
     { ...currentItem, pageID: pageID },
     { style: { ...currentItem.style, ...style } }
   );
 
-  docRef.update({
-    [template.id]: resume
-  });
+  // docRef.update({
+  //   [template.id]: template
+  // });
 
-  return dispatch({ type: ActionTypes.FIELD_ITEM_UPDATE, payload: resume });
+  return dispatch({ type: ActionTypes.FIELD_ITEM_UPDATE, payload: template });
 }
 
-export const addNewResumePage = () => async (dispatch, getState) => {
+export const addNewResumePage = (e) => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
-  const user = _.cloneDeep(getState().user);
-  const { resume, docRef } = await getResumeFromDB(template, user);
+  const currentPageOrder = e.target.closest('.page').getAttribute('order');
+  // const user = _.cloneDeep(getState().user);
+
+  // const { resume, docRef } = await getResumeFromDB(template, user);
 
   const pageID = template.pages.length + 1;
+  const orderID = parseInt(currentPageOrder) + 1;
 
-  resume.pages.push({
+  template.pages = template.pages.map(p => {
+    if (p.order >= orderID) {
+      p.order += 1;
+      return p;
+    }
+    return p;
+  });
+
+  template.pages.push({
     type: 'page',
-    fid: pageID
+    fid: pageID,
+    order: orderID
   });
 
-  const isUpdate = await docRef.update({
-    [template.id]: resume
-  });
+  template.pages = _.sortBy(template.pages, ['order']);
 
-  console.log(isUpdate);
+  // const isUpdate = await docRef.update({
+  //   [template.id]: resume
+  // });
 
-  return dispatch({ type: ActionTypes.ADD_NEW_PAGE, payload: resume });
+  // console.log(isUpdate);
+
+  return dispatch({ type: ActionTypes.ADD_NEW_PAGE, payload: template });
 }
 
 export const removeResumePage = (e) => async (dispatch, getState) => {
