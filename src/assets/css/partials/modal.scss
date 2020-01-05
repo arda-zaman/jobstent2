@@ -39,7 +39,7 @@
         
         .modal-title{
           background: #eee;
-          padding: 10px 0;
+          padding: 14px 0;
           text-align: center;
           color: $midnight;
           position: relative;
@@ -62,6 +62,10 @@
         .modal-content{
           padding: 45px 45px 60px 45px;
           overflow: hidden;
+
+          .text {
+            font-size: 20px;
+          }
         }
       }
 
@@ -112,6 +116,19 @@
             }
           }
         }
+      }
+
+      .delete {
+        .modal-content {
+          text-align: center;
+
+          .buttons {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+          }
+        } 
       }
     }
   }

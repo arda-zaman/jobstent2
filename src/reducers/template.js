@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case ActionTypes.FIELD_ITEM_CREATED:
     case ActionTypes.FIELD_ITEM_UPDATE:
     case ActionTypes.ADD_NEW_PAGE:
-    case ActionTypes.ADD_NEW_LAYOUT:
+    case ActionTypes.REMOVE_PAGE:
       return action.payload || false
     default:
       return state;

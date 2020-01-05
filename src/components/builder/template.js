@@ -149,7 +149,7 @@ class TemplateContainer extends React.Component {
 
                   <span className="seperator">/</span>
 
-                  <div className="action-item remove">
+                  <div className="action-item remove" onClick={actions && actions.removePage}>
                     <i className="fas fa-trash-alt"></i>
                     <span>Remove Page</span>
                   </div>

@@ -4,6 +4,7 @@ import _ from 'lodash';
 import 'firebase/app';
 import firebase from '../../fbConfig';
 import * as ActionTypes from '../constants/ActionTypes';
+import * as uiActions from '../actions/ui';
 
 const DB = firebase.firestore();
 
@@ -150,4 +151,22 @@ export const addNewResumePage = () => async (dispatch, getState) => {
   console.log(isUpdate);
 
   return dispatch({ type: ActionTypes.ADD_NEW_PAGE, payload: resume });
+}
+
+export const removeResumePage = (e) => async (dispatch, getState) => {
+  const template = _.cloneDeep(getState().template);
+  const pageID = e.target.closest('.page').id.split('_')[1];
+  const resume = template;
+
+  await dispatch(uiActions.openModal({
+    type: "delete",
+    title: 'Removing Page',
+    text: "Are you sure about removing to the Page?",
+    active: true,
+    confirm: function () {
+      resume.pages = resume.pages.filter(p => p.fid != pageID);
+      dispatch({ type: ActionTypes.REMOVE_PAGE, payload: resume });
+      dispatch(uiActions.closeModal());
+    }
+  }));
 }

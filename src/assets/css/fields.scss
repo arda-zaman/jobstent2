@@ -222,6 +222,18 @@
     }
   }
 
+  &[data-type="outline"] {
+    button {
+      background: none;
+      border: 1px solid $midnight;
+
+      &:hover {
+        background-color: $midnight;
+        color: #fff;
+      }
+    }
+  }
+
   &[data-type="midnight"] {
     button {
       background: $midnight;
@@ -230,6 +242,32 @@
       &:hover {
         background: darken($midnight, 30%);
       }
+    }
+  }
+
+  &[data-type="warning"] {
+    button {
+      background-color: $red;
+      color: #fff;
+  
+      &:hover {
+        background-color: darken($red, 10%);
+      }
+    }
+  }
+
+
+  &[data-size="small"]{
+    button{
+      width: 180px;
+      height: 35px;
+    }
+  }
+
+  &[data-size="normal"]{
+    button{
+      width: 220px;
+      height: 40px;
     }
   }
 

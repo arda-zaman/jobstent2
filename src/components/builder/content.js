@@ -38,8 +38,8 @@ class Content extends React.Component {
           createItem: this.props.onCreateResumeItem,
           updateItem: this.props.onUpdateResumeItem,
           addNewPage: this.props.onAddNewResumePage,
-          createLayout: this.props.onCreateNewLayout,
-          makeFieldActive: this.props.onMakeFieldActive
+          removePage: this.props.onRemoveResumePage,
+          makeFieldActive: this.props.onMakeFieldActive,
         }}
         helpers={{
           getFieldDefault: builderActions.getFieldDefault
@@ -146,21 +146,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onTemplateInit: builderActions.initTemplate,
-  onFieldClick: builderActions.fieldClick,
-  onFieldChange: builderActions.fieldChange,
-  onIsPropertyChanged: builderActions.isPropertyChanged,
-  onAddElementToTemplate: builderActions.addElementToTemplate,
-  onProfileImageAdd: builderActions.profileImageAdd,
-  onSortFields: builderActions.sortFields,
-  onChangeActiveLayout: builderActions.changeActiveLayout,
-  onChangeActiveElement: builderActions.changeActiveElement,
-
   onCreateResumeItem: templateActions.createResumeItem,
   onUpdateResumeItem: templateActions.updateResumeItem,
   onAddNewResumePage: templateActions.addNewResumePage,
-  onCreateNewLayout: templateActions.addNewLayout,
-
+  onRemoveResumePage: templateActions.removeResumePage,
   onMakeFieldActive: builderActions.makeFieldActive
 };
 

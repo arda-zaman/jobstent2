@@ -30,7 +30,7 @@ export const FIELD_ITEM_UPDATE = "field_item_update";
 export const FIELD_IMAGE_ADD = "field_image_add";
 
 export const ADD_NEW_PAGE = "add_new_page";
-export const ADD_NEW_LAYOUT = "add_new_layout";
+export const REMOVE_PAGE = "remove_page";
 
 /**
  * BUILDER CONSTANTS
