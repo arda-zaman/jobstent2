@@ -1,8 +1,6 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
 const initialState = {
-  activeLayout: '',
-  activeSection: '',
   basic_fields: 'open',
   quick_fields: 'open',
 };

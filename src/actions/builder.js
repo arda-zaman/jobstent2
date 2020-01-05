@@ -43,6 +43,7 @@ export const makeFieldActive = (fieldID) => async (dispatch, getState) => {
 
   if (field) {
     builder.activeField = field;
+    builder.activePage = field.pageID;
     return dispatch({ type: ActionTypes.SET_ACTIVE_FIELD, payload: builder });
   }
 

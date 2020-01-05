@@ -53,7 +53,8 @@ class TemplateContainer extends React.Component {
 
       let field = await updateItem({
         fid: fieldID,
-        style: newStyle
+        style: newStyle,
+        pageID: pageID
       });
 
       console.log("RESPONSE2:", field);
