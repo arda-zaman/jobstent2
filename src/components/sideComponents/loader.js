@@ -8,10 +8,10 @@ class Loader extends React.PureComponent {
     const { color } = this.props;
 
     return (
-      <div class="material_line" color={color}>
-        <div class="line"></div>
-        <div class="subline inc"></div>
-        <div class="subline dec"></div>
+      <div className="material_line" color={color}>
+        <div className="line"></div>
+        <div className="subline inc"></div>
+        <div className="subline dec"></div>
       </div>
     );
   };

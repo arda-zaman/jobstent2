@@ -60,3 +60,13 @@ export const LEFT_PANEL_MENU_HANDLER = "left_panel_menu_handler";
 
 export const RIGHT_PANEL_INIT = "right_panel_init";
 export const RIGHT_PANEL_MENU_SWITCH = "right_panel_menu_switch";
+
+
+
+/**
+ * UI
+ */
+
+export const OPEN_MODAL = "open_modal";
+export const CLOSE_MODAL = "close_modal";
+export const UPDATE_MODAL = "update_modal";

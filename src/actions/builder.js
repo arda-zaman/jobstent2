@@ -4,6 +4,7 @@ import 'firebase/app';
 import firebase from '../../fbConfig';
 import * as ActionTypes from '../constants/ActionTypes';
 import { basic_fields, special_fields } from '../constants/Fields';
+import * as uiActions from '../actions/ui';
 
 const DB = firebase.firestore();
 
@@ -11,15 +12,22 @@ export const generatePDF = () => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
   let user = _.cloneDeep(getState().user);
 
-  axios.post('/api/template/create-pdf', {
+  await dispatch(uiActions.openModal({
+    type: "download",
+    title: "Resume PDF Generate",
+    active: true,
+    pdfGenerateStatus: "generating"
+  }));
+
+  const PDF = await axios.post('/api/template/create-pdf', {
     templateID: template.id,
     userID: user.userCredentials.uid
-  }).then(res => {
-    const anchorTag = document.createElement('a');
-    anchorTag.href = res.data;
-    anchorTag.download = "My PDF File.pdf";
-    anchorTag.click();
   });
+
+  await dispatch(uiActions.updateModal({
+    pdfGenerateStatus: "generated",
+    downloadLink: PDF.data
+  }));
 };
 
 export const getFieldDefault = (type) => {
