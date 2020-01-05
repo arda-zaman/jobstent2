@@ -109,26 +109,34 @@ class TemplateContainer extends React.Component {
               onDrop={this.pageDropzone.bind(this, page)}
               onDragOver={this.fieldDragOver.bind(this, page)}
             >
-              <div
-                className="page-content"
-              >
-                <ul>
-                  {(fields && fields.length > 0) && fields.map((item, index) => (
-                    (item.pageID == page.fid) && (
-                      <ResumeItem
-                        fid={item.fid}
-                        type={item.type}
-                        value={item.value}
-                        style={item.style}
-                        draggable={true}
-                        onDragStart={this.addedFieldsDragStart}
-                        onDragOver={this.addedFieldDragOver}
-                        actions={this.props.actions}
-                        activeField={this.props.activeField}
-                      />
-                    )
-                  ))}
-                </ul>
+              <div className="page-inside-container">
+                <div
+                  className="page-content"
+                >
+                  <ul>
+                    {(fields && fields.length > 0) && fields.map((item, index) => (
+                      (item.pageID == page.fid) && (
+                        <ResumeItem
+                          fid={item.fid}
+                          type={item.type}
+                          value={item.value}
+                          style={item.style}
+                          draggable={true}
+                          onDragStart={this.addedFieldsDragStart}
+                          onDragOver={this.addedFieldDragOver}
+                          actions={this.props.actions}
+                          activeField={this.props.activeField}
+                        />
+                      )
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="page-number">
+                  <em>--</em>
+                  <span>Page {index + 1}</span>
+                  <em>--</em>
+                </div>
               </div>
 
               {(page.fid === pages.length && !renderPDF) && (
