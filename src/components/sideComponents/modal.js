@@ -12,6 +12,23 @@ class Modal extends React.PureComponent {
     onCloseModal();
   }
 
+  renderAlertMessage = () => {
+    const { ui: { modal } } = this.props;
+
+    return (
+      <div className="modal-content">
+        <div className="text">{modal.text}</div>
+        <Button
+          type="button"
+          dataType="type1"
+          size="small"
+          text="Okay!"
+          click={this.closeModal}
+        />
+      </div>
+    );
+  };
+
   renderDeleteModal = () => {
     const { ui: { modal } } = this.props;
 
@@ -23,7 +40,6 @@ class Modal extends React.PureComponent {
             type="button"
             dataType="outline"
             size="small"
-            classNames="outline"
             text="Cancel"
             click={this.closeModal}
           />
@@ -32,7 +48,6 @@ class Modal extends React.PureComponent {
             type="button"
             dataType="warning"
             size="small"
-            classNames="outline"
             text="Remove"
             click={modal.confirm}
           />
@@ -78,6 +93,9 @@ class Modal extends React.PureComponent {
         break;
       case 'download':
         modalContent = this.renderDownloadModal();
+        break;
+      case 'alert':
+        modalContent = this.renderAlertMessage();
         break;
     };
 

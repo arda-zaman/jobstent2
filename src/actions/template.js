@@ -173,6 +173,16 @@ export const removeResumePage = (e) => async (dispatch, getState) => {
   const pageID = e.target.closest('.page').id.split('_')[1];
   const resume = template;
 
+  if (template.pages.length == 1) {
+    await dispatch(uiActions.openModal({
+      type: "alert",
+      title: 'Alert!',
+      text: 'At least, your resume have to one page',
+      active: true
+    }));
+    return;
+  }
+
   await dispatch(uiActions.openModal({
     type: "delete",
     title: 'Removing Page',
