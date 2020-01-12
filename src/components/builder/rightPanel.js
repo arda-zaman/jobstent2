@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { renderField, RenderFieldGroup } from '../../helpers/builder';
+import RightPanelItem from './rightPanelItem';
 import { Button, Icon } from '../fields';
 import * as builderActions from '../../actions/builder';
 import * as uiActions from '../../actions/ui';
-
+import { field_properties } from '../../constants/Fields';
 
 class RightPanel extends React.Component {
   constructor(props) {
@@ -114,23 +115,33 @@ class RightPanel extends React.Component {
 
   renderFieldSettings = () => {
     const parsedPath = [];
-    const { builder: { activeElement, activeSection, activeLayout } } = this.props;
+    const { builder: { activeField, activePage } } = this.props;
+    let property = null;
+    if (!activeField) return <div>Empty fields</div>;
+
+    const properties = field_properties[activeField.type];
+    console.log(field_properties);
 
     return (
       <div className="field-settings">
         <div className="field-settings-content">
-          {activeElement && (
+
+          {activeField && (
             <div className="subgroup" data-menu-item="input">
               <div className="title">
-                <span>Input Settings</span>
+                <span>General Settings</span>
                 <i className="material-icons">arrow_drop_down</i>
               </div>
               <div className="subgroup-content">
-                {activeElement['data-special-features'] && (
-                  this.renderSpecialFeatures(activeElement['data-special-features'])
-                )}
-
-                {this.renderSubgroupField(activeElement)}
+                {Object.keys(properties).map(p => {
+                  property = properties[p];
+                  return (
+                    <RightPanelItem
+                      name={p}
+                      property={property}
+                    />
+                  );
+                })}
               </div>
             </div>
           )}
@@ -326,7 +337,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   onGeneratePDF: builderActions.generatePDF,
-  onRightPanelMenuSwitch: builderActions.rightPanelMenuSwitch
+  onRightPanelMenuSwitch: builderActions.rightPanelMenuSwitch,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RightPanel);

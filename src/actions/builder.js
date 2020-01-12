@@ -3,7 +3,7 @@ import _ from 'lodash';
 import 'firebase/app';
 import firebase from '../../fbConfig';
 import * as ActionTypes from '../constants/ActionTypes';
-import { basic_fields, special_fields } from '../constants/Fields';
+import { basic_fields, special_fields, field_properties } from '../constants/Fields';
 import * as uiActions from '../actions/ui';
 
 const DB = firebase.firestore();
@@ -70,3 +70,14 @@ export const rightPanelMenuSwitch = (data) => (dispatch, getState) => {
   rightPanel.activeMenu = data;
   dispatch({ type: ActionTypes.RIGHT_PANEL_MENU_SWITCH, payload: rightPanel });
 };
+
+export const getFieldProperties = () => (dispatch, getState) => {
+  const builder = _.cloneDeep(getState().builder);
+  const { activeField } = builder;
+
+  if (!activeField) { return 'empty settings'; }
+
+  const fieldProperties = field_properties[activeField.type];
+  return fieldProperties;
+};
+

@@ -25,49 +25,6 @@
   }
 }
 
-.color-picker {
-  &.inline {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .label {
-    font-size: 13px;
-  }
-
-  .box {
-    position: relative;
-
-    .box-area {
-      display: block;
-      width: 20px;
-      height: 20px;
-      border-radius:4px;
-      box-shadow: 0 0 3px 0 rgba($midnight, 0.3);
-      cursor: pointer;
-
-      &:hover {
-        box-shadow: 0 0 6px 0 rgba($midnight, 0.3);
-      }
-    }
-
-    .color-picker-box {
-      z-index: 2;
-      position: absolute;
-      top: 30px;
-
-      &[data-position="right"] {
-        right: 0;
-      }
-
-      &[data-position="left"] {
-        left: 0;
-      }
-    }
-  }
-}
-
 .card {
   width: 300px;
   flex: 0 0 300px;
@@ -289,56 +246,6 @@
   
       i {
         font-size: 24px;
-      }
-    }
-  }
-}
-
-[name="bold/italic/strikethrough"],
-[name="alignment_horizontal"],
-[name="alignment_vertical"] {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-
-  & > span {
-    font-size: 13px;
-  }
-
-  .boxes {
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-end;
-
-    .box {
-      max-width: 25px;
-      flex: 0 0 25px;
-      height: 25px;
-      border-radius:4px;
-      box-shadow: 0 0 3px 0 rgba($midnight, 0.3);
-      cursor: pointer;
-      background: #eee;
-      text-align: center;
-      line-height: 25px;
-      transition: 100ms ease-out all;
-
-      i {
-        font-size: 16px;
-      }
-
-      &.active {
-        background-color: $red;
-        color: #fff;
-      }
-
-      &:not(:last-child) {
-        margin-right: 8px;
-        font-weight: bold;
-      }
-
-      &:hover {
-        box-shadow: 0 0 6px 0 rgba($midnight, 0.3);
       }
     }
   }
