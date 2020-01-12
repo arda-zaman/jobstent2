@@ -80,15 +80,13 @@ class TemplateContainer extends React.Component {
         }
       }
 
-      console.log(newStyle);
+      document.getElementById(`field_${fieldID}`).removeAttribute('isDragging');
 
       let field = await updateItem({
         fid: fieldID,
         style: newStyle,
         pageID: pageID
       });
-
-      console.log("RESPONSE2:", field);
     }
   };
 
@@ -117,7 +115,7 @@ class TemplateContainer extends React.Component {
     }));
 
     window.componentState.dragType = "move";
-    field.classList.add('active');
+    field.setAttribute('isDragging', true);
 
     // const crt = e.target.querySelector('.field-content');
     // e.dataTransfer.setDragImage(crt, 0, 0);

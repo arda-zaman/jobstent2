@@ -310,6 +310,16 @@
                   }
                 }
               }
+
+              &[isDragging="true"] {
+                .drag-area {
+                  background: lightblue!important;
+                }
+
+                .lines {
+                  display: none!important;
+                }
+              }
             }
           }
         }
