@@ -16,6 +16,28 @@ class ResumeItem extends React.PureComponent {
     )
   }
 
+  createIconField = () => {
+    const { type, value, style } = this.props;
+    let icon = null;
+
+    switch (value.iconType) {
+      case 'font-awesome':
+        icon = <i className={value.iconValue}></i>
+        break;
+      case 'material-icons':
+        icon = <i className="meterial-icons">{value.iconValue}</i>
+        break;
+    }
+
+    return (
+      <div
+        className="resume-field"
+      >
+        {icon}
+      </div>
+    )
+  };
+
   createDateField = () => {
   }
 
@@ -87,6 +109,9 @@ class ResumeItem extends React.PureComponent {
     switch (type) {
       case 'jbt_text':
         field = this.createTextField()
+        break;
+      case 'jbt_icon':
+        field = this.createIconField();
         break;
       case 'jbt_date':
         field = this.createDateField()

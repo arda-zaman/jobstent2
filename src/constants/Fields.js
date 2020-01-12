@@ -11,8 +11,13 @@ export const basic_fields = [
   {
     type: 'jbt_icon',
     text: 'Icon',
-    defaultValue: '',
-    defaultStyle: {}
+    defaultValue: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-atom'
+    },
+    defaultStyle: {
+      fontSize: 32
+    }
   },
   {
     type: 'jbt_image',
