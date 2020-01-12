@@ -52,7 +52,8 @@ class TemplateContainer extends React.Component {
         type: fieldType,
         page: pageID,
         value: fieldDefaults.defaultValue,
-        style: Object.assign({}, fieldDefaults.defaultStyle, { left: locations.offsetX, top: locations.offsetY })
+        style: Object.assign({}, fieldDefaults.defaultStyle, { left: locations.offsetX, top: locations.offsetY }),
+        fieldStyle: { ...fieldDefaults.defaultFieldStyle }
       });
 
       console.log("RESPONSE:", field);
@@ -141,6 +142,7 @@ class TemplateContainer extends React.Component {
                           type={item.type}
                           value={item.value}
                           style={item.style}
+                          fieldStyle={item.fieldStyle}
                           draggable={true}
                           onDragStart={this.addedFieldsDragStart}
                           onDragOver={this.addedFieldDragOver}

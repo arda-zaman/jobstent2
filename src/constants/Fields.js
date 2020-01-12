@@ -3,9 +3,9 @@ export const basic_fields = [
     type: 'jbt_text',
     text: 'Text',
     defaultValue: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet accusamus amet dolorum. Debitis eaque quos vero vel quam obcaecati corrupti, excepturi, quis porro sequi, voluptate nostrum officia hic amet.',
-    defaultStyle: {
-      width: 450,
-      position: 'absolute',
+    defaultStyle: {},
+    defaultFieldStyle: {
+      width: 450
     }
   },
   {
@@ -15,18 +15,16 @@ export const basic_fields = [
       iconType: 'font-awesome',
       iconValue: 'fas fa-atom'
     },
-    defaultStyle: {
+    defaultStyle: {},
+    defaultFieldStyle: {
       fontSize: 32
     }
   },
   {
     type: 'jbt_image',
     text: 'Image',
-    defaultValue: {
-      width: 300,
-      height: 300
-    },
-    defaultStyle: {}
+    defaultValue: {},
+    defaultStyle: {},
   },
   {
     type: 'jbt_date',
@@ -42,10 +40,11 @@ export const basic_fields = [
     text: 'Address',
     defaultValue: {
       textValue: "Guzelkent Mahallesi Gözde-2 Sitesi 10/D No:8",
-      width: 300,
-      height: 300
     },
-    defaultStyle: {}
+    defaultStyle: {},
+    defaultFieldStyle: {
+      width: 300,
+    }
   },
   {
     type: 'jbt_circle',
@@ -61,7 +60,15 @@ export const basic_fields = [
   },
   {
     type: 'jbt_layout',
-    text: 'Layout'
+    text: 'Layout',
+    defaultValue: {
+    },
+    defaultStyle: {},
+    defaultFieldStyle: {
+      backgroundColor: '#fbc531',
+      width: 300,
+      height: 500,
+    }
   }
 ];
 

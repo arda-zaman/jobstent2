@@ -33,12 +33,10 @@ class LeftPanel extends React.PureComponent {
 
   renderFields(fields) {
     const dom = fields.map((field, index) => {
-      const fid = uuid();
       return (
         <li
           className={`field`}
           type={field.type}
-          fid={fid}
           data-order={index}
           draggable={true}
           onDragStart={this.fieldDragStart}

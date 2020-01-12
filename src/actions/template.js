@@ -82,7 +82,7 @@ export const generateResume = (resumeID) => async (dispatch, getState) => {
   return dispatch({ type: ActionTypes.INIT_TEMPLATE, payload: template });
 };
 
-export const createResumeItem = ({ type, page, value, style }) => async (dispatch, getState) => {
+export const createResumeItem = ({ type, page, value, style, fieldStyle }) => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
   const user = _.cloneDeep(getState().user);
   // const { resume, docRef } = await getResumeFromDB(template, user);
@@ -93,6 +93,7 @@ export const createResumeItem = ({ type, page, value, style }) => async (dispatc
     fid,
     value,
     style,
+    fieldStyle,
     pageID: page
   };
 

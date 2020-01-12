@@ -4,20 +4,25 @@ import { Textfield } from '../fields';
 class ResumeItem extends React.PureComponent {
 
   createTextField = () => {
-    const { type, value, style } = this.props;
+    const { type, value, fieldStyle } = this.props;
 
     return (
       <div
         className="resume-field"
         type={type}
       >
-        <Textfield defaultValue={value} />
+        <div
+          className="resume-field-content"
+          style={{ ...fieldStyle }}
+        >
+          <Textfield defaultValue={value} />
+        </div>
       </div>
     )
   }
 
   createIconField = () => {
-    const { type, value, style } = this.props;
+    const { type, value, fieldStyle } = this.props;
     let icon = null;
 
     switch (value.iconType) {
@@ -32,67 +37,81 @@ class ResumeItem extends React.PureComponent {
     return (
       <div
         className="resume-field"
+        type={type}
       >
-        {icon}
+        <div
+          className="resume-field-content"
+          style={{ ...fieldStyle }}
+        >
+          {icon}
+        </div>
       </div>
     )
   };
 
   createImageField = () => {
-    const { type, value, style } = this.props;
+    const { type, value, fieldStyle } = this.props;
 
     return (
       <div
         className="resume-field"
         type={type}
       >
-        {(value && value.src) ? (
-          <img src={value.src} width={value.width} height={value.height} />
-        ) : (
-            <div className="empty-image-field">
-              <div>
-                <i className="fas fa-upload"></i>
-                <span>Upload Image</span>
+        <div
+          className="resume-field-content"
+          style={{ ...fieldStyle }}
+        >
+          {(value && value.src) ? (
+            <img src={value.src} width={value.width} height={value.height} />
+          ) : (
+              <div className="empty-image-field">
+                <div>
+                  <i className="fas fa-upload"></i>
+                  <span>Upload Image</span>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+        </div>
       </div>
     )
   };
 
   createDateField = () => {
-    const { type, value, style } = this.props;
+    const { type, value, fieldStyle } = this.props;
 
     return (
       <div
         className="resume-field"
         type={type}
       >
-        <input
-          type="text"
-          dateFormat={value.dateFormat}
-          value={value.textValue}
-        />
+        <div
+          className="resume-field-content"
+          style={{ ...fieldStyle }}
+        >
+          <input
+            type="text"
+            dateFormat={value.dateFormat}
+            value={value.textValue}
+          />
+        </div>
       </div>
     )
   }
 
   createAddressField = () => {
-    const { type, value, style } = this.props;
+    const { type, value, fieldStyle } = this.props;
 
     return (
       <div
         className="resume-field"
         type={type}
       >
-        <Textfield
-          defaultValue={value.textValue}
-          style={{
-            ...style,
-            width: value.width,
-            height: value.height
-          }}
-        />
+        <div
+          className="resume-field-content"
+          style={{ ...fieldStyle }}
+        >
+          <Textfield defaultValue={value.textValue} />
+        </div>
       </div>
     )
   }
@@ -103,6 +122,26 @@ class ResumeItem extends React.PureComponent {
   createLineField = () => {
 
   };
+
+  createShapeField = () => {
+
+  }
+
+  createLayoutField = () => {
+    const { type, value, fieldStyle } = this.props;
+
+    return (
+      <div
+        className="resume-field"
+        type={type}
+      >
+        <div
+          className="resume-field-content"
+          style={{ ...fieldStyle }}
+        ></div>
+      </div>
+    )
+  }
 
   createContainer = (field) => {
     const { onDragStart, onDragOver, draggable, style, activeField, fid } = this.props;
@@ -160,16 +199,19 @@ class ResumeItem extends React.PureComponent {
         field = this.createImageField();
         break;
       case 'jbt_date':
-        field = this.createDateField()
+        field = this.createDateField();
         break;
       case 'jbt_address':
-        field = this.createAddressField()
+        field = this.createAddressField();
         break;
       case 'jbt_circle':
-        field = this.createCircleField()
+        field = this.createCircleField();
         break;
       case 'jbt_line':
-        field = this.createLineField()
+        field = this.createLineField();
+        break;
+      case 'jbt_layout':
+        field = this.createLayoutField();
         break;
     }
 
