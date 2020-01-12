@@ -3,7 +3,9 @@ export const basic_fields = [
     type: 'jbt_text',
     text: 'Text',
     defaultValue: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet accusamus amet dolorum. Debitis eaque quos vero vel quam obcaecati corrupti, excepturi, quis porro sequi, voluptate nostrum officia hic amet.',
-    defaultStyle: {},
+    defaultStyle: {
+      zIndex: 5
+    },
     defaultFieldStyle: {
       width: 450
     }
@@ -62,6 +64,7 @@ export const basic_fields = [
     type: 'jbt_layout',
     text: 'Layout',
     defaultValue: {
+      zIndex: 1
     },
     defaultStyle: {},
     defaultFieldStyle: {

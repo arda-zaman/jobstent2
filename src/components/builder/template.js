@@ -58,17 +58,29 @@ class TemplateContainer extends React.Component {
 
       console.log("RESPONSE:", field);
     } else if (process == 'move') {
-      const element = document.querySelector(`#field_${fieldID}`);
+      const elementLocations = dataTransfer.locations;
+      const currentPageId = dataTransfer.currentPageId;
+      let newStyle = {};
 
-      // const newStyle = {
-      //   left: locations.offsetX - this.draggedElement.x,
-      //   top: locations.offsetY - this.draggedElement.y
-      // };
+      newStyle = {
+        left: (event.clientX + parseInt(elementLocations.x, 10)),
+        top: (event.clientY + parseInt(elementLocations.y, 10))
+      }
 
-      const newStyle = {
-        left: locations.offsetX,
-        top: locations.offsetY
-      };
+      if (currentPageId != pageID) {
+        const newPage = document.getElementById(`page_${pageID}`);
+        const newPageOrder = parseInt(newPage.getAttribute('order'), 10);
+        const currentPage = document.getElementById(`page_${currentPageId}`);
+        const currentPageOrder = parseInt(currentPage.getAttribute('order'), 10);
+
+        if (currentPageOrder < newPageOrder) {
+          newStyle.top = newStyle.top - newPage.offsetHeight - 100;
+        } else {
+          newStyle.top = newStyle.top + currentPage.offsetHeight + 100;
+        }
+      }
+
+      console.log(newStyle);
 
       let field = await updateItem({
         fid: fieldID,
@@ -92,22 +104,23 @@ class TemplateContainer extends React.Component {
   }
 
   addedFieldsDragStart = (e) => {
-    const field = e.target;
-    e.dataTransfer.setData('text/plain', JSON.stringify({
+    const field = e.target.closest('.field-line');
+    const style = window.getComputedStyle(field, null);
+    e.dataTransfer.setData('text', JSON.stringify({
       process: 'move',
-      id: field.id.replace('field_', '')
+      id: field.id.replace('field_', ''),
+      currentPageId: field.closest('.page').id.replace('page_', ''),
+      locations: {
+        x: (parseInt(style.getPropertyValue("left"), 10) - e.clientX),
+        y: (parseInt(style.getPropertyValue("top"), 10) - e.clientY)
+      }
     }));
+
     window.componentState.dragType = "move";
     field.classList.add('active');
 
-    const crt = e.target.querySelector('.field-content');
-    e.dataTransfer.setDragImage(crt, 0, 0);
-
-    const positions = field.getBoundingClientRect();
-    this.draggedElement = {
-      x: window.event.clientX - positions.x,
-      y: window.event.clientY - positions.y
-    }
+    // const crt = e.target.querySelector('.field-content');
+    // e.dataTransfer.setDragImage(crt, 0, 0);
   }
 
   addedFieldDragOver = (e) => {

@@ -153,9 +153,6 @@ class ResumeItem extends React.PureComponent {
         fid={`field_${fid}`}
         style={{ ...style }}
         type={this.props.type}
-        draggable={draggable}
-        onDragStart={onDragStart}
-        onDragOver={onDragOver}
         onClick={this.fieldLineClick}
         data-field-active={activeField && activeField.fid == fid}
       >
@@ -166,8 +163,15 @@ class ResumeItem extends React.PureComponent {
             <span></span>
             <span></span>
           </div>
-          <div className="field-content">
-            {field}
+          <div
+            className="drag-area"
+            draggable={draggable}
+            onDragStart={onDragStart}
+            onDragOver={onDragOver}
+          >
+            <div className="field-content">
+              {field}
+            </div>
           </div>
         </div>
       </li>
