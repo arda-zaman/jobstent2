@@ -74,9 +74,6 @@ class LeftPanel extends React.PureComponent {
           </div>
 
           <div className="panel-content">
-            <div className="search">
-              <input type="search" placeholder="Search Fields" />
-            </div>
             <div className="fields">
               <div className="field-group" data-passive={this.props.builder.basic_fields == 'closed'}>
                 <div
