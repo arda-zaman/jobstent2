@@ -22,16 +22,30 @@ export const basic_fields = [
   {
     type: 'jbt_image',
     text: 'Image',
-    defaultValue: '',
+    defaultValue: {
+      width: 300,
+      height: 300
+    },
     defaultStyle: {}
   },
   {
     type: 'jbt_date',
-    text: 'Date'
+    text: 'Date',
+    defaultValue: {
+      format: 'YYYY-MM-DD',
+      textValue: new Date().toLocaleDateString('en-US')
+    },
+    defaultStyle: {}
   },
   {
     type: 'jbt_address',
-    text: 'Address'
+    text: 'Address',
+    defaultValue: {
+      textValue: "Guzelkent Mahallesi Gözde-2 Sitesi 10/D No:8",
+      width: 300,
+      height: 300
+    },
+    defaultStyle: {}
   },
   {
     type: 'jbt_circle',

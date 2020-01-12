@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import createStore from "./createStore";
 
 import "./assets/css/main.scss";
-import "./assets/css/templates/templates.scss";
+// import "./assets/css/templates/templates.scss";
 
 const initialState = {};
 

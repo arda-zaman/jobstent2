@@ -38,18 +38,61 @@ class ResumeItem extends React.PureComponent {
     )
   };
 
-  createDateField = () => {
-  }
+  createImageField = () => {
+    const { type, value, style } = this.props;
 
-  createAddressField = () => {
-    const { type } = this.props;
     return (
       <div
         className="resume-field"
         type={type}
       >
-        <span>ADRESS</span>
-        <input type="text" />
+        {(value && value.src) ? (
+          <img src={value.src} width={value.width} height={value.height} />
+        ) : (
+            <div className="empty-image-field">
+              <div>
+                <i className="fas fa-upload"></i>
+                <span>Upload Image</span>
+              </div>
+            </div>
+          )}
+      </div>
+    )
+  };
+
+  createDateField = () => {
+    const { type, value, style } = this.props;
+
+    return (
+      <div
+        className="resume-field"
+        type={type}
+      >
+        <input
+          type="text"
+          dateFormat={value.dateFormat}
+          value={value.textValue}
+        />
+      </div>
+    )
+  }
+
+  createAddressField = () => {
+    const { type, value, style } = this.props;
+
+    return (
+      <div
+        className="resume-field"
+        type={type}
+      >
+        <Textfield
+          defaultValue={value.textValue}
+          style={{
+            ...style,
+            width: value.width,
+            height: value.height
+          }}
+        />
       </div>
     )
   }
@@ -113,8 +156,12 @@ class ResumeItem extends React.PureComponent {
       case 'jbt_icon':
         field = this.createIconField();
         break;
+      case 'jbt_image':
+        field = this.createImageField();
+        break;
       case 'jbt_date':
         field = this.createDateField()
+        break;
       case 'jbt_address':
         field = this.createAddressField()
         break;

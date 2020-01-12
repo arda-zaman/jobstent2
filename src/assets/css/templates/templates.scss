@@ -44,3 +44,33 @@
     }
   }
 }
+
+.resume-field {
+  &[type="jbt_image"] {
+    .empty-image-field {
+      width: 175px;
+      height: 175px;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap:nowrap;
+      cursor: pointer;
+
+      div {
+        color: #ccc;
+        text-align: center;
+
+        i{
+          font-size: 45px;
+        }
+
+        span{
+          display: block;
+          font-size: 20px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
