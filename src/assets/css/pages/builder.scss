@@ -30,12 +30,14 @@
       max-width: 400px;
       background: #fff;
       box-shadow: 0 0 5px 1px rgba($midnight, 0.1);
-      position: relative;
+      height: 100%;
 
       .left-panel-container {
-        @include x4('padding');
+        height: 100%;
+        // @include x4('padding');
 
         .panel-title {
+          @include x4('padding');
           @include x3('padding-bottom');
           @include x3('margin-bottom');
           border-bottom: 1px solid #eee;
@@ -57,7 +59,11 @@
 
         .panel-content {
           width: 100%;
+          height: 100%;
+
           .search{
+            @include x4('padding-left');
+            @include x4('padding-right');
             width: 100%;
             margin-bottom: 30px;
 
@@ -77,6 +83,12 @@
           }
 
           .fields {
+            height: calc(100% - 160px);
+            overflow-y: auto;
+            position: relative;
+            @include x4('padding-left');
+            @include x4('padding-right');
+            
             .field-group {
               .field-group-title {
                 display: flex;
