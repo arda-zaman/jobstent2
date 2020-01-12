@@ -153,20 +153,33 @@
             .g-resume-container{
               .pages{
                 .page{
+                  position: relative;
+                  width: 8.27in;
+                  height: 11.7in;
+                  margin: 0 auto;
+
                   .page-inside-container{
                     position: relative;
+                  }
 
-                    .page-number{
-                      position: absolute;
-                      right: -85px;
-                      top: 50%;
-                      transform: translateY(-50%) rotate(90deg);
-                      color: #9b9b9b;
-                      font-weight: bold;
+                  .page-number{
+                    position: absolute;
+                    left: 0;
+                    top: -20px;
+                    height: 20px;
+                    line-height: 20px;
+                    font-weight: bold;
+                    background-color: $orange;
+                    color: #fff;
+                    font-size: 13px;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition:100ms ease-in-out;
 
-                      span {
-                        margin: 0 10px;
-                      }
+                    span {
+                      margin: 0 10px;
                     }
                   }
 
@@ -202,37 +215,14 @@
                       margin: 0 6px;
                     }
                   }
-
-                  .add-new-page {
-                    color: #9b9b9b;
-                    display: block;
-                    margin: 20px auto 30px auto;
-                    cursor: pointer;
-                    text-align: center;
-                    font-weight: bold;
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    transition: 200ms ease-in-out;
                   
-                    span {
-                      margin: 0 15px;
-                      flex:0 0 150px;
-                      max-width: 150px;
-                    }
-                  
-                    hr {
-                      flex: auto;
-                      max-width: 100%;
-                      border-style: dashed;
-                    }
-                  
-                    &:hover {
-                      color: #ba5b5b;
+                  &:hover {
+                    .page-number {
+                      opacity: 1;
+                      transform:translateY(0px);
                     }
                   }
-                  
+
                   &:not(:first-child) {
                     margin-top: 100px;
                   }

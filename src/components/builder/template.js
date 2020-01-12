@@ -164,28 +164,28 @@ class TemplateContainer extends React.Component {
                     ))}
                   </ul>
                 </div>
-
-                <div className="page-number">
-                  <em>--</em>
-                  <span>Page {index + 1}</span>
-                  <em>--</em>
-                </div>
               </div>
 
               {(!renderPDF) && (
-                <div className="page-actions">
-                  <div className="action-item add" onClick={actions && actions.addNewPage}>
-                    <i className="fas fa-plus-circle"></i>
-                    <span>Add New Page</span>
+                <React.Fragment>
+                  <div className="page-number">
+                    <span>Page {index + 1}</span>
                   </div>
 
-                  <span className="seperator">/</span>
+                  <div className="page-actions">
+                    <div className="action-item add" onClick={actions && actions.addNewPage}>
+                      <i className="fas fa-plus-circle"></i>
+                      <span>Add New Page</span>
+                    </div>
 
-                  <div className="action-item remove" onClick={actions && actions.removePage}>
-                    <i className="fas fa-trash-alt"></i>
-                    <span>Remove Page</span>
+                    <span className="seperator">/</span>
+
+                    <div className="action-item remove" onClick={actions && actions.removePage}>
+                      <i className="fas fa-trash-alt"></i>
+                      <span>Remove Page</span>
+                    </div>
                   </div>
-                </div>
+                </React.Fragment>
               )}
 
             </div>
