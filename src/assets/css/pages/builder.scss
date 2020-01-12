@@ -98,6 +98,18 @@
                   cursor: move;
                   font-size: 16px;
                   border-radius: 4px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+
+                  i {
+                    flex: 0 0 30px;
+                    max-width: 30px;
+                    color: $orange;
+                    font-weight: bold;
+                    text-shadow: rgba($midnight, 0.3);
+                  }
+                  
 
                   &.active {
                     background: lightblue!important;

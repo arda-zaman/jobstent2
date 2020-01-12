@@ -2,6 +2,10 @@ export const basic_fields = [
   {
     type: 'jbt_text',
     text: 'Text',
+    icon: {
+      iconType: 'material-icons',
+      iconValue: 'text_format'
+    },
     defaultValue: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet accusamus amet dolorum. Debitis eaque quos vero vel quam obcaecati corrupti, excepturi, quis porro sequi, voluptate nostrum officia hic amet.',
     defaultStyle: {
       zIndex: 5
@@ -13,6 +17,10 @@ export const basic_fields = [
   {
     type: 'jbt_icon',
     text: 'Icon',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-pencil-alt'
+    },
     defaultValue: {
       iconType: 'font-awesome',
       iconValue: 'fas fa-atom'
@@ -25,12 +33,20 @@ export const basic_fields = [
   {
     type: 'jbt_image',
     text: 'Image',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'far fa-image'
+    },
     defaultValue: {},
     defaultStyle: {},
   },
   {
     type: 'jbt_date',
     text: 'Date',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'far fa-calendar-alt'
+    },
     defaultValue: {
       format: 'YYYY-MM-DD',
       textValue: new Date().toLocaleDateString('en-US')
@@ -40,6 +56,10 @@ export const basic_fields = [
   {
     type: 'jbt_address',
     text: 'Address',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'far fa-address-card'
+    },
     defaultValue: {
       textValue: "Guzelkent Mahallesi Gözde-2 Sitesi 10/D No:8",
     },
@@ -49,20 +69,20 @@ export const basic_fields = [
     }
   },
   {
-    type: 'jbt_circle',
-    text: 'Circle'
-  },
-  {
-    type: 'jbt_line',
-    text: 'Line'
-  },
-  {
     type: 'jbt_shape',
-    text: 'Shape'
+    text: 'Shape',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-shapes'
+    },
   },
   {
     type: 'jbt_layout',
     text: 'Layout',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-layer-group'
+    },
     defaultValue: {
       zIndex: 1
     },
@@ -79,30 +99,58 @@ export const special_fields = [
   {
     type: 'jbt_profile_photo',
     text: 'Profile Photo',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'far fa-user-circle'
+    },
   },
   {
     type: 'jbt_personal_informations',
-    text: 'Personal Informations'
+    text: 'Personal Informations',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-user-check'
+    },
   },
   {
     type: 'jbt_contact_informations',
-    text: 'Contact Informations'
+    text: 'Contact Informations',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'far fa-address-card'
+    },
   },
   {
     type: 'jbt_professional_summary',
-    text: 'Professional Summary'
+    text: 'Professional Summary',
+    icon: {
+      iconType: 'material-icons',
+      iconValue: 'short_text'
+    },
   },
   {
     type: 'jbt_work_experience',
-    text: 'Work Experience'
+    text: 'Work Experience',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-briefcase'
+    },
   },
   {
     type: 'jbt_education',
-    text: 'Education'
+    text: 'Education',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-user-graduate'
+    },
   },
   {
     type: 'jbt_skills',
-    text: 'Skills'
+    text: 'Skills',
+    icon: {
+      iconType: 'font-awesome',
+      iconValue: 'fas fa-check-double'
+    },
   }
 ];
 
@@ -164,8 +212,6 @@ export const field_properties = {
   jbt_image: [],
   jbt_date: [],
   jbt_address: [],
-  jbt_circle: [],
-  jbt_line: [],
   jbt_shape: [],
   jbt_layout: []
 };

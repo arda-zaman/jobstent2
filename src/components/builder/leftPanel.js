@@ -43,6 +43,14 @@ class LeftPanel extends React.PureComponent {
           onDragOver={this.fieldDragOver}
           onDragEnd={this.fieldDragEnd}
         >
+          {field.icon && field.icon.iconType == "material-icons" && (
+            <i className="material-icons">{field.icon.iconValue}</i>
+          )}
+
+          {field.icon && field.icon.iconType == "font-awesome" && (
+            <i className={field.icon.iconValue}></i>
+          )}
+
           <span className="text">{field.text}</span>
         </li>
       )
