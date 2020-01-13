@@ -128,7 +128,7 @@ class TemplateContainer extends React.Component {
 
 
   render() {
-    const { pages, layouts, fields, zoom, actions, renderPDF } = this.props;
+    const { pages, fields, zoom, actions, renderPDF } = this.props;
 
     return (
       <div className="g-resume-container" style={{ transform: zoom ? `scale(${zoom.percent / 100})` : `scale(1)` }}>

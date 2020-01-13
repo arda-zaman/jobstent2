@@ -241,7 +241,7 @@
                   top:0;
                   width: 100%;
                   height: 100%;
-                  border: 3px dotted green;
+                  border: 3px dotted $orange;
                   z-index: 0;
                   // padding: 15px;
                   box-sizing: content-box;
@@ -251,7 +251,7 @@
 
                   span {
                     position: absolute;
-                    background: darkgreen;
+                    background: darken($orange, 20%);
                     width: 14px;
                     height: 14px;
                     border-radius: 50%;

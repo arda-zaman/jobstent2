@@ -2,6 +2,7 @@
 import React from 'react';
 import { Select, ColorPicker } from '../fields';
 import { field_properties } from '../../constants/Fields';
+import { IconLibrary } from '../fields';
 
 class RightPanelItem extends React.PureComponent {
 
@@ -85,6 +86,12 @@ class RightPanelItem extends React.PureComponent {
     )
   }
 
+  renderIconLibrary = () => {
+    return (
+      <IconLibrary />
+    )
+  };
+
   getPanelItem = () => {
 
   };
@@ -109,6 +116,9 @@ class RightPanelItem extends React.PureComponent {
         break;
       case 'alignment':
         field = this.renderBoxesField();
+        break;
+      case 'iconLibrary':
+        field = this.renderIconLibrary();
         break;
     }
 

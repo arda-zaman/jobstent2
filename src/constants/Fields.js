@@ -83,10 +83,10 @@ export const basic_fields = [
       iconType: 'font-awesome',
       iconValue: 'fas fa-layer-group'
     },
-    defaultValue: {
+    defaultValue: {},
+    defaultStyle: {
       zIndex: 1
     },
-    defaultStyle: {},
     defaultFieldStyle: {
       backgroundColor: '#fbc531',
       width: 300,
@@ -204,12 +204,41 @@ export const field_properties = {
       label: 'Alignment'
     },
   },
-  jbt_icon: [
-    'iconLibrary',
-    'colorPicker',
-    'fontSize'
-  ],
-  jbt_image: [],
+  jbt_icon: {
+    iconLibrary: {},
+    fontSize: {
+      fieldType: 'dropdown',
+      label: 'Font Size',
+      additionalClass: 'inline',
+      options: [
+        { value: "8", label: "8" },
+        { value: "10", label: "10" },
+        { value: "12", label: "12" },
+        { value: "14", label: "14" },
+        { value: "16", label: "16" },
+        { value: "18", label: "18" },
+        { value: "20", label: "20" },
+        { value: "22", label: "22" },
+        { value: "24", label: "24" },
+        { value: "26", label: "26" },
+        { value: "28", label: "28" },
+        { value: "30", label: "30" },
+        { value: "32", label: "32" },
+        { value: "34", label: "34" },
+        { value: "36", label: "36" },
+        { value: "38", label: "38" },
+        { value: "40", label: "40" }
+      ],
+    },
+    colorPicker: {
+      fieldType: 'colorPicker',
+      type: 'box',
+      label: 'Color',
+      additionalClass: 'inline',
+      position: 'right'
+    },
+  },
+  jbt_image: {},
   jbt_date: [],
   jbt_address: [],
   jbt_shape: [],
