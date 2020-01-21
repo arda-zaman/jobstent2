@@ -39,7 +39,17 @@ class RightPanelItem extends React.PureComponent {
   };
 
   renderColorField = () => {
-    const { property, activeField } = this.props;
+    const { name, property, activeField } = this.props;
+    let value = undefined;
+
+    switch (property.styleValue) {
+      case 'background-color':
+        value = activeField.style['background-color'];
+        break;
+      default:
+        value = activeField.style['color'];
+        break;
+    }
 
     return (
       <div className="panel-item-content">
@@ -48,7 +58,7 @@ class RightPanelItem extends React.PureComponent {
           label={property.label}
           additionalClass={property.additionalClass}
           position={property.position}
-          defaultValue={activeField.style.color}
+          defaultValue={value}
         />
       </div>
     );

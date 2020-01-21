@@ -43,7 +43,7 @@ export const makeFieldActive = (fieldID) => async (dispatch, getState) => {
   const field = template.items ? template.items.find(f => f.fid == fieldID) : false;
 
   if (field) {
-    const fieldStyles = getFieldStyle(document.getElementById(`field_${fieldID}`), true);
+    const fieldStyles = getFieldStyle(document.querySelector(`#field_${fieldID} .resume-field-content`), true);
     field.style = fieldStyles;
 
     builder.activeField = field;

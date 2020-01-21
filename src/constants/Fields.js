@@ -347,7 +347,8 @@ export const field_properties = {
       type: 'box',
       label: 'Background Color',
       additionalClass: 'inline',
-      position: 'right'
+      position: 'right',
+      styleValue: 'background-color'
     },
     uploadFile: {},
     size: {},
