@@ -32,7 +32,12 @@ class RightPanel extends React.Component {
     const parsedPath = [];
     const { builder: { activeField, activePage } } = this.props;
     let property = null;
-    if (!activeField) return <div>Empty fields</div>;
+    if (!activeField) return (
+      <div className="not-selected-field">
+        <img src={require('../../assets/images/touch.png')} alt="" />
+        <span>Click a resume item to see settings</span>
+      </div>
+    );
 
     const properties = field_properties[activeField.type];
     console.log(field_properties);
