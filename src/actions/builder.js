@@ -5,6 +5,7 @@ import firebase from '../../fbConfig';
 import * as ActionTypes from '../constants/ActionTypes';
 import { basic_fields, special_fields, field_properties } from '../constants/Fields';
 import * as uiActions from '../actions/ui';
+import { getFieldStyle } from '../helpers';
 
 const DB = firebase.firestore();
 
@@ -42,6 +43,9 @@ export const makeFieldActive = (fieldID) => async (dispatch, getState) => {
   const field = template.items ? template.items.find(f => f.fid == fieldID) : false;
 
   if (field) {
+    const fieldStyles = getFieldStyle(document.getElementById(`field_${fieldID}`), true);
+    field.style = fieldStyles;
+
     builder.activeField = field;
     builder.activePage = field.pageID;
     return dispatch({ type: ActionTypes.SET_ACTIVE_FIELD, payload: builder });

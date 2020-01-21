@@ -1,4 +1,5 @@
 import React from 'react';
+import { styleList } from '../constants/generalConstants';
 
 export const uuid = () => {
   return String(Date.now() + Math.round(Math.random() * 10000));
@@ -25,5 +26,18 @@ export const UpperCase = (str) => {
 }
 
 export const GetAllAttributes = (input) => {
-  return [...input.attributes].map(attr => attr.nodeName);
+  return [...input.attributes].forEach(attr => attr.nodeName);
 }
+
+export const getFieldStyle = (field, useCommon = false) => {
+  const styles = getComputedStyle(field);
+  const returnedStyles = {};
+
+  if (useCommon) {
+    styleList.forEach(sty => {
+      returnedStyles[sty] = styles[sty];
+    });
+  }
+
+  return returnedStyles.length == 0 ? styles : returnedStyles;
+};

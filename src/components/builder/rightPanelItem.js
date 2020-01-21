@@ -6,15 +6,32 @@ import { IconLibrary } from '../fields';
 
 class RightPanelItem extends React.PureComponent {
 
-  renderDropdownField = () => {
-    const { name, property } = this.props;
+  renderFontSizeField = () => {
+    const { name, property, activeField } = this.props;
+    const value = activeField.style['font-size'].replace('px', '');
 
     return (
       <div className="panel-item-content">
         <Select
           label={property.label}
           additionalClass={property.additionalClass}
-          // value={}
+          value={value}
+          options={property.options}
+        />
+      </div>
+    );
+  };
+
+  renderFontFamilyField = () => {
+    const { name, property, activeField } = this.props;
+    const value = activeField.style['font-family'];
+
+    return (
+      <div className="panel-item-content">
+        <Select
+          label={property.label}
+          additionalClass={property.additionalClass}
+          value={value}
           options={property.options}
         />
       </div>
@@ -22,7 +39,7 @@ class RightPanelItem extends React.PureComponent {
   };
 
   renderColorField = () => {
-    const { property } = this.props;
+    const { property, activeField } = this.props;
 
     return (
       <div className="panel-item-content">
@@ -31,6 +48,7 @@ class RightPanelItem extends React.PureComponent {
           label={property.label}
           additionalClass={property.additionalClass}
           position={property.position}
+          defaultValue={activeField.style.color}
         />
       </div>
     );
@@ -53,26 +71,30 @@ class RightPanelItem extends React.PureComponent {
   }
 
   renderBoxesField = () => {
-    const { name, property } = this.props;
+    const { name, property, activeField } = this.props;
     let boxes = null;
 
     switch (name) {
       case 'bold/italic/strikethrough':
+        const isBoxes = ['600', '700', 'bold', 'bolder'].indexOf(activeField.style['font-weight']) > -1;
+        const isItalic = activeField.style['font-style'] == 'italic';
+        const isStrikeThrough = activeField.style['text-decoration'] == 'line-through';
+
         boxes = (
           <div className="boxes">
-            <div className="box active" type="bold">B</div>
-            <div className="box" type="italic">I</div>
-            <div className="box" type="strikethrough">S</div>
+            <div type="bold" className={`box ${isBoxes ? 'active' : ''}`}>B</div>
+            <div type="italic" className={`box ${isItalic ? 'active' : ''}`}>I</div>
+            <div type="strikethrough" className={`box ${isStrikeThrough ? 'active' : ''}`}>S</div>
           </div>
         );
         break;
       case 'alignment':
         boxes = (
           <div className="boxes">
-            <div className="box active"><i className="material-icons">format_align_left</i></div>
-            <div className="box"><i className="material-icons">format_align_right</i></div>
-            <div className="box"><i className="material-icons">format_align_center</i></div>
-            <div className="box"><i className="material-icons">format_align_justify</i></div>
+            <div className={`box ${activeField.style['text-align'] == 'left' ? 'active' : ''}`}><i className="material-icons">format_align_left</i></div>
+            <div className={`box ${activeField.style['text-align'] == 'right' ? 'active' : ''}`}><i className="material-icons">format_align_right</i></div>
+            <div className={`box ${activeField.style['text-align'] == 'center' ? 'active' : ''}`}><i className="material-icons">format_align_center</i></div>
+            <div className={`box ${activeField.style['text-align'] == 'justify' ? 'active' : ''}`}><i className="material-icons">format_align_justify</i></div>
           </div>
         );
         break;
@@ -102,8 +124,10 @@ class RightPanelItem extends React.PureComponent {
 
     switch (name) {
       case 'fontFamily':
+        field = this.renderFontFamilyField();
+        break;
       case 'fontSize':
-        field = this.renderDropdownField();
+        field = this.renderFontSizeField();
         break;
       case 'colorPicker':
         field = this.renderColorField();

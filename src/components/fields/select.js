@@ -23,7 +23,11 @@ class Select extends React.Component {
 
   init = (props) => {
     const { options } = props;
-    let val = options.find(option => option.value === props.value);
+    let val = undefined;
+
+    if (props.value) {
+      val = options.find(option => option.value.toLowerCase() === props.value.toLowerCase());
+    }
 
     if (!val) {
       val = {};

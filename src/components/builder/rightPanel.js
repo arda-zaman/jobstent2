@@ -59,6 +59,7 @@ class RightPanel extends React.Component {
                     <RightPanelItem
                       name={p}
                       property={property}
+                      activeField={activeField}
                     />
                   );
                 })}
