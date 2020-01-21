@@ -126,6 +126,11 @@ class TemplateContainer extends React.Component {
     e.preventDefault();
   }
 
+  addedFieldDragEnd = (event) => {
+    if (event.dataTransfer.dropEffect === 'none') {
+      event.target.closest('.field-line').removeAttribute('isDragging');
+    }
+  };
 
   render() {
     const { pages, fields, zoom, actions, renderPDF } = this.props;
@@ -139,6 +144,7 @@ class TemplateContainer extends React.Component {
               id={`page_${page.fid}`}
               order={page.order}
               onDrop={this.pageDropzone.bind(this, page)}
+              onDragEnd={this.addedFieldDragEnd}
               onDragOver={this.fieldDragOver.bind(this, page)}
             >
               <div className="page-inside-container">

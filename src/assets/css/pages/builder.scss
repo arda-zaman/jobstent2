@@ -307,6 +307,11 @@
               &[isDragging="true"] {
                 .drag-area {
                   background: lightblue!important;
+                  box-shadow: 0 0 rgba($midnight, 0.3);
+
+                  .field-content {
+                    opacity: 0;
+                  }
                 }
 
                 .lines {
