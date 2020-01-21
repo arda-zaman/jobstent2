@@ -241,7 +241,7 @@ export const field_properties = {
   jbt_image: {
     uploadFile: {},
     size: {},
-    borderRadius: {}
+    radius: {}
   },
   jbt_date: {
     fontFamily: {
@@ -343,6 +343,7 @@ export const field_properties = {
   },
   jbt_shape: [],
   jbt_layout: {
+    uploadFile: {},
     colorPicker: {
       fieldType: 'colorPicker',
       type: 'box',
@@ -351,7 +352,6 @@ export const field_properties = {
       position: 'right',
       styleValue: 'background-color'
     },
-    uploadFile: {},
     size: {},
   }
 };

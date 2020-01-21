@@ -547,7 +547,29 @@
       
       .right-panel-container {
         @include x4('padding');
-        padding-top: 8px;
+        padding-top: 0px;
+
+
+        .panel-title {
+          @include x4('padding');
+          @include x3('padding-bottom');
+          @include x3('margin-bottom');
+          border-bottom: 1px solid #eee;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          
+          i {
+            color: $orange;
+            font-size: 26px;
+          }
+
+          strong {
+            color: #333;
+            font-size: 18px;
+            @include x3('margin-left');
+          }
+        }
 
         .tabs {
           ul {
@@ -637,25 +659,6 @@
                   .panel-group {
                     &:not(:last-child) {
                       margin-bottom: 30px;
-                    }
-    
-                    .panel-title {
-                      display: flex;
-                      align-items: center;
-                      justify-content: flex-start;
-                      border-bottom: 1px solid #eee;
-                      padding-bottom:5px;
-                      margin-bottom: 12px;
-                      color: $midnight;
-    
-                      strong {
-    
-                      }
-                      
-                      i {
-                        color: $orange;
-                        margin-right: 8px;
-                      }
                     }
                   }
     

@@ -86,6 +86,11 @@ class RightPanel extends React.Component {
     return (
       <aside className="right-panel">
         <div className="right-panel-container">
+          <div className="panel-title">
+            <i className="material-icons">style</i>
+            <strong>Styling & Settings</strong>
+          </div>
+
           <div className="tabs">
             <ul onClick={this.menuClickHandler}>
               <li data-menu="field-settings">Field Settings</li>
