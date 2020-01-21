@@ -34,8 +34,9 @@ class RightPanel extends React.Component {
     let property = null;
     if (!activeField) return (
       <div className="not-selected-field">
-        <img src={require('../../assets/images/touch.png')} alt="" />
-        <span>Click a resume item to see settings</span>
+        {/* <img src={require('../../assets/images/touch.png')} alt="" /> */}
+        <i className="material-icons">touch_app</i>
+        <span>Select a field to see the panel</span>
       </div>
     );
 
