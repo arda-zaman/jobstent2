@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Select, ColorPicker } from '../fields';
+import { Select, ColorPicker, Button } from '../fields';
 import { field_properties } from '../../constants/Fields';
 import { IconLibrary } from '../fields';
 
@@ -124,12 +124,21 @@ class RightPanelItem extends React.PureComponent {
     )
   };
 
-  getPanelItem = () => {
-
+  renderUploadField = () => {
+    return (
+      <div className="panel-item-content">
+        <span className="label">Upload Image</span>
+        <div className="upload-button">
+          <input type="file" accept="image/*" />
+          <span>Upload</span>
+        </div>
+      </div>
+    )
   };
 
+
   render() {
-    const { name, property } = this.props;
+    const { name, property, activeField } = this.props;
     let field = null;
 
     switch (name) {
@@ -153,6 +162,9 @@ class RightPanelItem extends React.PureComponent {
         break;
       case 'iconLibrary':
         field = this.renderIconLibrary();
+        break;
+      case 'uploadFile':
+        field = this.renderUploadField();
         break;
     }
 

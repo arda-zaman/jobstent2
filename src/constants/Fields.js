@@ -241,6 +241,7 @@ export const field_properties = {
   jbt_image: {
     uploadFile: {},
     size: {},
+    borderRadius: {}
   },
   jbt_date: {
     fontFamily: {

@@ -302,6 +302,21 @@
                     display: block;
                   }
                 }
+
+                &[type="jbt_image"]{                  
+                  .empty-image-field {
+                    div {
+                      cursor: pointer;
+                      input{
+                        pointer-events: unset;
+                      }
+  
+                      &:hover {
+                        color: #4a4a4a;
+                      }
+                    }
+                  }
+                }
               }
 
               &[isDragging="true"] {
@@ -766,6 +781,49 @@
                       }
                     }
                   
+                    &[name="uploadFile"] {
+                      .panel-item-content {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        flex-wrap: nowrap;
+
+                        .upload-button {
+                          cursor: pointer;
+                          position: relative;
+
+                          span{
+                            background: rgba($midnight, 0.9);
+                            border-radius: 4px;
+                            display: block;
+                            width: 120px;
+                            height: 30px;
+                            line-height: 30px;
+                            color: #fff;
+                            text-align: center;
+                            cursor: pointer;
+                            transition: 200ms ease-in-out;
+                            font-size: 14px;
+                          }
+
+                          input {
+                            cursor: pointer;
+                            opacity: 0;
+                            position: absolute;
+                            left:0;
+                            top:0;
+                            width: 100%;
+                            height: 100%;
+
+                            &:hover + span{
+                              background-color: darken($midnight, 5%);
+                            }
+                          }
+                        }
+                      }
+                    }
+
                     &:not(:last-child) {
                       @include x3('margin-bottom');
                     }

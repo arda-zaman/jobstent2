@@ -68,6 +68,7 @@ class ResumeItem extends React.PureComponent {
                 <div>
                   <i className="fas fa-upload"></i>
                   <span>Upload Image</span>
+                  <input type="file" accept="image/*" />
                 </div>
               </div>
             )}
@@ -115,13 +116,6 @@ class ResumeItem extends React.PureComponent {
       </div>
     )
   }
-
-  createCircleField = () => {
-  }
-
-  createLineField = () => {
-
-  };
 
   createShapeField = () => {
 
