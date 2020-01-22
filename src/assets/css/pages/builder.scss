@@ -232,6 +232,7 @@
 
             .field-line {
               position: absolute;
+              z-index: 99;
               // transition: 200ms ease-in-out;
 
               .field-line-container {

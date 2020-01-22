@@ -5,5 +5,5 @@ import ContentLoader from './contentLoader';
 export {
   Modal,
   Loader,
-  ContentLoader
+  ContentLoader,
 }

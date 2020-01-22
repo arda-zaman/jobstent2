@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import iconsConstant from "../../constants/iconConsts";
 
-class IconLibrary extends React.Component {
+class IconLists extends React.Component {
   constructor(props) {
     super(props);
 
@@ -62,8 +62,8 @@ class IconLibrary extends React.Component {
   }
 }
 
-IconLibrary.propTypes = {
+IconLists.propTypes = {
   activeIcon: PropTypes.object.isRequired
 }
 
-export default IconLibrary;
+export default IconLists;
