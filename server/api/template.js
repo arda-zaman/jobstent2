@@ -1,4 +1,3 @@
-import reactDOM from 'react-dom';
 import express from 'express';
 
 import { http_build_query, generatePDF } from '../helpers';

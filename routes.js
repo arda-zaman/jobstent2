@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Switch } from "react-router";
 import App from "./src/components/App";
-import Home from './src/components/Home';
 import Header from './src/components/header';
+import Home from './src/components/Home';
 import ResumeTemplates from './src/components/resumeTemplates';
 import ResumeBuilder from './src/components/builder/builder';
 import Templates from './src/components/templates';

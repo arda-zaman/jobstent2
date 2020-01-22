@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogout } from '../actions/user';
 import { UpperCase } from '../helpers';
+import { ContentLoader } from './sideComponents';
 
 class Header extends React.Component {
   renderHeaderByUrl = () => {
@@ -158,11 +159,19 @@ class Header extends React.Component {
   };
 
   render() {
-    return (
-      <header>
-        {this.renderHeaderByUrl()}
-      </header>
-    )
+    const { user } = this.props;
+
+    if (user.login == true || user.login == false) {
+      return (
+        <header>
+          {this.renderHeaderByUrl()}
+        </header>
+      );
+    }
+
+    return <span></span>
+
+    // return <ContentLoader type="header" />
   }
 
   topMenuClicked = (e) => {

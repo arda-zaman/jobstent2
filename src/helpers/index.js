@@ -41,3 +41,10 @@ export const getFieldStyle = (field, useCommon = false) => {
 
   return returnedStyles.length == 0 ? styles : returnedStyles;
 };
+
+export const getDimensions = () => {
+  return {
+    width: global.window.innerWidth,
+    height: global.window.innerHeight
+  }
+};

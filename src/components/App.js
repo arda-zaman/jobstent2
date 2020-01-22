@@ -7,6 +7,7 @@ import firebase from '../../fbConfig';
 import * as userActions from '../actions/user';
 import '../assets/js/polyfill';
 import { Modal } from './sideComponents'
+import { ContentLoader } from './sideComponents'
 
 class App extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class App extends React.Component {
       );
     }
 
-    return <div>Loading</div>;
+    return <ContentLoader type={firstLevelPath} />
   }
 }
 
