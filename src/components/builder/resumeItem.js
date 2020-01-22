@@ -117,6 +117,24 @@ class ResumeItem extends React.PureComponent {
     )
   }
 
+  createPhoneField = () => {
+    const { type, value, fieldStyle } = this.props;
+
+    return (
+      <div
+        className="resume-field"
+        type={type}
+      >
+        <div
+          className="resume-field-content"
+          style={{ ...fieldStyle }}
+        >
+          <Textfield defaultValue={value.textValue} />
+        </div>
+      </div>
+    )
+  }
+
   createShapeField = () => {
 
   }
@@ -195,6 +213,9 @@ class ResumeItem extends React.PureComponent {
         break;
       case 'jbt_image':
         field = this.createImageField();
+        break;
+      case 'jbt_phone':
+        field = this.createPhoneField();
         break;
       case 'jbt_date':
         field = this.createDateField();
