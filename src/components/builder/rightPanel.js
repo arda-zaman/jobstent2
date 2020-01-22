@@ -49,10 +49,10 @@ class RightPanel extends React.Component {
 
           {activeField && (
             <div className="subgroup" data-menu-item="input">
-              <div className="title">
+              {/* <div className="title">
                 <span>General Settings</span>
                 <i className="material-icons">arrow_drop_down</i>
-              </div>
+              </div> */}
               <div className="subgroup-content">
                 {Object.keys(properties).map(p => {
                   property = properties[p];
@@ -95,7 +95,7 @@ class RightPanel extends React.Component {
           <div className="tabs">
             <ul onClick={this.menuClickHandler}>
               <li data-menu="field-settings">Field Settings</li>
-              <li data-menu="template-style">Template Style</li>
+              <li data-menu="template-style">Templates</li>
             </ul>
             <span className="line" data-menu={activeMenu}></span>
           </div>

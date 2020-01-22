@@ -837,6 +837,59 @@
                       }
                     }
 
+                    &[name="size"] {
+                      padding: 15px 0;
+
+                      .panel-item-content {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-wrap: nowrap;
+
+                        .inputs {
+                          display: flex;
+                          align-items: center;
+                          justify-content: flex-end;
+                          flex-wrap: nowrap;
+
+                          & > div {
+                            position: relative;
+
+                            input {
+                              width: 100px;
+                              border:none;
+                              outline: none;
+                              border-bottom:1px solid #eee;
+                              font-size: 14px;
+
+                              &:not(:placeholder-shown),
+                              &:focus{
+                                & ~ span{
+                                  transform:translateY(-15px);
+                                  font-size: 11px;
+                                  color: $orange;
+                                }
+                              }
+                            }
+
+                            span {
+                              font-size: 11px;
+                              position: absolute;
+                              left:0;
+                              top:0;
+                              transition:100ms ease-in-out;
+                              pointer-events: none;
+                            }
+                          }
+
+                          .link {
+                            margin: 0 10px;
+                            cursor: pointer;
+                          }
+                        }
+                      }
+                    }
+
                     &:not(:last-child) {
                       @include x3('margin-bottom');
                     }

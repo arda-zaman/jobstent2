@@ -136,6 +136,27 @@ class RightPanelItem extends React.PureComponent {
     )
   };
 
+  renderSizeField = () => {
+    const { name, property, activeField } = this.props;
+
+    return (
+      <div className="panel-item-content">
+        <span className="label">Size</span>
+        <div className="inputs">
+          <div className="width">
+            <input type="number" placeholder=" " />
+            <span>Width</span>
+          </div>
+          <i className="fas fa-link link"></i>
+          <div className="height">
+            <input type="number" placeholder=" " />
+            <span>Height</span>
+          </div>
+        </div>
+      </div>
+    )
+  };
+
 
   render() {
     const { name, property, activeField } = this.props;
@@ -165,6 +186,9 @@ class RightPanelItem extends React.PureComponent {
         break;
       case 'uploadFile':
         field = this.renderUploadField();
+        break;
+      case 'size':
+        field = this.renderSizeField();
         break;
     }
 
