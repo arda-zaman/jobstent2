@@ -44,7 +44,7 @@
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          
+
           i {
             color: $orange;
             font-size: 26px;
@@ -67,7 +67,7 @@
             position: relative;
             @include x4('padding-left');
             @include x4('padding-right');
-            
+
             .field-group {
               .field-group-title {
                 display: flex;
@@ -100,7 +100,7 @@
                     font-weight: bold;
                     text-shadow: rgba($midnight, 0.3);
                   }
-                  
+
 
                   &.active {
                     background: lightblue!important;
@@ -110,7 +110,7 @@
                   &:hover {
                     background: #eee;
                   }
-                  
+
                   &:not(:last-child) {
                     border-bottom: 1px solid #eee;
                   }
@@ -129,7 +129,7 @@
             }
           }
         }
-      
+
       }
     }
 
@@ -137,7 +137,7 @@
       flex: auto;
       max-width: 100%;
       position: relative;
-      
+
       .resume-area {
         width: 100%;
         @include x10('padding');
@@ -215,7 +215,7 @@
                       margin: 0 6px;
                     }
                   }
-                  
+
                   &:hover {
                     .page-number {
                       opacity: 1;
@@ -304,14 +304,14 @@
                   }
                 }
 
-                &[type="jbt_image"]{                  
+                &[type="jbt_image"]{
                   .empty-image-field {
                     div {
                       cursor: pointer;
                       input{
                         pointer-events: unset;
                       }
-  
+
                       &:hover {
                         color: #4a4a4a;
                       }
@@ -475,7 +475,7 @@
           }
         }
       }
-      
+
       .bottom-bar {
         position: absolute;
         bottom: 0;
@@ -501,11 +501,11 @@
           transform:scale(0);
           opacity: 0;
 
-          
+
           i:nth-of-type(1) {
             position: relative;
             @include x4('margin-right');
-            
+
             &:after {
               content: '|';
               display: block;
@@ -545,7 +545,7 @@
       background: #fff;
       box-shadow: 0 0 5px 1px rgba($midnight, 0.1);
       position: relative;
-      
+
       .right-panel-container {
         @include x4('padding');
         padding-top: 0px;
@@ -559,7 +559,7 @@
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          
+
           i {
             color: $orange;
             font-size: 26px;
@@ -655,25 +655,25 @@
                   padding: 4px 10px;
                   border-radius: 4px;
                   cursor: pointer;
-                  
+
                   span {
                     font-weight: bold;
                   }
-    
+
                   i {
                     font-size: 30px;
                   }
                 }
-    
+
                 .subgroup-content {
                   padding-top: 15px;
-    
+
                   .panel-group {
                     &:not(:last-child) {
                       margin-bottom: 30px;
                     }
                   }
-    
+
                   .panel-item {
                     .panel-item-title {
                       @include x3('padding-bottom');
@@ -682,25 +682,25 @@
                       display: flex;
                       align-items: center;
                       justify-content: flex-start;
-                      
+
                       i {
                         color: $orange;
                         font-size: 26px;
                       }
-          
+
                       strong {
                         font-size: 18px;
                         color: #333;
                         @include x3('margin-left');
                       }
                     }
-          
+
                     .panel-item-content{
                       .label {
                         font-size: 13px;
                       }
                     }
-    
+
                     &[name="colorPicker"]{
                       .panel-item-content {
                         .color-picker {
@@ -709,14 +709,14 @@
                             align-items: center;
                             justify-content: space-between;
                           }
-                          
+
                           .label {
                             font-size: 13px;
                           }
-                        
+
                           .box {
                             position: relative;
-                        
+
                             .box-area {
                               display: block;
                               width: 20px;
@@ -724,21 +724,21 @@
                               border-radius:4px;
                               box-shadow: 0 0 3px 0 rgba($midnight, 0.3);
                               cursor: pointer;
-                        
+
                               &:hover {
                                 box-shadow: 0 0 6px 0 rgba($midnight, 0.3);
                               }
                             }
-                        
+
                             .color-picker-box {
                               z-index: 2;
                               position: absolute;
                               top: 30px;
-                        
+
                               &[data-position="right"] {
                                 right: 0;
                               }
-                        
+
                               &[data-position="left"] {
                                 left: 0;
                               }
@@ -747,7 +747,7 @@
                         }
                       }
                     }
-    
+
                     &[name="bold/italic/strikethrough"],
                     &[name="alignment"] {
                       .panel-item-content {
@@ -756,12 +756,12 @@
                         justify-content: space-between;
                         width: 100%;
                         flex-wrap: nowrap;
-    
+
                         .boxes {
                           display: flex;
                           align-items: stretch;
                           justify-content: flex-end;
-      
+
                           .box {
                             max-width: 25px;
                             flex: 0 0 25px;
@@ -773,21 +773,21 @@
                             text-align: center;
                             line-height: 25px;
                             transition: 100ms ease-out all;
-      
+
                             i {
                               font-size: 16px;
                             }
-      
+
                             &.active {
                               background-color: $red;
                               color: #fff;
                             }
-      
+
                             &:not(:last-child) {
                               margin-right: 8px;
                               font-weight: bold;
                             }
-      
+
                             &:hover {
                               box-shadow: 0 0 6px 0 rgba($midnight, 0.3);
                             }
@@ -795,7 +795,7 @@
                         }
                       }
                     }
-                  
+
                     &[name="uploadFile"] {
                       .panel-item-content {
                         display: flex;
@@ -881,6 +881,17 @@
                               top:0;
                               transition:100ms ease-in-out;
                               pointer-events: none;
+                            }
+
+                            select {
+                              position: absolute;
+                              right: 0;
+                              width: 40px;
+                              height: 100%;
+                              outline: none;
+                              font-size: 12px;
+                              border: 1px solid #ddd;
+                              background-color: #eee;
                             }
                           }
 
