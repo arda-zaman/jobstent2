@@ -352,6 +352,13 @@
                   display: none!important;
                 }
               }
+
+              &[ghost="true"] {
+                .drag-area {
+                  background: rgba($midnight, 0.3)!important;
+                  box-shadow: 0 0 4px rgba($midnight, 0.7);
+                }
+              }
             }
           }
         }
