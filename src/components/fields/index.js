@@ -6,6 +6,7 @@ import Textfield from './textfield';
 import Button from './button';
 import Icon from './icon';
 import IconLists from './iconLists';
+import Textarea from './textarea';
 
 
 export {
@@ -17,4 +18,5 @@ export {
   Button,
   Icon,
   IconLists,
+  Textarea
 }

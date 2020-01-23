@@ -233,10 +233,11 @@
             .field-line {
               position: absolute;
               z-index: 99;
+
               // transition: 200ms ease-in-out;
 
               .field-line-container {
-                padding: 15px;
+                padding: 5px;
 
                 .lines {
                   position: absolute;
@@ -244,7 +245,7 @@
                   top:0;
                   width: 100%;
                   height: 100%;
-                  border: 3px dotted $orange;
+                  border: 2px dotted $orange;
                   z-index: 0;
                   // padding: 15px;
                   box-sizing: content-box;
@@ -258,6 +259,7 @@
                     width: 14px;
                     height: 14px;
                     border-radius: 50%;
+                    border: 1px solid #fff;
 
                     &:nth-child(1) {
                       left: 0;
@@ -293,7 +295,12 @@
                     z-index: 1;
                     width: 100%;
                     height: 100%;
-                    cursor: initial;
+
+                    .resume-field {
+                      .resume-field-content {
+                        cursor: move;
+                      }
+                    }
                   }
                 }
               }
@@ -302,6 +309,16 @@
                 .field-line-container {
                   .lines {
                     display: block;
+                  }
+                }
+
+                .drag-area {
+                  .field-content{
+                    .resume-field {
+                      .resume-field-content {
+                        cursor: initial;
+                      }
+                    }
                   }
                 }
 

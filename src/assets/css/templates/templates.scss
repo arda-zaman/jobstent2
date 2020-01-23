@@ -25,6 +25,15 @@
     position: absolute;
   }
 
+  .textarea {
+    div{
+      background: none;
+      border: none;
+      outline: none;
+      resize: none;
+    }
+  }
+
   textarea, input{
     background: none;
     border: none;

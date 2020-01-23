@@ -1,10 +1,10 @@
 import React from 'react';
-import { Textfield } from '../fields';
+import { Textfield, Textarea } from '../fields';
 
 class ResumeItem extends React.PureComponent {
 
   createTextField = () => {
-    const { type, value, fieldStyle } = this.props;
+    const { type, value, fieldStyle, activeField, fid } = this.props;
 
     return (
       <div
@@ -15,7 +15,10 @@ class ResumeItem extends React.PureComponent {
           className="resume-field-content"
           style={{ ...fieldStyle }}
         >
-          <Textfield defaultValue={value} />
+          <Textarea
+            defaultValue={value}
+            editable={(activeField && activeField.fid == fid) ? true : false}
+          />
         </div>
       </div>
     )
@@ -157,6 +160,7 @@ class ResumeItem extends React.PureComponent {
 
   createContainer = (field) => {
     const { onDragStart, onDragOver, draggable, style, activeField, fid } = this.props;
+    const isFieldActive = activeField && activeField.fid == fid;
 
     return (
       <li
@@ -166,7 +170,7 @@ class ResumeItem extends React.PureComponent {
         style={{ ...style }}
         type={this.props.type}
         onClick={this.fieldLineClick}
-        data-field-active={activeField && activeField.fid == fid}
+        data-field-active={isFieldActive}
       >
         <div className="field-line-container">
           <div className="lines">
@@ -177,7 +181,7 @@ class ResumeItem extends React.PureComponent {
           </div>
           <div
             className="drag-area"
-            draggable={draggable}
+            draggable={(draggable && !isFieldActive) ? true : false}
             onDragStart={onDragStart}
             onDragOver={onDragOver}
           >
