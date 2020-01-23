@@ -21,6 +21,10 @@
   position: relative;
   font-family: 'Roboto';
 
+  .field-line {
+    position: absolute;
+  }
+
   textarea, input{
     background: none;
     border: none;
