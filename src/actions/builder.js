@@ -6,8 +6,7 @@ import * as ActionTypes from '../constants/ActionTypes';
 import { basic_fields, special_fields, field_properties } from '../constants/Fields';
 import * as uiActions from '../actions/ui';
 import { getFieldStyle } from '../helpers';
-
-const DB = firebase.firestore();
+import * as templateActions from '../actions/template';
 
 export const generatePDF = () => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
@@ -19,6 +18,8 @@ export const generatePDF = () => async (dispatch, getState) => {
     active: true,
     pdfGenerateStatus: "generating"
   }));
+
+  const response = await dispatch(templateActions.updateResume());
 
   const PDF = await axios.post('/api/template/create-pdf', {
     templateID: template.id,

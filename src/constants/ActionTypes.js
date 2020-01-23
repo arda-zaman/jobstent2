@@ -15,6 +15,7 @@ export const USER_LOGOUT = "user_logout";
 
 export const INIT_TEMPLATE = "init_template";
 export const FETCH_TEMPLATE = "fetch_template";
+export const GENERATE_TEMPLATE = "generate_template";
 
 /**
  * Template Constants
