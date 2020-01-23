@@ -171,6 +171,7 @@ class TemplateContainer extends React.Component {
                           onDragOver={this.addedFieldDragOver}
                           actions={this.props.actions}
                           activeField={this.props.activeField}
+                          onBlur={this.fieldOnBlur}
                         />
                       )
                     ))}
@@ -206,6 +207,15 @@ class TemplateContainer extends React.Component {
       </div>
     )
   }
+
+  fieldOnBlur = async ({ val, event }) => {
+    const { activeField, actions: { updateItem } } = this.props;
+    let field = await updateItem({
+      fid: activeField.fid,
+      value: val,
+      pageID: activeField.pageID
+    });
+  };
 };
 
 export default TemplateContainer;

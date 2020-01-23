@@ -18,6 +18,7 @@ class ResumeItem extends React.PureComponent {
           <Textarea
             defaultValue={value}
             editable={(activeField && activeField.fid == fid) ? true : false}
+            onBlur={this.fieldOnBlur}
           />
         </div>
       </div>
@@ -240,6 +241,13 @@ class ResumeItem extends React.PureComponent {
 
     return this.createContainer(field);
   }
+
+  //  Field Events
+
+  fieldOnBlur = ({ val, event }) => {
+    const { onBlur, activeField, fid } = this.props;
+    onBlur({ val });
+  };
 };
 
 export default ResumeItem;

@@ -135,8 +135,7 @@ export const updateResumeItem = ({ fid, pageID, value, style }) => async (dispat
   template.items[itemIndex] = Object.assign(
     {},
     template.items[itemIndex],
-    value,
-    { ...currentItem, pageID: pageID },
+    { ...currentItem, pageID, value },
     { style: { ...currentItem.style, ...style } }
   );
 

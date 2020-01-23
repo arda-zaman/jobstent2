@@ -6,6 +6,11 @@ class Textarea extends React.PureComponent {
     // console.log(e, "::", e.target, '::', e.target.textContent);
   }
 
+  onBlur = e => {
+    const { onBlur } = this.props;
+    onBlur({ val: e.target.textContent, event: e });
+  };
+
   render() {
     const { editable, defaultValue } = this.props;
 
@@ -14,6 +19,7 @@ class Textarea extends React.PureComponent {
         <div
           contentEditable={editable}
           onInput={this.onInput}
+          onBlur={this.onBlur}
         >
           {defaultValue}
         </div>
@@ -24,11 +30,13 @@ class Textarea extends React.PureComponent {
 
 Textarea.propTypes = {
   editable: PropTypes.bool,
-  defaultValue: PropTypes.string
+  defaultValue: PropTypes.string,
+  onBlur: PropTypes.func
 }
 
 Textarea.defaultProps = {
   editable: true,
-  defaultValue: ''
+  defaultValue: '',
+  onBlur: () => { }
 }
 export default Textarea
