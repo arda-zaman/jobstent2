@@ -18,6 +18,7 @@ class RightPanelItem extends React.PureComponent {
                     additionalClass={property.additionalClass}
                     value={value}
                     options={property.options}
+                    onChange={this.fieldPropertyChange.bind(this)}
                 />
             </div>
         );
@@ -34,6 +35,7 @@ class RightPanelItem extends React.PureComponent {
                     additionalClass={property.additionalClass}
                     value={value}
                     options={property.options}
+                    onChange={this.fieldPropertyChange}
                 />
             </div>
         );
@@ -200,6 +202,35 @@ class RightPanelItem extends React.PureComponent {
                 {field}
             </div>
         )
+    }
+
+    fieldPropertyChange = (values, context) => {
+        const { name, activeField, onPropertyChange } = this.props;
+        let style = "";
+
+        switch (name) {
+            case 'fontFamily':
+                style = {
+                    'font-family': values.value
+                }
+                break;
+            case 'fontSize':
+                style = {
+                    'font-size': `${values.value}px`
+                };
+                break;
+            default:
+                style = "";
+                break;
+        }
+
+        if (style) {
+            onPropertyChange({
+                fid: activeField.fid,
+                pageID: activeField.pageID,
+                fieldStyle: style,
+            });
+        }
     }
 };
 

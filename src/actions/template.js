@@ -122,7 +122,7 @@ export const createResumeItem = ({ type, page, value, style, fieldStyle }) => as
   return dispatch({ type: ActionTypes.FIELD_ITEM_CREATED, payload: template });
 };
 
-export const updateResumeItem = ({ fid, pageID, value, style }) => async (dispatch, getState) => {
+export const updateResumeItem = ({ fid, pageID, value, style, fieldStyle }) => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
   const user = _.cloneDeep(getState().user);
   // const { resume, docRef } = await getResumeFromDB(template, user);
@@ -140,7 +140,8 @@ export const updateResumeItem = ({ fid, pageID, value, style }) => async (dispat
       pageID,
       value: value ? value : currentItem.value
     },
-    { style: { ...currentItem.style, ...style } }
+    { style: { ...currentItem.style, ...style } },
+    { fieldStyle: { ...currentItem.fieldStyle, ...fieldStyle } }
   );
 
   // docRef.update({

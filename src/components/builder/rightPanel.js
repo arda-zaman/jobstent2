@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import RightPanelItem from './rightPanelItem';
 import { Button, Icon } from '../fields';
 import * as builderActions from '../../actions/builder';
+import * as templateActions from '../../actions/template';
 import * as uiActions from '../../actions/ui';
 import { field_properties } from '../../constants/Fields';
 
@@ -30,7 +31,7 @@ class RightPanel extends React.Component {
 
   renderFieldSettings = () => {
     const parsedPath = [];
-    const { builder: { activeField, activePage } } = this.props;
+    const { builder: { activeField, activePage }, onUpdateResumeItem } = this.props;
     let property = null;
     if (!activeField) return (
       <div className="not-selected-field">
@@ -41,7 +42,6 @@ class RightPanel extends React.Component {
     );
 
     const properties = field_properties[activeField.type];
-    console.log(field_properties);
 
     return (
       <div className="field-settings">
@@ -61,6 +61,7 @@ class RightPanel extends React.Component {
                       name={p}
                       property={property}
                       activeField={activeField}
+                      onPropertyChange={onUpdateResumeItem}
                     />
                   );
                 })}
@@ -144,6 +145,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   onGeneratePDF: builderActions.generatePDF,
   onRightPanelMenuSwitch: builderActions.rightPanelMenuSwitch,
+  onUpdateResumeItem: templateActions.updateResumeItem
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RightPanel);
