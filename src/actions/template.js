@@ -81,9 +81,14 @@ export const updateResume = () => async (dispatch, getState) => {
   let user = _.cloneDeep(getState().user);
 
   const { resume, docRef } = await getResumeFromDB({ template, user });
-  await docRef.update({
-    [template.id]: template
-  });
+  try {
+    const response = await docRef.update({
+      [template.id]: template
+    });
+  } catch (err) {
+    console.log("RES::", err);
+    // TODO: Change modal type as failed.
+  }
 
   if (docRef) { }
   return dispatch({ type: ActionTypes.GENERATE_TEMPLATE, payload: template });
@@ -134,7 +139,7 @@ export const updateResumeItem = ({ fid, pageID, value, style, fieldStyle }) => a
       pageID,
       value: {
         ...currentItem.value,
-        textValue: value ? value : currentItem.value.textValue
+        textValue: value ? value : (currentItem.value.textValue || null)
       }
     },
     { style: { ...currentItem.style, ...style } },

@@ -16,6 +16,8 @@ class RightPanelItem extends React.PureComponent {
             italic: style && style['font-style'] == 'italic' ? 'italic' : 'normal',
             textDecoration: style && style['text-decoration'] || 'none',
             textAlign: style && style['text-align'],
+            width: style && style['width'] ? clearPxOrPercent(style['width'], true) : undefined,
+            height: style && style['height'] ? clearPxOrPercent(style['height'], true) : undefined,
         };
     }
 
@@ -153,14 +155,6 @@ class RightPanelItem extends React.PureComponent {
         )
     };
 
-    boxesClickHandler = ({ boxFieldName, styleKey, styleValueTrue, styleValueFalse }) => {
-        this.setState(prevState => ({
-            [boxFieldName]: (prevState[boxFieldName] === styleValueTrue) ? styleValueFalse : styleValueTrue
-        }), () => {
-            this.fieldPropertyChange({ boxFieldName, styleKey });
-        });
-    };
-
     renderIconLibrary = () => {
         return (
             <IconLibrary />
@@ -181,20 +175,29 @@ class RightPanelItem extends React.PureComponent {
 
     renderSizeField = () => {
         const { name, property, activeField } = this.props;
-        const width = clearPxOrPercent(activeField.style.width);
-        const height = clearPxOrPercent(activeField.style.height);
+        const { width, height } = this.state;
 
         return (
             <div className="panel-item-content">
                 <span className="label">Size</span>
                 <div className="inputs">
                     <div className="width">
-                        <input type="number" placeholder=" " defaultValue={width.number} />
+                        <input
+                            type="number"
+                            placeholder=" "
+                            defaultValue={width}
+                            onChange={this.sizeFieldChangeHandler.bind(this, { key: 'width' })}
+                        />
                         <span>Width</span>
                     </div>
                     <i className="fas fa-link link"></i>
                     <div className="height">
-                        <input type="number" placeholder=" " defaultValue={height.number} />
+                        <input
+                            type="number"
+                            placeholder=" "
+                            defaultValue={height}
+                            onChange={this.sizeFieldChangeHandler.bind(this, { key: 'height' })}
+                        />
                         <span>Height</span>
                     </div>
                 </div>
@@ -244,6 +247,22 @@ class RightPanelItem extends React.PureComponent {
         )
     }
 
+    boxesClickHandler = ({ boxFieldName, styleKey, styleValueTrue, styleValueFalse }) => {
+        this.setState(prevState => ({
+            [boxFieldName]: (prevState[boxFieldName] === styleValueTrue) ? styleValueFalse : styleValueTrue
+        }), () => {
+            this.fieldPropertyChange({ boxFieldName, styleKey });
+        });
+    };
+
+    sizeFieldChangeHandler = ({ key }, event) => {
+        this.setState({
+            [key]: event.target.value
+        }, () => {
+            this.fieldPropertyChange({ styleKey: key });
+        });
+    };
+
     fieldPropertyChange = (additional, values, context) => {
         const { name, activeField, onPropertyChange } = this.props;
         let style = "";
@@ -271,6 +290,11 @@ class RightPanelItem extends React.PureComponent {
                 style = {
                     [additional.styleKey]: styleValue
                 };
+                break;
+            case 'size':
+                style = {
+                    [additional.styleKey]: `${this.state[additional.styleKey]}px`
+                }
                 break;
             default:
                 style = "";

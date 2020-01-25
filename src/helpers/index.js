@@ -53,7 +53,7 @@ export const getDimensions = () => {
     }
 };
 
-export const clearPxOrPercent = (val) => {
+export const clearPxOrPercent = (val, onlyNumber) => {
     const values = {};
 
     if (val.match('px')) {
@@ -64,7 +64,7 @@ export const clearPxOrPercent = (val) => {
         values.sizeSign = '%';
     }
 
-    return values;
+    return onlyNumber ? values.number : values;
 };
 
 export const filterContentEditableText = (cont) => {
