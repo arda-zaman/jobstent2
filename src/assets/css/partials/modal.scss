@@ -8,7 +8,7 @@
     width: 100%;
     height: 100%;
     visibility: hidden;
-    
+
     .modal-background {
       position: absolute;
       left: 0;
@@ -36,14 +36,14 @@
         border-bottom-right-radius: 10px;
         overflow: hidden;
         opacity: 0;
-        
+
         .modal-title{
           background: #eee;
           padding: 14px 0;
           text-align: center;
           color: $midnight;
           position: relative;
- 
+
           span{
             font-size: 20px;
             font-weight: bold;
@@ -74,12 +74,12 @@
           .generating, .generated{
             display: none;
             text-align: center;
-  
+
             p {
               font-size: 20px;
               margin: 0;
             }
-  
+
             span {
               color: #9b9b9b;
               font-weight: bold;
@@ -103,13 +103,13 @@
               }
             }
           }
-  
+
           &[generatestatus="generating"]{
             .generating{
               display: block;
             }
           }
-  
+
           &[generatestatus="generated"] {
             .generated {
               display: block;
@@ -128,7 +128,7 @@
             align-items: center;
             justify-content: space-around;
           }
-        } 
+        }
       }
 
       .alert {
@@ -137,6 +137,14 @@
           margin:0 auto;
           margin-top:30px;
 
+        }
+      }
+
+      .warning {
+        text-align: center;
+        .jButton{
+          margin:0 auto;
+          margin-top:30px;
         }
       }
     }
@@ -156,6 +164,13 @@
           transform: translate(-50%, -50%) scale(1)!important;
         }
       }
+    }
+  }
+
+  &[type="warning"]{
+    .modal-title{
+      background-color: $orange!important;
+      color: #fff!important;
     }
   }
 }

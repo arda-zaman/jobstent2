@@ -20,9 +20,8 @@ class App extends React.Component {
   }
 
   authListener = async () => {
-    const { onUserConnectionChecked, onUserCheckConnection } = this.props;
+    const { onUserConnectionChecked } = this.props;
 
-    // await onUserCheckConnection();
     firebase.auth().onAuthStateChanged(user => {
       const isLoggedIn = user ? true : false;
       onUserConnectionChecked(user, isLoggedIn);
@@ -76,7 +75,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   onUserConnectionChecked: userActions.userConnectionChecked,
-  onUserCheckConnection: userActions.checkUserConnection
 };
 
 export default connect(

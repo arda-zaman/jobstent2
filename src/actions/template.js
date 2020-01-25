@@ -8,30 +8,28 @@ import * as uiActions from '../actions/ui';
 
 const DB = firebase.firestore();
 
-export const initResume = (resumeID) => async (dispatch, getState) => {
-  const templateRef = DB.collection('users').doc(resumeID)
-  const doc = await templateRef.get().then();
-
-  if (doc && doc.exists) {
-    console.log("DOC::", doc);
-
-    return dispatch({ type: ActionTypes.INIT_TEMPLATE, payload: data });
-  }
-
-  console.log("DOC couldn't find");
-  return false;
-};
-
 export const fetchResume = (id, userID = false) => async (dispatch, getState) => {
   const template = _.cloneDeep(getState().template);
   const user = _.cloneDeep(getState().user);
   const userId = userID || user;
-  const { resume, docRef } = await getResumeFromDB(template, userId, id);
+  const { resume, docRef } = await getResumeFromDB({ template, userId, id });
   return dispatch({ type: ActionTypes.FETCH_TEMPLATE, payload: resume });
 };
 
-const getResumeFromDB = async (template, user, id = false) => {
-  const userID = user.userCredentials ? user.userCredentials.uid : user;
+const getResumeFromDB = async ({ template, user, id = false, showError = false, dispatch = undefined }) => {
+  const userID = user.userCredentials ? user.userCredentials.uid : false;
+
+  if (!userID && showError) {
+    await dispatch(uiActions.openModal({
+      type: "warning",
+      title: 'Warning!',
+      text: 'Please logged in before',
+      active: true
+    }));
+  }
+
+  if (!userID) return false;
+
   const docRef = firebase.firestore().collection("users").doc(userID);
   const resumeData = await (await docRef.get().then()).data();
   const resumeIndex = Object.keys(resumeData).find(r => r == (id ? id : template.id));
@@ -46,21 +44,19 @@ export const generateResume = (resumeID) => async (dispatch, getState) => {
   const timestamp = new Date().getTime();
 
   if (resumeID && typeof template.id === "undefined") {
-    const templateRef = DB.collection('users').doc(user.userCredentials.uid);
-    const doc = await templateRef.get().then();
+    const { resume, docRef } = await getResumeFromDB({ template, user, showError: true, dispatch });
 
-    if (!doc || !doc.exists) {
-      console.log("DOC couldn't find");
+    if (!resume || !resume.exists) {
+      await dispatch(uiActions.openModal({
+        type: "warning",
+        title: 'Warning!',
+        text: 'Document couldn\'t find',
+        active: true
+      }));
       return false;
     }
 
-    const resumeIndex = Object.keys(doc.data()).find(d => d === resumeID);
-
-    if (resumeIndex) {
-      template = doc.data()[resumeIndex];
-    } else {
-      alert("Document couldn't find");
-    }
+    template = resume;
   } else if (typeof template.id === "undefined") {
     template.id = `${timestamp}`;
     template.pages = [{
@@ -86,7 +82,7 @@ export const updateResume = () => async (dispatch, getState) => {
   let template = _.cloneDeep(getState().template);
   let user = _.cloneDeep(getState().user);
 
-  const { resume, docRef } = await getResumeFromDB(template, user);
+  const { resume, docRef } = await getResumeFromDB({ template, user });
   await docRef.update({
     [template.id]: template
   });

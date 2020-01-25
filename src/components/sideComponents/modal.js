@@ -12,6 +12,23 @@ class Modal extends React.PureComponent {
     onCloseModal();
   }
 
+  renderWarningMessage = () => {
+    const { ui: { modal } } = this.props;
+
+    return (
+      <div className="modal-content">
+        <div className="text">{modal.text}</div>
+        <Button
+          type="button"
+          dataType="type1"
+          size="small"
+          text="Okay!"
+          click={this.closeModal}
+        />
+      </div>
+    );
+  };
+
   renderAlertMessage = () => {
     const { ui: { modal } } = this.props;
 
@@ -96,6 +113,9 @@ class Modal extends React.PureComponent {
         break;
       case 'alert':
         modalContent = this.renderAlertMessage();
+        break;
+      case 'warning':
+        modalContent = this.renderWarningMessage();
         break;
     };
 
