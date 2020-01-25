@@ -12,7 +12,7 @@ export const fetchResume = (id, userID = false) => async (dispatch, getState) =>
   const template = _.cloneDeep(getState().template);
   const user = _.cloneDeep(getState().user);
   const userId = userID || user;
-  const { resume, docRef } = await getResumeFromDB({ template, userId, id });
+  const { resume, docRef } = await getResumeFromDB({ template, user: userId, id });
   return dispatch({ type: ActionTypes.FETCH_TEMPLATE, payload: resume });
 };
 
@@ -44,13 +44,13 @@ export const generateResume = (resumeID) => async (dispatch, getState) => {
   const timestamp = new Date().getTime();
 
   if (resumeID && typeof template.id === "undefined") {
-    const { resume, docRef } = await getResumeFromDB({ template, user, showError: true, dispatch });
+    const { resume, docRef } = await getResumeFromDB({ template, user, id: resumeID, showError: true, dispatch });
 
-    if (!resume || !resume.exists) {
+    if (!resume) {
       await dispatch(uiActions.openModal({
         type: "warning",
         title: 'Warning!',
-        text: 'Document couldn\'t find',
+        text: 'Resume couldn\'t find',
         active: true
       }));
       return false;

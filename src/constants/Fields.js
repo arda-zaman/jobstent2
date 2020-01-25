@@ -208,6 +208,7 @@ export const field_properties = {
             fieldType: 'colorPicker',
             type: 'box',
             label: 'Color',
+            styleValue: 'color',
             additionalClass: 'inline',
             position: 'right'
         },
@@ -248,6 +249,7 @@ export const field_properties = {
             fieldType: 'colorPicker',
             type: 'box',
             label: 'Color',
+            styleValue: 'color',
             additionalClass: 'inline',
             position: 'right'
         },
@@ -296,6 +298,7 @@ export const field_properties = {
             fieldType: 'colorPicker',
             type: 'box',
             label: 'Color',
+            styleValue: 'color',
             additionalClass: 'inline',
             position: 'right'
         },
@@ -345,6 +348,7 @@ export const field_properties = {
             fieldType: 'colorPicker',
             type: 'box',
             label: 'Color',
+            styleValue: 'color',
             additionalClass: 'inline',
             position: 'right'
         },
@@ -394,6 +398,7 @@ export const field_properties = {
             fieldType: 'colorPicker',
             type: 'box',
             label: 'Color',
+            styleValue: 'color',
             additionalClass: 'inline',
             position: 'right'
         },

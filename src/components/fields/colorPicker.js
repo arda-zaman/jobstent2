@@ -10,7 +10,7 @@ const cover = {
   left: '0px',
 }
 
-class ColorPicker extends React.Component {
+class ColorPicker extends React.PureComponent {
 
   constructor(props) {
     super(props);
@@ -22,27 +22,31 @@ class ColorPicker extends React.Component {
   }
 
   handleClick = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+    const { onChange } = this.props;
+    const { color, displayColorPicker } = this.state;
+
+    this.setState({ displayColorPicker: !displayColorPicker });
+
+    if (onChange && displayColorPicker) {
+      onChange({ value: color.hex });
+    }
   };
 
   handleClose = () => {
+    const { onChange } = this.props;
+    const { color } = this.state;
+
     this.setState({ displayColorPicker: false })
-  };
-
-  handleChange = (color) => {
-    const { onChange, dataId } = this.props;
-
-    this.setState({
-      color: color.hex
-    });
 
     if (onChange) {
-      if (Number.isInteger(dataId)) {
-        onChange(color.hex, dataId);
-      } else {
-        onChange(color.hex);
-      }
+      onChange({ value: color.hex });
     }
+  };
+
+  onChangeComplete = (color) => {
+    this.setState({
+      color: color
+    });
   };
 
   render() {
@@ -57,12 +61,15 @@ class ColorPicker extends React.Component {
             <span
               className="box-area"
               onClick={this.handleClick}
-              style={{ backgroundColor: defaultValue || color, height: boxHeight, width: boxHeight }}
+              style={{ backgroundColor: color.hex || defaultValue, height: boxHeight, width: boxHeight }}
             />
             {displayColorPicker && (
               <div className="color-picker-box" data-position={position} style={{ zIndex: 2 }}>
                 <div style={cover} onClick={this.handleClose} />
-                <SketchPicker color={this.state.color} onChangeComplete={this.handleChange} />
+                <SketchPicker
+                  color={color && color.hex}
+                  onChangeComplete={this.onChangeComplete}
+                />
               </div>
             )}
           </div>
