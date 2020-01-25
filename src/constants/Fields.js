@@ -6,7 +6,9 @@ export const basic_fields = [
             iconType: 'material-icons',
             iconValue: 'text_format'
         },
-        defaultValue: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet accusamus amet dolorum. Debitis eaque quos vero vel quam obcaecati corrupti, excepturi, quis porro sequi, voluptate nostrum officia hic amet.',
+        defaultValue: {
+            textValue: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet accusamus amet dolorum. Debitis eaque quos vero vel quam obcaecati corrupti, excepturi, quis porro sequi, voluptate nostrum officia hic amet.',
+        },
         defaultStyle: {
             zIndex: 5
         },

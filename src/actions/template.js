@@ -132,7 +132,10 @@ export const updateResumeItem = ({ fid, pageID, value, style, fieldStyle }) => a
     {
       ...currentItem,
       pageID,
-      value: value ? value : currentItem.value
+      value: {
+        ...currentItem.value,
+        textValue: value ? value : currentItem.value.textValue
+      }
     },
     { style: { ...currentItem.style, ...style } },
     { fieldStyle: { ...currentItem.fieldStyle, ...fieldStyle } }

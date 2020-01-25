@@ -16,7 +16,7 @@ class ResumeItem extends React.PureComponent {
           style={{ ...fieldStyle }}
         >
           <Textarea
-            defaultValue={value}
+            defaultValue={value.textValue}
             editable={(activeField && activeField.fid == fid) ? true : false}
             onBlur={this.fieldOnBlur}
           />
@@ -82,7 +82,7 @@ class ResumeItem extends React.PureComponent {
   };
 
   createDateField = () => {
-    const { type, value, fieldStyle } = this.props;
+    const { type, value, fieldStyle, activeField, fid } = this.props;
 
     return (
       <div
@@ -93,10 +93,11 @@ class ResumeItem extends React.PureComponent {
           className="resume-field-content"
           style={{ ...fieldStyle }}
         >
-          <input
-            type="text"
+          <Textarea
             dateFormat={value.dateFormat}
-            value={value.textValue}
+            defaultValue={value.textValue}
+            editable={(activeField && activeField.fid == fid) ? true : false}
+            onBlur={this.fieldOnBlur}
           />
         </div>
       </div>
@@ -104,7 +105,7 @@ class ResumeItem extends React.PureComponent {
   }
 
   createAddressField = () => {
-    const { type, value, fieldStyle } = this.props;
+    const { type, value, fieldStyle, activeField, fid } = this.props;
 
     return (
       <div
@@ -115,14 +116,18 @@ class ResumeItem extends React.PureComponent {
           className="resume-field-content"
           style={{ ...fieldStyle }}
         >
-          <Textfield defaultValue={value.textValue} />
+          <Textarea
+            defaultValue={value.textValue}
+            editable={(activeField && activeField.fid == fid) ? true : false}
+            onBlur={this.fieldOnBlur}
+          />
         </div>
       </div>
     )
   }
 
   createPhoneField = () => {
-    const { type, value, fieldStyle } = this.props;
+    const { type, value, fieldStyle, activeField, fid } = this.props;
 
     return (
       <div
@@ -133,7 +138,11 @@ class ResumeItem extends React.PureComponent {
           className="resume-field-content"
           style={{ ...fieldStyle }}
         >
-          <Textfield defaultValue={value.textValue} />
+          <Textarea
+            defaultValue={value.textValue}
+            editable={(activeField && activeField.fid == fid) ? true : false}
+            onBlur={this.fieldOnBlur}
+          />
         </div>
       </div>
     )
@@ -246,7 +255,10 @@ class ResumeItem extends React.PureComponent {
 
   fieldOnBlur = ({ val, event }) => {
     const { onBlur, activeField, fid } = this.props;
-    onBlur({ val });
+
+    if (activeField.value.textValue !== val) {
+      onBlur({ val });
+    }
   };
 };
 
