@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { filterContentEditableText } from '../../helpers';
 
 class Textarea extends React.PureComponent {
   onInput = e => {
@@ -8,7 +9,7 @@ class Textarea extends React.PureComponent {
 
   onBlur = e => {
     const { onBlur } = this.props;
-    onBlur({ val: e.target.textContent, event: e });
+    onBlur({ val: e.target.innerText, event: e });
   };
 
   render() {

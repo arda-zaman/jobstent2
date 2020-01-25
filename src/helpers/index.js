@@ -66,3 +66,40 @@ export const clearPxOrPercent = (val) => {
 
     return values;
 };
+
+export const filterContentEditableText = (cont) => {
+    if (!cont) return '';
+    var el = cont.firstChild;
+    var v = '';
+    var contTag = new RegExp('^(DIV|P|LI|OL|TR|TD|BLOCKQUOTE)$');
+    while (el) {
+        switch (el.nodeType) {
+            case 3:
+                var str = el.data.replace(/^\n|\n$/g, ' ').replace(/[\n\xa0]/g, ' ').replace(/[ ]+/g, ' ');
+                v += str;
+                break;
+            case 1:
+                var str = this.editableVal(el);
+                if (el.tagName && el.tagName.match(contTag) && str) {
+                    if (str.substr(-1) != '\n') {
+                        str += '\n';
+                    }
+
+                    var prev = el.previousSibling;
+                    while (prev && prev.nodeType == 3 && PHP.trim(prev.nodeValue) == '') {
+                        prev = prev.previousSibling;
+                    }
+                    if (prev && !(prev.tagName && (prev.tagName.match(contTag) || prev.tagName == 'BR'))) {
+                        str = '\n' + str;
+                    }
+
+                } else if (el.tagName == 'BR') {
+                    str += '\n';
+                }
+                v += str;
+                break;
+        }
+        el = el.nextSibling;
+    }
+    return v;
+}

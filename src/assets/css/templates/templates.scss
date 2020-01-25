@@ -32,6 +32,8 @@
       outline: none;
       resize: none;
       margin:0;
+      white-space: pre-wrap;       /* css-3 */
+      word-wrap: break-word;
     }
   }
 
