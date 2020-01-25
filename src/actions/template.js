@@ -72,9 +72,9 @@ export const generateResume = (resumeID) => async (dispatch, getState) => {
     const url = window.location.protocol + "//" + window.location.host + window.location.pathname + '/' + template.id;
     window.history.pushState({ path: url }, '', url);
 
-    const response = DB.collection("users").doc(user.userCredentials.uid).update({
+    const response = await DB.collection("users").doc(user.userCredentials.uid).set({
       [template.id]: template
-    });
+    }, { merge: true });
 
     console.log("RESPONSE:", response);
   }

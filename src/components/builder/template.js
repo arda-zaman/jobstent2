@@ -35,7 +35,6 @@ class TemplateContainer extends React.Component {
     const process = dataTransfer.process;
     const fieldType = dataTransfer.type;
     const fieldID = dataTransfer.id;
-    event.dataTransfer.clearData();
 
     // Drag Element Locations
     const locations = {
