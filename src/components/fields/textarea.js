@@ -12,17 +12,18 @@ class Textarea extends React.PureComponent {
   };
 
   render() {
-    const { editable, defaultValue } = this.props;
+    const { editable, defaultValue, className } = this.props;
 
     return (
       <div className="textarea">
-        <div
+        <p
+          className={className}
           contentEditable={editable}
           onInput={this.onInput}
           onBlur={this.onBlur}
         >
           {defaultValue}
-        </div>
+        </p>
       </div>
     )
   }
@@ -31,12 +32,14 @@ class Textarea extends React.PureComponent {
 Textarea.propTypes = {
   editable: PropTypes.bool,
   defaultValue: PropTypes.string,
-  onBlur: PropTypes.func
+  onBlur: PropTypes.func,
+  className: PropTypes.string
 }
 
 Textarea.defaultProps = {
   editable: true,
   defaultValue: '',
+  className: '',
   onBlur: () => { }
 }
 export default Textarea

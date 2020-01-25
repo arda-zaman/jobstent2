@@ -38,7 +38,7 @@ export const getFieldStyle = (field, useCommon = false) => {
             if (['width', 'height'].indexOf(sty) > -1) {
                 returnedStyles[sty] = field.style[sty];
             } else {
-                returnedStyles[sty] = styles[sty];
+                returnedStyles[sty] = styles[sty].replace(/[\"]/gm, '');
             }
         });
     }
