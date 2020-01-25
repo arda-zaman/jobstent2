@@ -14,7 +14,7 @@ class RightPanelItem extends React.PureComponent {
         this.state = {
             bold: style && ['600', '700', 'bold', 'bolder'].indexOf(style['font-weight']) > -1 ? 'bold' : 'normal',
             italic: style && style['font-style'] == 'italic' ? 'italic' : 'normal',
-            strikethrough: style && style['text-decoration'] == 'line-through' ? 'line-through' : 'none',
+            textDecoration: style && style['text-decoration'] || 'none',
             textAlign: style && style['text-align'],
         };
     }
@@ -108,7 +108,8 @@ class RightPanelItem extends React.PureComponent {
                     <div className="boxes">
                         {this.renderBox({ type: 'bold', content: 'B', styleKey: 'fontWeight', styleValueTrue: 'bold', styleValueFalse: 'normal' })}
                         {this.renderBox({ type: 'italic', content: 'I', styleKey: 'fontStyle', styleValueTrue: 'italic', styleValueFalse: 'normal' })}
-                        {this.renderBox({ type: 'strikethrough', content: 'S', styleKey: 'textDecoration', styleValueTrue: 'line-through', styleValueFalse: 'none' })}
+                        {this.renderBox({ type: 'textDecoration', content: 'S', styleKey: 'textDecoration', styleValueTrue: 'line-through', styleValueFalse: 'none', additionalClass: 'line-through' })}
+                        {this.renderBox({ type: 'textDecoration', content: 'U', styleKey: 'textDecoration', styleValueTrue: 'underline', styleValueFalse: 'none', additionalClass: 'underline' })}
                     </div>
                 );
                 break;
@@ -132,11 +133,11 @@ class RightPanelItem extends React.PureComponent {
         )
     }
 
-    renderBox = ({ type, content, styleKey, styleValueTrue, styleValueFalse }) => {
+    renderBox = ({ type, content, styleKey, styleValueTrue, styleValueFalse, additionalClass }) => {
         return (
             <div
                 type={type}
-                className={`box ${this.state[type] === styleValueTrue ? 'active' : ''}`}
+                className={`box ${additionalClass} ${this.state[type] === styleValueTrue ? 'active' : ''}`}
                 onClick={this.boxesClickHandler.bind(this,
                     {
                         boxFieldName: type,

@@ -808,6 +808,23 @@
                               color: #fff;
                             }
 
+                            &[type="italic"] {
+                              font-style: italic;
+                              font-weight: normal!important;
+                            }
+
+                            &[type="textDecoration"] {
+                              font-weight: normal!important;
+
+                              &.line-through {
+                                text-decoration: line-through;
+                              }
+
+                              &.underline {
+                                text-decoration: underline;
+                              }
+                            }
+
                             &:not(:last-child) {
                               margin-right: 8px;
                               font-weight: bold;
