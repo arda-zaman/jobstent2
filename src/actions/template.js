@@ -9,15 +9,13 @@ import * as uiActions from '../actions/ui';
 const DB = firebase.firestore();
 
 export const fetchResume = (id, userID = false) => async (dispatch, getState) => {
-  const template = _.cloneDeep(getState().template);
   const user = _.cloneDeep(getState().user);
-  const userId = userID || user;
-  const { resume, docRef } = await getResumeFromDB({ template, user: userId, id });
+  const { resume, docRef } = await getResumeFromDB({ user, user_id: userID, id });
   return dispatch({ type: ActionTypes.FETCH_TEMPLATE, payload: resume });
 };
 
-const getResumeFromDB = async ({ template, user, id = false, showError = false, dispatch = undefined }) => {
-  const userID = user.userCredentials ? user.userCredentials.uid : false;
+const getResumeFromDB = async ({ template, user, user_id, id = false, showError = false, dispatch = undefined }) => {
+  const userID = user.userCredentials ? user.userCredentials.uid : user_id;
 
   if (!userID && showError) {
     await dispatch(uiActions.openModal({

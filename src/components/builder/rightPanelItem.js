@@ -7,6 +7,18 @@ import { clearPxOrPercent } from '../../helpers';
 
 class RightPanelItem extends React.PureComponent {
 
+    constructor(props) {
+        super(props);
+        const style = props.activeField && props.activeField.style;
+
+        this.state = {
+            bold: style && ['600', '700', 'bold', 'bolder'].indexOf(style['font-weight']) > -1 ? 'bold' : 'normal',
+            italic: style && style['font-style'] == 'italic' ? 'italic' : 'normal',
+            strikethrough: style && style['text-decoration'] == 'line-through' ? 'line-through' : 'none',
+            textAlign: style && style['text-align'],
+        };
+    }
+
     renderFontSizeField = () => {
         const { name, property, activeField } = this.props;
         const value = activeField.style['font-size'].replace('px', '');
@@ -45,7 +57,7 @@ class RightPanelItem extends React.PureComponent {
         const { name, property, activeField } = this.props;
         let value = undefined;
 
-        switch (property.styleValue) {
+        switch (property.styleKey) {
             case 'background-color':
                 value = activeField.style['background-color'];
                 break;
@@ -63,7 +75,7 @@ class RightPanelItem extends React.PureComponent {
                     position={property.position}
                     defaultValue={value}
                     onChange={this.fieldPropertyChange.bind(this, {
-                        styleValue: property.styleValue
+                        styleKey: property.styleKey
                     })}
                 />
             </div>
@@ -92,25 +104,21 @@ class RightPanelItem extends React.PureComponent {
 
         switch (name) {
             case 'bold/italic/strikethrough':
-                const isBoxes = ['600', '700', 'bold', 'bolder'].indexOf(activeField.style['font-weight']) > -1;
-                const isItalic = activeField.style['font-style'] == 'italic';
-                const isStrikeThrough = activeField.style['text-decoration'] == 'line-through';
-
                 boxes = (
                     <div className="boxes">
-                        <div type="bold" className={`box ${isBoxes ? 'active' : ''}`}>B</div>
-                        <div type="italic" className={`box ${isItalic ? 'active' : ''}`}>I</div>
-                        <div type="strikethrough" className={`box ${isStrikeThrough ? 'active' : ''}`}>S</div>
+                        {this.renderBox({ type: 'bold', content: 'B', styleKey: 'fontWeight', styleValueTrue: 'bold', styleValueFalse: 'normal' })}
+                        {this.renderBox({ type: 'italic', content: 'I', styleKey: 'fontStyle', styleValueTrue: 'italic', styleValueFalse: 'normal' })}
+                        {this.renderBox({ type: 'strikethrough', content: 'S', styleKey: 'textDecoration', styleValueTrue: 'line-through', styleValueFalse: 'none' })}
                     </div>
                 );
                 break;
             case 'alignment':
                 boxes = (
                     <div className="boxes">
-                        <div className={`box ${activeField.style['text-align'] == 'left' ? 'active' : ''}`}><i className="material-icons">format_align_left</i></div>
-                        <div className={`box ${activeField.style['text-align'] == 'right' ? 'active' : ''}`}><i className="material-icons">format_align_right</i></div>
-                        <div className={`box ${activeField.style['text-align'] == 'center' ? 'active' : ''}`}><i className="material-icons">format_align_center</i></div>
-                        <div className={`box ${activeField.style['text-align'] == 'justify' ? 'active' : ''}`}><i className="material-icons">format_align_justify</i></div>
+                        {this.renderBox({ type: 'textAlign', content: { value: 'format_align_left' }, styleKey: 'textAlign', styleValueTrue: 'left', styleValueFalse: 'left' })}
+                        {this.renderBox({ type: 'textAlign', content: { value: 'format_align_right' }, styleKey: 'textAlign', styleValueTrue: 'right', styleValueFalse: 'left' })}
+                        {this.renderBox({ type: 'textAlign', content: { value: 'format_align_center' }, styleKey: 'textAlign', styleValueTrue: 'center', styleValueFalse: 'left' })}
+                        {this.renderBox({ type: 'textAlign', content: { value: 'format_align_justify' }, styleKey: 'textAlign', styleValueTrue: 'justify', styleValueFalse: 'left' })}
                     </div>
                 );
                 break;
@@ -123,6 +131,34 @@ class RightPanelItem extends React.PureComponent {
             </div>
         )
     }
+
+    renderBox = ({ type, content, styleKey, styleValueTrue, styleValueFalse }) => {
+        return (
+            <div
+                type={type}
+                className={`box ${this.state[type] === styleValueTrue ? 'active' : ''}`}
+                onClick={this.boxesClickHandler.bind(this,
+                    {
+                        boxFieldName: type,
+                        styleKey,
+                        styleValueTrue,
+                        styleValueFalse
+                    },
+                )}
+            >
+                {typeof content === 'string' && content}
+                {typeof content !== 'string' && <i className="material-icons">{content.value}</i>}
+            </div>
+        )
+    };
+
+    boxesClickHandler = ({ boxFieldName, styleKey, styleValueTrue, styleValueFalse }) => {
+        this.setState(prevState => ({
+            [boxFieldName]: (prevState[boxFieldName] === styleValueTrue) ? styleValueFalse : styleValueTrue
+        }), () => {
+            this.fieldPropertyChange({ boxFieldName, styleKey });
+        });
+    };
 
     renderIconLibrary = () => {
         return (
@@ -214,17 +250,25 @@ class RightPanelItem extends React.PureComponent {
         switch (name) {
             case 'fontFamily':
                 style = {
-                    'font-family': values.value
+                    'fontFamily': values.value
                 }
                 break;
             case 'fontSize':
                 style = {
-                    'font-size': `${values.value}px`
+                    'fontSize': `${values.value}px`
                 };
                 break;
             case 'colorPicker':
                 style = {
-                    [additional.styleValue]: values.value
+                    [additional.styleKey]: values.value
+                };
+                break;
+            case 'bold/italic/strikethrough':
+            case 'alignment':
+                const styleValue = this.state[additional.boxFieldName];
+
+                style = {
+                    [additional.styleKey]: styleValue
                 };
                 break;
             default:
