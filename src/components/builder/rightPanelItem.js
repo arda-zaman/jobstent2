@@ -60,7 +60,7 @@ class RightPanelItem extends React.PureComponent {
         let value = undefined;
 
         switch (property.styleKey) {
-            case 'background-color':
+            case 'backgroundColor':
                 value = activeField.style['background-color'];
                 break;
             default:
