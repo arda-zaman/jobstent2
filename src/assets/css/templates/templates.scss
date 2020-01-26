@@ -6,11 +6,12 @@
 }
 
 .page {
+  page-break-after: always;
 }
 
 .page .page-content {
-  width: 8.27in;
-  height: 11.7in;
+  width: 8.3in;
+  height: 11.6in;
   background: #fff;
   transition: 200ms ease-out;
   margin: 0 auto;
