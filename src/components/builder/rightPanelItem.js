@@ -162,11 +162,13 @@ class RightPanelItem extends React.PureComponent {
     };
 
     renderUploadField = () => {
+        const { name, property, activeField } = this.props;
+
         return (
             <div className="panel-item-content">
                 <span className="label">Upload Image</span>
                 <div className="upload-button">
-                    <input type="file" accept="image/*" />
+                    <input type="file" accept="image/*" onChange={this.fileUploadHandler} />
                     <span>Upload</span>
                 </div>
             </div>
@@ -246,6 +248,14 @@ class RightPanelItem extends React.PureComponent {
             </div>
         )
     }
+
+    fileUploadHandler = (event) => {
+        const { name, property, activeField, onImageUploaderStart } = this.props;
+        if (property.crop && onImageUploaderStart) {
+            onImageUploaderStart(event.target.files[0]);
+            event.target.value = "";
+        }
+    };
 
     boxesClickHandler = ({ boxFieldName, styleKey, styleValueTrue, styleValueFalse }) => {
         this.setState(prevState => ({

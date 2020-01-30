@@ -8,6 +8,7 @@ import * as userActions from '../actions/user';
 import '../assets/js/polyfill';
 import { Modal } from './sideComponents'
 import { ContentLoader } from './sideComponents'
+import ImageUploader from "./sideComponents/imageUploader";
 
 class App extends React.Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class App extends React.Component {
         <main className="main" app-type={appType}>
           {children}
           <Modal />
+          <ImageUploader />
         </main>
       );
     }

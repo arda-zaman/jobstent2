@@ -31,7 +31,7 @@ class RightPanel extends React.Component {
 
   renderFieldSettings = () => {
     const parsedPath = [];
-    const { builder: { activeField, activePage }, onUpdateResumeItem } = this.props;
+    const { builder: { activeField, activePage }, onUpdateResumeItem, onImageUploaderStart } = this.props;
     let property = null;
     if (!activeField) return (
       <div className="not-selected-field">
@@ -62,6 +62,7 @@ class RightPanel extends React.Component {
                       property={property}
                       activeField={activeField}
                       onPropertyChange={onUpdateResumeItem}
+                      onImageUploaderStart={onImageUploaderStart}
                     />
                   );
                 })}
@@ -145,7 +146,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   onGeneratePDF: builderActions.generatePDF,
   onRightPanelMenuSwitch: builderActions.rightPanelMenuSwitch,
-  onUpdateResumeItem: templateActions.updateResumeItem
+  onUpdateResumeItem: templateActions.updateResumeItem,
+  onImageUploaderStart: builderActions.imageUploaderStart
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RightPanel);

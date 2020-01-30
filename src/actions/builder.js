@@ -5,7 +5,7 @@ import firebase from '../../fbConfig';
 import * as ActionTypes from '../constants/ActionTypes';
 import { basic_fields, special_fields, field_properties } from '../constants/Fields';
 import * as uiActions from '../actions/ui';
-import { getFieldStyle } from '../helpers';
+import { getFieldStyle, toBase64 } from '../helpers';
 import * as templateActions from '../actions/template';
 
 export const generatePDF = () => async (dispatch, getState) => {
@@ -86,3 +86,44 @@ export const getFieldProperties = () => (dispatch, getState) => {
   return fieldProperties;
 };
 
+export const imageUploaderStart = (file) => async (dispatch, getState) => {
+  const builder = _.cloneDeep(getState().builder);
+
+  builder.imageUploader = {
+    open: true,
+    file: {
+      name: file.name,
+      src: await toBase64(file),
+    }
+  };
+
+  dispatch({ type: ActionTypes.IMAGE_UPLOAD_START, payload: builder });
+};
+
+export const imageUploaderCancel = () => async (dispatch, getState) => {
+  const builder = _.cloneDeep(getState().builder);
+
+  builder.imageUploader = {
+    open: false,
+    file: null
+  }
+
+  dispatch({ type: ActionTypes.IMAGE_UPLOAD_CANCEL, payload: builder });
+};
+
+export const imageUploaderDone = (uploadedImageUrl) => async (dispatch, getState) => {
+  const builder = _.cloneDeep(getState().builder);
+  const template = _.cloneDeep(getState().template);
+
+  const { activeField: { fid } } = builder;
+  const fieldIndex = template.items.findIndex(f => f.fid === fid);
+  template.items[fieldIndex].value.src = uploadedImageUrl;
+
+  builder.imageUploader = {
+    open: false,
+    file: null
+  };
+
+  dispatch({ type: ActionTypes.IMAGE_UPLOAD_DONE, payload: builder });
+  dispatch({ type: ActionTypes.FIELD_ITEM_UPDATE, payload: template })
+};

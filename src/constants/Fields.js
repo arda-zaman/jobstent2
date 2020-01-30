@@ -257,7 +257,9 @@ export const field_properties = {
         },
     },
     jbt_image: {
-        uploadFile: {},
+        uploadFile: {
+            crop: true
+        },
         size: {},
         radius: {}
     },

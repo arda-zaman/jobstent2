@@ -40,13 +40,10 @@ export const REMOVE_PAGE = "remove_page";
 export const ACTIVE_PATH_CHANGE = "active_path_change";
 export const SET_ACTIVE_FIELD = "set_active_field";
 export const REMOVE_ACTIVE_FIELD = "remove_active_field";
-
-
-/**
- * DRAG
-*/
-
-export const DRAG_HAPPENED = "drag_happened";
+// IMAGE UPLOAD
+export const IMAGE_UPLOAD_START = "image_upload_start";
+export const IMAGE_UPLOAD_CANCEL = "image_upload_cancel";
+export const IMAGE_UPLOAD_DONE = "image_upload_done";
 
 
 /**
@@ -61,8 +58,6 @@ export const LEFT_PANEL_MENU_HANDLER = "left_panel_menu_handler";
 
 export const RIGHT_PANEL_INIT = "right_panel_init";
 export const RIGHT_PANEL_MENU_SWITCH = "right_panel_menu_switch";
-
-
 
 /**
  * UI
