@@ -190,7 +190,7 @@ class RightPanelItem extends React.PureComponent {
                     <div className="width">
                         {renderSwipedInput({
                             type: "number",
-                            defaultValue: { width },
+                            defaultValue: width,
                             onChange: this.fieldDynamicChangeHandler.bind(this, { key: 'width' }),
                             label: 'Width'
                         })}
@@ -199,7 +199,7 @@ class RightPanelItem extends React.PureComponent {
                     <div className="height">
                         {renderSwipedInput({
                             type: "number",
-                            defaultValue: { height },
+                            defaultValue: height,
                             onChange: this.fieldDynamicChangeHandler.bind(this, { key: 'height' }),
                             label: 'Height'
                         })}
