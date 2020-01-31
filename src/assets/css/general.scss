@@ -124,7 +124,7 @@ main {
     &:checked + .box {
       background: $green;
       color: #fff;
-      
+
       i {
         opacity: 1;
         transform: scale(1);
@@ -159,4 +159,33 @@ main {
 
 .lowText {
   color: #696969;
+}
+
+.swipper-input {
+  position: relative;
+  input {
+    width: 100px;
+    border:none;
+    outline: none;
+    border-bottom:1px solid #eee;
+    font-size: 14px;
+
+    &:not(:placeholder-shown),
+    &:focus{
+      & ~ span{
+        transform:translateY(-15px);
+        font-size: 11px;
+        color: $orange;
+      }
+    }
+  }
+
+  span {
+    font-size: 11px;
+    position: absolute;
+    left:0;
+    top:0;
+    transition:100ms ease-in-out;
+    pointer-events: none;
+  }
 }

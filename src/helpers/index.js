@@ -110,3 +110,15 @@ export const toBase64 = file => new Promise((resolve, reject) => {
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
 });
+
+export const renderSwipedInput = ({ type, placeholder, defaultValue, onChange, label }) => (
+    <div className="swipper-input">
+        <input
+            type={type}
+            placeholder={placeholder || " "}
+            defaultValue={defaultValue}
+            onChange={onChange}
+        />
+        <span>{label}</span>
+    </div>
+)

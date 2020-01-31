@@ -3,7 +3,7 @@ import React from 'react';
 import { Select, ColorPicker, Button } from '../fields';
 import { field_properties } from '../../constants/Fields';
 import { IconLibrary } from '../fields';
-import { clearPxOrPercent } from '../../helpers';
+import { clearPxOrPercent, renderSwipedInput } from '../../helpers';
 
 class RightPanelItem extends React.PureComponent {
 
@@ -19,6 +19,9 @@ class RightPanelItem extends React.PureComponent {
             width: style && style['width'] ? clearPxOrPercent(style['width'], true) : undefined,
             height: style && style['height'] ? clearPxOrPercent(style['height'], true) : undefined,
             borderRadius: style && style['border-radius'] ? clearPxOrPercent(style['border-radius'], true) : undefined,
+            borderWidth: style && style['border-width'] ? clearPxOrPercent(style['border-width'], true) : undefined,
+            borderStyle: style && style['border-style'] ? style['border-style'] : undefined,
+            borderColor: style && style['border-color'] ? style['border-color'] : undefined
         };
     }
 
@@ -185,23 +188,21 @@ class RightPanelItem extends React.PureComponent {
                 <span className="label">Size</span>
                 <div className="inputs">
                     <div className="width">
-                        <input
-                            type="number"
-                            placeholder=" "
-                            defaultValue={width}
-                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'width' })}
-                        />
-                        <span>Width</span>
+                        {renderSwipedInput({
+                            type: "number",
+                            defaultValue: { width },
+                            onChange: this.fieldDynamicChangeHandler.bind(this, { key: 'width' }),
+                            label: 'Width'
+                        })}
                     </div>
                     <i className="fas fa-link link"></i>
                     <div className="height">
-                        <input
-                            type="number"
-                            placeholder=" "
-                            defaultValue={height}
-                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'height' })}
-                        />
-                        <span>Height</span>
+                        {renderSwipedInput({
+                            type: "number",
+                            defaultValue: { height },
+                            onChange: this.fieldDynamicChangeHandler.bind(this, { key: 'height' }),
+                            label: 'Height'
+                        })}
                     </div>
                 </div>
             </div>
@@ -221,6 +222,54 @@ class RightPanelItem extends React.PureComponent {
                     defaultValue={borderRadius}
                     onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderRadius' })}
                 />
+            </div>
+        )
+    };
+
+    renderBorderField = () => {
+        const { name, property, activeField } = this.props;
+        const { borderWidth, borderStyle, borderColor } = this.state;
+
+        return (
+            <div className="panel-item-content">
+                <span className="label">Border</span>
+                <div className="inputs">
+                    <div className="input-item">
+                        <span className="label">Thickness</span>
+                        <input
+                            type="number"
+                            placeholder="Thickness"
+                            max="50"
+                            defaultValue={borderWidth || 0}
+                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderWidth' })}
+                        />
+                    </div>
+                    <div className="select-item">
+                        <Select
+                            label="Type"
+                            additionalClass=""
+                            value={borderStyle}
+                            options={[
+                                { value: 'solid', label: 'solid' },
+                                { value: 'dashed', label: 'dashed' },
+                                { value: 'dotted', label: 'dotted' },
+                                { value: 'groove', label: 'groove' },
+                                { value: 'ridge', label: 'ridge' },
+                            ]}
+                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderStyle' })}
+                        />
+                    </div>
+                    <div className="color-item">
+                        <ColorPicker
+                            type="box"
+                            label="Color"
+                            additionalClass="inline"
+                            position="right"
+                            defaultValue={borderColor}
+                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderColor' })}
+                        />
+                    </div>
+                </div>
             </div>
         )
     };
@@ -260,6 +309,9 @@ class RightPanelItem extends React.PureComponent {
             case 'borderRadius':
                 field = this.renderBorderRadiusField();
                 break;
+            case 'border':
+                field = this.renderBorderField();
+                break;
         }
 
         return (
@@ -287,7 +339,7 @@ class RightPanelItem extends React.PureComponent {
 
     fieldDynamicChangeHandler = ({ key }, event) => {
         this.setState({
-            [key]: event.target.value
+            [key]: event.value || event.target.value
         }, () => {
             this.fieldPropertyChange({ styleKey: key });
         });
@@ -330,6 +382,18 @@ class RightPanelItem extends React.PureComponent {
                 style = {
                     [additional.styleKey]: `${this.state[additional.styleKey]}px`
                 };
+                break;
+            case 'border':
+                style = {};
+
+                if (additional.styleKey === 'borderWidth') {
+                    style.borderWidth = `${this.state['borderWidth']}px`;
+                } else if (additional.styleKey === 'borderStyle') {
+                    style.borderStyle = this.state['borderStyle'];
+                } else if (additional.styleKey === 'borderColor') {
+                    style.borderColor = this.state['borderColor'];
+                }
+
                 break;
             default:
                 style = "";

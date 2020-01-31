@@ -265,6 +265,7 @@ export const field_properties = {
             crop: true
         },
         size: {},
+        border: {},
         borderRadius: {},
     },
     jbt_phone: {

@@ -726,7 +726,8 @@
                       }
                     }
 
-                    &[name="colorPicker"]{
+                    &[name="colorPicker"],
+                    &[name="border"] {
                       .panel-item-content {
                         .color-picker {
                           &.inline {
@@ -899,32 +900,6 @@
                           & > div {
                             position: relative;
 
-                            input {
-                              width: 100px;
-                              border:none;
-                              outline: none;
-                              border-bottom:1px solid #eee;
-                              font-size: 14px;
-
-                              &:not(:placeholder-shown),
-                              &:focus{
-                                & ~ span{
-                                  transform:translateY(-15px);
-                                  font-size: 11px;
-                                  color: $orange;
-                                }
-                              }
-                            }
-
-                            span {
-                              font-size: 11px;
-                              position: absolute;
-                              left:0;
-                              top:0;
-                              transition:100ms ease-in-out;
-                              pointer-events: none;
-                            }
-
                             select {
                               position: absolute;
                               right: 0;
@@ -962,6 +937,50 @@
 
                           &:focus {
                             border-color: rgba($orange, 0.4);
+                          }
+                        }
+                      }
+                    }
+
+                    &[name="border"] {
+                      .panel-item-content {
+                        .inputs {
+                          padding: 10px 20px;
+
+                          .input-item {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            flex-wrap: nowrap;
+
+                            input {
+                              border: none;
+                              outline: none;
+                              border-bottom: 1px solid #eee;
+                              max-width: 150px;
+                              font-size: 13px;
+                            }
+                          }
+
+                          .select-field{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            & > div {
+                              flex: 0 0 150px;
+                              max-width: 150px;
+                            }
+                          }
+
+                          & > div:not(:last-child) {
+                            margin-bottom: 10px;
+                          }
+
+                          .label,
+                          .select-label{
+                            font-size: 11px!important;
+                            font-weight: bold;
                           }
                         }
                       }
