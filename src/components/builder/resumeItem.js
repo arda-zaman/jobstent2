@@ -63,19 +63,20 @@ class ResumeItem extends React.PureComponent {
       >
         <div
           className="resume-field-content"
-          style={{ ...fieldStyle }}
+          style={{
+            ...fieldStyle,
+            backgroundImage: `url(${value && value.src})`,
+          }}
         >
-          {(value && value.src) ? (
-            <img src={value.src} width={value.width} height={value.height} />
-          ) : (
-              <div className="empty-image-field">
-                <div>
-                  <i className="fas fa-upload"></i>
-                  <span>Upload Image</span>
-                  <input type="file" accept="image/*" />
-                </div>
+          {(!value || (value && !value.src)) && (
+            <div className="empty-image-field">
+              <div>
+                <i className="fas fa-upload"></i>
+                <span>Upload Image</span>
+                <input type="file" accept="image/*" />
               </div>
-            )}
+            </div>
+          )}
         </div>
       </div>
     )

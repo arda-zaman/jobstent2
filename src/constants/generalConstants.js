@@ -13,5 +13,8 @@ export const styleList = [
   'display',
   'position',
   'transform',
-  'z-index'
+  'z-index',
+  'border-radius',
+  'border-width',
+  'border-type'
 ];

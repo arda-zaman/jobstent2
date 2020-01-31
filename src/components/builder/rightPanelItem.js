@@ -14,10 +14,11 @@ class RightPanelItem extends React.PureComponent {
         this.state = {
             bold: style && ['600', '700', 'bold', 'bolder'].indexOf(style['font-weight']) > -1 ? 'bold' : 'normal',
             italic: style && style['font-style'] == 'italic' ? 'italic' : 'normal',
-            textDecoration: style && style['text-decoration'] || 'none',
+            textDecoration: style && (style['text-decoration'] || 'none'),
             textAlign: style && style['text-align'],
             width: style && style['width'] ? clearPxOrPercent(style['width'], true) : undefined,
             height: style && style['height'] ? clearPxOrPercent(style['height'], true) : undefined,
+            borderRadius: style && style['border-radius'] ? clearPxOrPercent(style['border-radius'], true) : undefined,
         };
     }
 
@@ -188,7 +189,7 @@ class RightPanelItem extends React.PureComponent {
                             type="number"
                             placeholder=" "
                             defaultValue={width}
-                            onChange={this.sizeFieldChangeHandler.bind(this, { key: 'width' })}
+                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'width' })}
                         />
                         <span>Width</span>
                     </div>
@@ -198,7 +199,7 @@ class RightPanelItem extends React.PureComponent {
                             type="number"
                             placeholder=" "
                             defaultValue={height}
-                            onChange={this.sizeFieldChangeHandler.bind(this, { key: 'height' })}
+                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'height' })}
                         />
                         <span>Height</span>
                     </div>
@@ -207,6 +208,22 @@ class RightPanelItem extends React.PureComponent {
         )
     };
 
+    renderBorderRadiusField = () => {
+        const { name, property, activeField } = this.props;
+        const { borderRadius } = this.state;
+
+        return (
+            <div className="panel-item-content">
+                <span className="label">Radius</span>
+                <input
+                    type="number"
+                    placeholder=""
+                    defaultValue={borderRadius}
+                    onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderRadius' })}
+                />
+            </div>
+        )
+    };
 
     render() {
         const { name, property, activeField } = this.props;
@@ -240,6 +257,9 @@ class RightPanelItem extends React.PureComponent {
             case 'size':
                 field = this.renderSizeField();
                 break;
+            case 'borderRadius':
+                field = this.renderBorderRadiusField();
+                break;
         }
 
         return (
@@ -265,7 +285,7 @@ class RightPanelItem extends React.PureComponent {
         });
     };
 
-    sizeFieldChangeHandler = ({ key }, event) => {
+    fieldDynamicChangeHandler = ({ key }, event) => {
         this.setState({
             [key]: event.target.value
         }, () => {
@@ -305,6 +325,11 @@ class RightPanelItem extends React.PureComponent {
                 style = {
                     [additional.styleKey]: `${this.state[additional.styleKey]}px`
                 }
+                break;
+            case 'borderRadius':
+                style = {
+                    [additional.styleKey]: `${this.state[additional.styleKey]}px`
+                };
                 break;
             default:
                 style = "";

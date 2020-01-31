@@ -945,6 +945,28 @@
                       }
                     }
 
+                    &[name="borderRadius"]{
+                      .panel-item-content{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        flex-wrap: nowrap;
+
+                        input {
+                          border:none;
+                          border-bottom: 1px solid #979797;
+                          width: 100px;
+                          outline: none;
+                          text-align: center;
+
+                          &:focus {
+                            border-color: rgba($orange, 0.4);
+                          }
+                        }
+                      }
+                    }
+
                     &:not(:last-child) {
                       @include x3('margin-bottom');
                     }

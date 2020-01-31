@@ -40,7 +40,11 @@ export const basic_fields = [
             iconValue: 'far fa-image'
         },
         defaultValue: {},
-        defaultStyle: {},
+        defaultFieldStyle: {
+            width: 175,
+            height: 175,
+            backgroundSize: 'cover',
+        },
     },
     {
         type: 'jbt_phone',
@@ -261,7 +265,7 @@ export const field_properties = {
             crop: true
         },
         size: {},
-        radius: {}
+        borderRadius: {},
     },
     jbt_phone: {
         fontFamily: {
