@@ -19,7 +19,7 @@ class RightPanelItem extends React.PureComponent {
             width: style && style['width'] ? clearPxOrPercent(style['width'], true) : undefined,
             height: style && style['height'] ? clearPxOrPercent(style['height'], true) : undefined,
             borderRadius: style && style['border-radius'] ? clearPxOrPercent(style['border-radius'], true) : undefined,
-            borderWidth: style && style['border-width'] ? clearPxOrPercent(style['border-width'], true) : undefined,
+            borderWidth: style && style['border-width'] ? clearPxOrPercent(style['border-width'], true) : 0,
             borderStyle: style && style['border-style'] ? style['border-style'] : undefined,
             borderColor: style && style['border-color'] ? style['border-color'] : undefined
         };
@@ -240,7 +240,7 @@ class RightPanelItem extends React.PureComponent {
                             type="number"
                             placeholder="Thickness"
                             max="50"
-                            defaultValue={borderWidth || 0}
+                            defaultValue={borderWidth}
                             onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderWidth' })}
                         />
                     </div>
