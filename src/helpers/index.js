@@ -35,7 +35,32 @@ export const getFieldStyle = (field, useCommon = false) => {
 
     if (useCommon) {
         styleList.forEach(sty => {
-            if (['width', 'height', 'text-decoration'].indexOf(sty) > -1) {
+            if (sty === 'border') {
+
+                if (styles['border']) {
+                    const secondPart = styles['border'].split(/(rgb.*)/g);
+                    const firstPart = secondPart[0].split(' ');
+
+                    returnedStyles['border-corner'] = 'borderWidth';
+                    returnedStyles['border-color'] = secondPart[1];
+                    returnedStyles['border-width'] = firstPart[0];
+                    returnedStyles['border-style'] = firstPart[1];
+                } else {
+                    const corners = ['border-left', 'border-right', 'border-top', 'border-bottom'];
+                    corners.forEach((item) => {
+                        const secondPart = styles[item].split(/(rgb.*)/g);
+                        const firstPart = secondPart[0].split(' ');
+
+                        if (firstPart[0] != '0px') {
+                            returnedStyles['border-corner'] = item.replace(item.match(/-./)[0], item.match(/-./)[0].toUpperCase().replace('-', '')) + 'Width';
+                            returnedStyles['border-color'] = secondPart[1];
+                            returnedStyles[`${item}-width`] = firstPart[0];
+                            returnedStyles['border-style'] = firstPart[1];
+                        }
+                    });
+                }
+
+            } else if (['width', 'height', 'text-decoration'].indexOf(sty) > -1) {
                 returnedStyles[sty] = field.style[sty];
             } else if (styles[sty]) {
                 returnedStyles[sty] = styles[sty].replace(/[\"]/gm, '');
@@ -45,6 +70,26 @@ export const getFieldStyle = (field, useCommon = false) => {
 
     return returnedStyles.length == 0 ? styles : returnedStyles;
 };
+
+export const clearFieldStyles = (styles) => {
+    if (!styles) return;
+    let fieldStyles = { ...styles };
+
+    Object.keys(styles).forEach(style => {
+        switch (style) {
+            case 'borderWidth':
+                const resetArr = ['borderWidth', 'borderLeftWidth', 'borderRightWidth', 'borderTopWidth', 'borderBottomWidth'];
+                resetArr.forEach(item => {
+                    fieldStyles[item] = 0;
+                });
+                fieldStyles = Object.assign({}, fieldStyles, { [styles.borderCorner || 'borderWidth']: Number(styles[style].replace('px', '')) });
+                break;
+        }
+    });
+
+    return fieldStyles;
+};
+
 
 export const getDimensions = () => {
     return {

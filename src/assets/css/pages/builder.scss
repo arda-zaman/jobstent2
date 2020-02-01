@@ -959,6 +959,7 @@
                               border-bottom: 1px solid #eee;
                               max-width: 150px;
                               font-size: 13px;
+                              text-align: center;
                             }
                           }
 
@@ -974,7 +975,7 @@
                           }
 
                           & > div:not(:last-child) {
-                            margin-bottom: 10px;
+                            margin-bottom: 15px;
                           }
 
                           .label,

@@ -9,9 +9,15 @@ class RightPanelItem extends React.PureComponent {
 
     constructor(props) {
         super(props);
-        const style = props.activeField && props.activeField.style;
+        const style = props.activeField && props.activeField.fieldStyle;
+
+        const borderWidth = style && (style['border-width'] || style['border-left-width'] || style['border-right-width'] || style['border-top-width'] || style['border-bottom-width']);
 
         this.state = {
+            fontSize: style && style['font-size'] ? clearPxOrPercent(style['font-size'], true) : undefined,
+            fontFamily: style && (style['font-family'] || undefined),
+            backgroundColor: style && (style['backgroundColor'] || undefined),
+            color: style && (style['color'] || undefined),
             bold: style && ['600', '700', 'bold', 'bolder'].indexOf(style['font-weight']) > -1 ? 'bold' : 'normal',
             italic: style && style['font-style'] == 'italic' ? 'italic' : 'normal',
             textDecoration: style && (style['text-decoration'] || 'none'),
@@ -19,22 +25,23 @@ class RightPanelItem extends React.PureComponent {
             width: style && style['width'] ? clearPxOrPercent(style['width'], true) : undefined,
             height: style && style['height'] ? clearPxOrPercent(style['height'], true) : undefined,
             borderRadius: style && style['border-radius'] ? clearPxOrPercent(style['border-radius'], true) : undefined,
-            borderWidth: style && style['border-width'] ? clearPxOrPercent(style['border-width'], true) : 0,
-            borderStyle: style && style['border-style'] ? style['border-style'] : undefined,
-            borderColor: style && style['border-color'] ? style['border-color'] : undefined
+            borderCorner: style && style['border-corner'] || undefined,
+            borderWidth: borderWidth ? clearPxOrPercent(borderWidth, true) : 0,
+            borderStyle: style && style['border-style'] || undefined,
+            borderColor: style && style['border-color'] || undefined
         };
     }
 
     renderFontSizeField = () => {
         const { name, property, activeField } = this.props;
-        const value = activeField.style['font-size'].replace('px', '');
+        const { fontSize } = this.state;
 
         return (
             <div className="panel-item-content">
                 <Select
                     label={property.label}
                     additionalClass={property.additionalClass}
-                    value={value}
+                    value={`${fontSize}`}
                     options={property.options}
                     onChange={this.fieldPropertyChange.bind(this, {})}
                 />
@@ -44,14 +51,14 @@ class RightPanelItem extends React.PureComponent {
 
     renderFontFamilyField = () => {
         const { name, property, activeField } = this.props;
-        const value = activeField.style['font-family'];
+        const { fontFamily } = this.state;
 
         return (
             <div className="panel-item-content">
                 <Select
                     label={property.label}
                     additionalClass={property.additionalClass}
-                    value={value}
+                    value={fontFamily}
                     options={property.options}
                     onChange={this.fieldPropertyChange.bind(this, {})}
                 />
@@ -61,14 +68,15 @@ class RightPanelItem extends React.PureComponent {
 
     renderColorField = () => {
         const { name, property, activeField } = this.props;
+        const { backgroundColor, color } = this.state;
         let value = undefined;
 
         switch (property.styleKey) {
             case 'backgroundColor':
-                value = activeField.style['background-color'];
+                value = backgroundColor;
                 break;
             default:
-                value = activeField.style['color'];
+                value = color;
                 break;
         }
 
@@ -228,20 +236,25 @@ class RightPanelItem extends React.PureComponent {
 
     renderBorderField = () => {
         const { name, property, activeField } = this.props;
-        const { borderWidth, borderStyle, borderColor } = this.state;
-
+        const { borderCorner, borderWidth, borderStyle, borderColor } = this.state;
+        console.log("CORNER::", borderCorner)
         return (
             <div className="panel-item-content">
                 <span className="label">Border</span>
                 <div className="inputs">
-                    <div className="input-item">
-                        <span className="label">Thickness</span>
-                        <input
-                            type="number"
-                            placeholder="Thickness"
-                            max="50"
-                            defaultValue={borderWidth}
-                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderWidth' })}
+                    <div className="select-item">
+                        <Select
+                            label="Corner"
+                            additionalClass=""
+                            value={borderCorner}
+                            options={[
+                                { value: 'borderWidth', label: 'all' },
+                                { value: 'borderLeftWidth', label: 'Left' },
+                                { value: 'borderRightWidth', label: 'Right' },
+                                { value: 'borderTopWidth', label: 'Top' },
+                                { value: 'borderBottomWidth', label: 'Bottom' },
+                            ]}
+                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderCorner' })}
                         />
                     </div>
                     <div className="select-item">
@@ -257,6 +270,16 @@ class RightPanelItem extends React.PureComponent {
                                 { value: 'ridge', label: 'ridge' },
                             ]}
                             onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderStyle' })}
+                        />
+                    </div>
+                    <div className="input-item">
+                        <span className="label">Thickness</span>
+                        <input
+                            type="number"
+                            placeholder="Thickness"
+                            max="50"
+                            defaultValue={borderWidth}
+                            onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'borderWidth' })}
                         />
                     </div>
                     <div className="color-item">
@@ -339,7 +362,7 @@ class RightPanelItem extends React.PureComponent {
 
     fieldDynamicChangeHandler = ({ key }, event) => {
         this.setState({
-            [key]: event.value || event.target.value
+            [key]: event.value || (event.target && event.target.value)
         }, () => {
             this.fieldPropertyChange({ styleKey: key });
         });
@@ -386,7 +409,9 @@ class RightPanelItem extends React.PureComponent {
             case 'border':
                 style = {};
 
-                if (additional.styleKey === 'borderWidth') {
+                if (additional.styleKey === 'borderCorner') {
+                    style.borderCorner = `${this.state['borderCorner']}`;
+                } else if (additional.styleKey === 'borderWidth') {
                     style.borderWidth = `${this.state['borderWidth']}px`;
                 } else if (additional.styleKey === 'borderStyle') {
                     style.borderStyle = this.state['borderStyle'];

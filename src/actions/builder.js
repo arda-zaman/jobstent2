@@ -45,7 +45,7 @@ export const makeFieldActive = (fieldID) => async (dispatch, getState) => {
 
   if (field) {
     const fieldStyles = getFieldStyle(document.querySelector(`#field_${fieldID} .resume-field-content`), true);
-    field.style = fieldStyles;
+    field.fieldStyle = fieldStyles;
 
     builder.activeField = field;
     builder.activePage = field.pageID;

@@ -15,7 +15,5 @@ export const styleList = [
   'transform',
   'z-index',
   'border-radius',
-  'border-width',
-  'border-style',
-  'border-color'
+  'border'
 ];

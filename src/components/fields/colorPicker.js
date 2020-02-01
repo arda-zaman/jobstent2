@@ -33,13 +33,13 @@ class ColorPicker extends React.PureComponent {
   };
 
   handleClose = () => {
-    const { onChange } = this.props;
+    const { onChange, defaultValue } = this.props;
     const { color } = this.state;
 
     this.setState({ displayColorPicker: false })
 
     if (onChange) {
-      onChange({ value: color.hex });
+      onChange({ value: color.hex || defaultValue });
     }
   };
 

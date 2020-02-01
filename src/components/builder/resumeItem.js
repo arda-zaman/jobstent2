@@ -1,5 +1,6 @@
 import React from 'react';
 import { Textfield, Textarea } from '../fields';
+import { clearFieldStyles } from '../../helpers';
 
 class ResumeItem extends React.PureComponent {
 
@@ -13,7 +14,7 @@ class ResumeItem extends React.PureComponent {
       >
         <div
           className="resume-field-content"
-          style={{ ...fieldStyle }}
+          style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
             defaultValue={value.textValue}
@@ -45,7 +46,7 @@ class ResumeItem extends React.PureComponent {
       >
         <div
           className="resume-field-content"
-          style={{ ...fieldStyle }}
+          style={{ ...clearFieldStyles(fieldStyle) }}
         >
           {icon}
         </div>
@@ -55,7 +56,7 @@ class ResumeItem extends React.PureComponent {
 
   createImageField = () => {
     const { type, value, fieldStyle } = this.props;
-
+    console.log({ ...clearFieldStyles(fieldStyle) });
     return (
       <div
         className="resume-field"
@@ -64,7 +65,7 @@ class ResumeItem extends React.PureComponent {
         <div
           className="resume-field-content"
           style={{
-            ...fieldStyle,
+            ...clearFieldStyles(fieldStyle),
             backgroundImage: `url(${value && value.src})`,
           }}
         >
@@ -92,10 +93,9 @@ class ResumeItem extends React.PureComponent {
       >
         <div
           className="resume-field-content"
-          style={{ ...fieldStyle }}
+          style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
-            dateFormat={value.dateFormat}
             defaultValue={value.textValue}
             editable={(activeField && activeField.fid == fid) ? true : false}
             onBlur={this.fieldOnBlur}
@@ -115,7 +115,7 @@ class ResumeItem extends React.PureComponent {
       >
         <div
           className="resume-field-content"
-          style={{ ...fieldStyle }}
+          style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
             defaultValue={value.textValue}
@@ -137,7 +137,7 @@ class ResumeItem extends React.PureComponent {
       >
         <div
           className="resume-field-content"
-          style={{ ...fieldStyle }}
+          style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
             defaultValue={value.textValue}
@@ -163,7 +163,7 @@ class ResumeItem extends React.PureComponent {
       >
         <div
           className="resume-field-content"
-          style={{ ...fieldStyle }}
+          style={{ ...clearFieldStyles(fieldStyle) }}
         ></div>
       </div>
     )
