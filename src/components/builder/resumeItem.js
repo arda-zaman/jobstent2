@@ -35,7 +35,7 @@ class ResumeItem extends React.PureComponent {
         icon = <i className={value.iconValue}></i>
         break;
       case 'material-icons':
-        icon = <i className="meterial-icons">{value.iconValue}</i>
+        icon = <i className="material-icons">{value.iconValue}</i>
         break;
     }
 

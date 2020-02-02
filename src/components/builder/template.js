@@ -211,7 +211,7 @@ class TemplateContainer extends React.Component {
     const { activeField, actions: { updateItem } } = this.props;
     let field = await updateItem({
       fid: activeField.fid,
-      value: val,
+      value: { value: val },
       pageID: activeField.pageID
     });
   };

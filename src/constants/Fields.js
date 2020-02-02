@@ -224,9 +224,10 @@ export const field_properties = {
         alignment: {
             label: 'Alignment'
         },
+        size: {},
     },
     jbt_icon: {
-        iconLibrary: {},
+        iconLists: {},
         fontSize: {
             fieldType: 'dropdown',
             label: 'Font Size',

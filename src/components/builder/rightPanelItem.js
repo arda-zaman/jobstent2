@@ -2,7 +2,7 @@
 import React from 'react';
 import { Select, ColorPicker, Button } from '../fields';
 import { field_properties } from '../../constants/Fields';
-import { IconLibrary } from '../fields';
+import { IconLists } from '../fields';
 import { clearPxOrPercent, renderSwipedInput } from '../../helpers';
 
 class RightPanelItem extends React.PureComponent {
@@ -29,7 +29,7 @@ class RightPanelItem extends React.PureComponent {
             borderWidth: borderWidth ? clearPxOrPercent(borderWidth, true) : 0,
             borderStyle: style && style['border-style'] || undefined,
             borderColor: style && style['border-color'] || undefined,
-            opacity: style && style['opacity'] || undefined,
+            opacity: style && style['opacity'] || undefined
         };
     }
 
@@ -168,9 +168,9 @@ class RightPanelItem extends React.PureComponent {
         )
     };
 
-    renderIconLibrary = () => {
+    renderIconLists = () => {
         return (
-            <IconLibrary />
+            <IconLists params={{ key: 'iconLists' }} onSelect={this.fieldPropertyChange.bind(this)} />
         )
     };
 
@@ -339,8 +339,8 @@ class RightPanelItem extends React.PureComponent {
             case 'alignment':
                 field = this.renderBoxesField();
                 break;
-            case 'iconLibrary':
-                field = this.renderIconLibrary();
+            case 'iconLists':
+                field = this.renderIconLists();
                 break;
             case 'uploadFile':
                 field = this.renderUploadField();
@@ -393,6 +393,7 @@ class RightPanelItem extends React.PureComponent {
     fieldPropertyChange = (additional, values, context) => {
         const { name, activeField, onPropertyChange } = this.props;
         let style = "";
+        let value = null;
 
         switch (name) {
             case 'fontFamily':
@@ -416,6 +417,12 @@ class RightPanelItem extends React.PureComponent {
 
                 style = {
                     [additional.styleKey]: styleValue
+                };
+                break;
+            case 'iconLists':
+                value = {
+                    iconType: additional.value.type,
+                    iconValue: additional.value.text
                 };
                 break;
             case 'size':
@@ -457,6 +464,14 @@ class RightPanelItem extends React.PureComponent {
                 fid: activeField.fid,
                 pageID: activeField.pageID,
                 fieldStyle: style,
+            });
+        }
+
+        if (value) {
+            onPropertyChange({
+                fid: activeField.fid,
+                pageID: activeField.pageID,
+                value,
             });
         }
     }

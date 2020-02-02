@@ -131,20 +131,13 @@ export const updateResumeItem = ({ fid, pageID, value, style, fieldStyle }) => a
 
   const currentItem = _.cloneDeep(template.items[itemIndex]);
 
-  template.items[itemIndex] = Object.assign(
-    {},
-    { ...template.items[itemIndex] },
-    {
-      ...currentItem,
-      pageID,
-      value: {
-        ...currentItem.value,
-        textValue: value ? value : (currentItem.value.textValue || null)
-      }
-    },
-    { style: { ...currentItem.style, ...style } },
-    { fieldStyle: { ...currentItem.fieldStyle, ...fieldStyle } }
-  );
+  template.items[itemIndex] = {
+    ...template.items[itemIndex],
+    pageID,
+    value: { ...currentItem.value, ...value },
+    style: { ...currentItem.style, ...style },
+    fieldStyle: { ...currentItem.fieldStyle, ...fieldStyle }
+  };
 
   // docRef.update({
   //   [template.id]: template
