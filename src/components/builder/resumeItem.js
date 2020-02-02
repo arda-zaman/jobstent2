@@ -56,7 +56,7 @@ class ResumeItem extends React.PureComponent {
 
   createImageField = () => {
     const { type, value, fieldStyle } = this.props;
-    console.log({ ...clearFieldStyles(fieldStyle) });
+
     return (
       <div
         className="resume-field"
