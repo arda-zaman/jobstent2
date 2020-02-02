@@ -36,7 +36,6 @@ export const getFieldStyle = (field, useCommon = false) => {
     if (useCommon) {
         styleList.forEach(sty => {
             if (sty === 'border') {
-
                 if (styles['border']) {
                     const secondPart = styles['border'].split(/(rgb.*)/g);
                     const firstPart = secondPart[0].split(' ');
@@ -59,7 +58,6 @@ export const getFieldStyle = (field, useCommon = false) => {
                         }
                     });
                 }
-
             } else if (['width', 'height', 'text-decoration'].indexOf(sty) > -1) {
                 returnedStyles[sty] = field.style[sty];
             } else if (styles[sty]) {
@@ -83,6 +81,12 @@ export const clearFieldStyles = (styles) => {
                     fieldStyles[item] = 0;
                 });
                 fieldStyles = Object.assign({}, fieldStyles, { [styles.borderCorner || 'borderWidth']: Number(styles[style].replace('px', '')) });
+                break;
+            case 'opacity':
+                fieldStyles = {
+                    ...fieldStyles,
+                    opacity: Number(styles['opacity']) / 100
+                }
                 break;
         }
     });

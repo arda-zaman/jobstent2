@@ -28,7 +28,8 @@ class RightPanelItem extends React.PureComponent {
             borderCorner: style && style['border-corner'] || undefined,
             borderWidth: borderWidth ? clearPxOrPercent(borderWidth, true) : 0,
             borderStyle: style && style['border-style'] || undefined,
-            borderColor: style && style['border-color'] || undefined
+            borderColor: style && style['border-color'] || undefined,
+            opacity: style && style['opacity'] || undefined,
         };
     }
 
@@ -297,6 +298,24 @@ class RightPanelItem extends React.PureComponent {
         )
     };
 
+    renderOpacityField = () => {
+        const { name, property, activeField } = this.props;
+        const { opacity } = this.state;
+
+        return (
+            <div className="panel-item-content">
+                <span className="label">Opacity</span>
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    defaultValue={Number(opacity) * 100}
+                    onChange={this.fieldDynamicChangeHandler.bind(this, { key: 'opacity' })}
+                />
+            </div>
+        );
+    }
+
     render() {
         const { name, property, activeField } = this.props;
         let field = null;
@@ -334,6 +353,9 @@ class RightPanelItem extends React.PureComponent {
                 break;
             case 'border':
                 field = this.renderBorderField();
+                break;
+            case 'opacity':
+                field = this.renderOpacityField();
                 break;
         }
 
@@ -419,6 +441,11 @@ class RightPanelItem extends React.PureComponent {
                     style.borderColor = this.state['borderColor'];
                 }
 
+                break;
+            case 'opacity':
+                style = {
+                    [additional.styleKey]: this.state[additional.styleKey]
+                };
                 break;
             default:
                 style = "";

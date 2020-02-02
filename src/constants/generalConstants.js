@@ -15,5 +15,6 @@ export const styleList = [
   'transform',
   'z-index',
   'border-radius',
-  'border'
+  'border',
+  'opacity'
 ];

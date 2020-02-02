@@ -267,6 +267,7 @@ export const field_properties = {
         size: {},
         border: {},
         borderRadius: {},
+        opacity: {}
     },
     jbt_phone: {
         fontFamily: {
@@ -430,6 +431,7 @@ export const field_properties = {
             styleKey: 'backgroundColor'
         },
         size: {},
+        opacity: {}
     }
 };
 
