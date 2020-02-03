@@ -24,6 +24,8 @@ class TemplateContainer extends React.Component {
     }
   };
 
+  /** DRAG START */
+
   pageDropzone = async (pagex, event) => {
     event.preventDefault();
     const { actions: { createItem, updateItem }, helpers } = this.props;
@@ -137,6 +139,118 @@ class TemplateContainer extends React.Component {
     }
   };
 
+  /** DRAG-END */
+
+  /** RESIZE */
+
+  fieldResizeHandler = (event) => {
+    event.preventDefault();
+    event.persist();
+
+    const { activeField } = this.props;
+    if (!activeField) return;
+
+    const fieldContent = document.querySelector(`#field_${activeField.fid} .resume-field-content`);
+    const field = document.querySelector(`#field_${activeField.fid}`);
+    const page = document.querySelector(`#page_${activeField.pageID}`);
+
+    const data = {
+      originalWidth: 0,
+      originalHeight: 0,
+      originalX: 0,
+      originalY: 0,
+      originalMouseX: 0,
+      originalMouseY: 0,
+      originalEvent: event,
+      fieldContent,
+      field,
+      page: page.getBoundingClientRect()
+    };
+
+    data.originalWidth = parseFloat(getComputedStyle(fieldContent, null).getPropertyValue('width').replace('px', ''));
+    data.originalHeight = parseFloat(getComputedStyle(fieldContent, null).getPropertyValue('height').replace('px', ''));
+    data.originalX = fieldContent.getBoundingClientRect().left;
+    data.originalY = fieldContent.getBoundingClientRect().top;
+    data.originalMouseX = event.pageX;
+    data.originalMouseY = event.pageY;
+
+    this.resizeData = data;
+
+    window.addEventListener('mousemove', this.fieldResizing);
+    window.addEventListener('mouseup', this.endFieldResizing);
+  };
+
+  fieldResizing = (e) => {
+    const { originalWidth, originalHeight, originalX, originalY, originalMouseX,
+      originalMouseY, originalEvent, fieldContent, field, page } = this.resizeData;
+
+    const currentResizer = originalEvent.target.getAttribute('name');
+    let width = 0, height = 0;
+
+    switch (currentResizer) {
+      case 'top-left':
+        width = originalWidth - (e.pageX - originalMouseX);
+        height = originalHeight - (e.pageY - originalMouseY);
+
+        fieldContent.style.width = width + 'px';
+        field.style.left = (originalX + (e.pageX - originalMouseX)) - page.x + 'px';
+
+        fieldContent.style.height = height + 'px';
+        field.style.top = originalY + (e.pageY - originalMouseY) - page.y + 'px';
+        break;
+      case 'top-right':
+        width = originalWidth + (e.pageX - originalMouseX);
+        height = originalHeight - (e.pageY - originalMouseY)
+
+        fieldContent.style.width = width + 'px';
+
+        fieldContent.style.height = height + 'px';
+        field.style.top = (originalY + (e.pageY - originalMouseY)) - page.y + 'px';
+        break;
+      case 'bottom-left':
+        height = originalHeight + (e.pageY - originalMouseY);
+        width = originalWidth - (e.pageX - originalMouseX);
+
+        fieldContent.style.height = height + 'px';
+        fieldContent.style.width = width + 'px';
+
+        field.style.left = (originalX + (e.pageX - originalMouseX)) - page.x + 'px';
+        break;
+      case 'bottom-right':
+        width = originalWidth + (e.pageX - originalMouseX);
+        height = originalHeight + (e.pageY - originalMouseY);
+
+        fieldContent.style.width = width + 'px';
+        fieldContent.style.height = height + 'px';
+        break;
+    }
+  };
+
+  endFieldResizing = async (e) => {
+    window.removeEventListener('mousemove', this.fieldResizing);
+    if (!this.resizeData) return;
+
+    const { fieldContent, field } = this.resizeData;
+
+    const { width, height } = getComputedStyle(fieldContent);
+    const { left, top } = getComputedStyle(field);
+
+    console.log(`Width: ${width} Height: ${height} Left: ${left} top:  ${top} `);
+
+    const { activeField, actions: { updateItem } } = this.props;
+    await updateItem({
+      fid: activeField.fid,
+      style: { left, top },
+      fieldStyle: { width, height },
+      pageID: activeField.pageID
+    });
+
+    this.resizeData = null;
+  }
+
+
+  /** RESIZE-END */
+
   render() {
     const { pages, fields, zoom, actions, renderPDF } = this.props;
 
@@ -171,6 +285,8 @@ class TemplateContainer extends React.Component {
                           actions={this.props.actions}
                           activeField={this.props.activeField}
                           onBlur={this.fieldOnBlur}
+                          renderPDF={this.props.renderPDF}
+                          onResize={this.fieldResizeHandler}
                         />
                       )
                     ))}

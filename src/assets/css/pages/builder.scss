@@ -261,26 +261,30 @@
                     border-radius: 50%;
                     border: 1px solid #fff;
 
-                    &:nth-child(1) {
+                    &:nth-child(1) { // Top-left
                       left: 0;
                       top:0;
                       transform: translate(-50%, -50%);
+                      cursor: nwse-resize;
                     }
 
-                    &:nth-child(2) {
+                    &:nth-child(2) { // Top-right
                       right: 0;
                       top: 0;
                       transform: translate(50%, -50%);
+                      cursor: nesw-resize;
                     }
-                    &:nth-child(3) {
+                    &:nth-child(3) { // Bottom-left
                       left:0;
                       bottom: 0;
                       transform: translate(-50%, 50%);
+                      cursor: nesw-resize;
                     }
-                    &:nth-child(4) {
+                    &:nth-child(4) { // Bottom-right
                       right: 0;
                       bottom: 0;
                       transform: translate(50%, 50%);
+                      cursor: nwse-resize;
                     }
                   }
                 }
@@ -298,6 +302,7 @@
 
                     .resume-field {
                       .resume-field-content {
+                        overflow: hidden;
                         cursor: move;
                       }
                     }

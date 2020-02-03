@@ -170,7 +170,7 @@ class ResumeItem extends React.PureComponent {
   }
 
   createContainer = (field) => {
-    const { onDragStart, onDragOver, draggable, style, activeField, fid } = this.props;
+    const { onDragStart, onDragOver, draggable, style, activeField, fid, onResize } = this.props;
     const isFieldActive = activeField && activeField.fid == fid;
 
     return (
@@ -185,10 +185,10 @@ class ResumeItem extends React.PureComponent {
       >
         <div className="field-line-container">
           <div className="lines">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span onMouseDown={onResize} name="top-left"></span>
+            <span onMouseDown={onResize} name="top-right"></span>
+            <span onMouseDown={onResize} name="bottom-left"></span>
+            <span onMouseDown={onResize} name="bottom-right"></span>
           </div>
           <div
             className="drag-area"
@@ -255,7 +255,8 @@ class ResumeItem extends React.PureComponent {
   //  Field Events
 
   fieldOnBlur = ({ val, event }) => {
-    const { onBlur, activeField, fid } = this.props;
+    const { onBlur, activeField, fid, renderPDF } = this.props;
+    if (renderPDF) return;
 
     if (activeField.value.textValue !== val) {
       onBlur({ val });
