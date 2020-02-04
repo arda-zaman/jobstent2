@@ -26,24 +26,27 @@ const closeConnection = async (page, browser) => {
   browser && (await browser.close());
 };
 
-const generatePDF = async (templateID, userID) => {
+const generatePDF = async (templateID, userID, pageSize) => {
   let { browser, page } = await openConnection();
   let pdf = null;
   // https://medium.com/@raphaelstaebler/advanced-pdf-generation-for-node-js-using-puppeteer-e168253e159c
   try {
     // await page.setRequestInterception(true);
     await page.goto(`${process.env.HOST}/templates/${templateID}/${userID}`, { waitUntil: 'networkidle2', timeout: 30000 });
-    await page.waitForSelector('.g-resume-container');
+    await page.waitFor('.g-resume-container');
+
+    // await page.emulateMedia('screen');
 
     pdf = await page.pdf({
       displayHeaderFooter: false,
       printBackground: true,
+      pageRanges: `1-${pageSize}`,
       format: 'A4',
       margin: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
+        top: '0px',
+        right: '0px',
+        bottom: '0px',
+        left: '0px'
       },
     });
   } catch (err) {

@@ -23,7 +23,8 @@ export const generatePDF = () => async (dispatch, getState) => {
   console.log("RESPONSE:", response);
   const PDF = await axios.post('/api/template/create-pdf', {
     templateID: template.id,
-    userID: user.userCredentials.uid
+    userID: user.userCredentials.uid,
+    pageSize: template.pages.length
   });
 
   await dispatch(uiActions.updateModal({

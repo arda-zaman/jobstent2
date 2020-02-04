@@ -6,12 +6,19 @@
 }
 
 .page {
-  page-break-after: always;
+  // page-break-after: always;
 }
 
+// @media print {
+//   .page {
+//       page-break-after: always!important;
+//       size: auto;
+//   }
+// }
+
 .page .page-content {
-  width: 8.3in;
-  height: 11.6in;
+  width: 8.27in;
+  height: 11.7in;
   background: #fff;
   transition: 200ms ease-out;
   margin: 0 auto;
