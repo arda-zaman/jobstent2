@@ -17,7 +17,7 @@ class ResumeItem extends React.PureComponent {
           style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
-            defaultValue={value.textValue}
+            defaultValue={value.value}
             editable={(activeField && activeField.fid == fid) ? true : false}
             onBlur={this.fieldOnBlur}
           />
@@ -96,7 +96,7 @@ class ResumeItem extends React.PureComponent {
           style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
-            defaultValue={value.textValue}
+            defaultValue={value.value}
             editable={(activeField && activeField.fid == fid) ? true : false}
             onBlur={this.fieldOnBlur}
           />
@@ -118,7 +118,7 @@ class ResumeItem extends React.PureComponent {
           style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
-            defaultValue={value.textValue}
+            defaultValue={value.value}
             editable={(activeField && activeField.fid == fid) ? true : false}
             onBlur={this.fieldOnBlur}
           />
@@ -140,7 +140,7 @@ class ResumeItem extends React.PureComponent {
           style={{ ...clearFieldStyles(fieldStyle) }}
         >
           <Textarea
-            defaultValue={value.textValue}
+            defaultValue={value.value}
             editable={(activeField && activeField.fid == fid) ? true : false}
             onBlur={this.fieldOnBlur}
           />
@@ -258,7 +258,7 @@ class ResumeItem extends React.PureComponent {
     const { onBlur, activeField, fid, renderPDF } = this.props;
     if (renderPDF) return;
 
-    if (activeField.value.textValue !== val) {
+    if (activeField.value.value !== val) {
       onBlur({ val });
     }
   };

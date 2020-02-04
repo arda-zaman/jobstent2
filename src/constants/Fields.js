@@ -7,7 +7,7 @@ export const basic_fields = [
             iconValue: 'text_format'
         },
         defaultValue: {
-            textValue: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet accusamus amet dolorum. Debitis eaque quos vero vel quam obcaecati corrupti, excepturi, quis porro sequi, voluptate nostrum officia hic amet.',
+            value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet accusamus amet dolorum. Debitis eaque quos vero vel quam obcaecati corrupti, excepturi, quis porro sequi, voluptate nostrum officia hic amet.',
         },
         defaultStyle: {
             zIndex: 5
@@ -54,7 +54,7 @@ export const basic_fields = [
             iconValue: 'fas fa-phone'
         },
         defaultValue: {
-            textValue: "(xx) xxx xx-xx",
+            value: "(xx) xxx xx-xx",
         },
         defaultStyle: {},
         defaultFieldStyle: {
@@ -69,7 +69,7 @@ export const basic_fields = [
         },
         defaultValue: {
             format: 'YYYY-MM-DD',
-            textValue: new Date().toLocaleDateString('en-US')
+            value: new Date().toLocaleDateString('en-US')
         },
         defaultStyle: {}
     },
@@ -81,7 +81,7 @@ export const basic_fields = [
             iconValue: 'far fa-address-card'
         },
         defaultValue: {
-            textValue: "Guzelkent Mahallesi Gözde-2 Sitesi 10/D No:8",
+            value: "Guzelkent Mahallesi Gözde-2 Sitesi 10/D No:8",
         },
         defaultStyle: {},
         defaultFieldStyle: {

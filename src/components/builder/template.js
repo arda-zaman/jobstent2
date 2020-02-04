@@ -6,7 +6,6 @@ class TemplateContainer extends React.Component {
     super(props);
   }
 
-
   componentDidMount() {
     document.querySelector('.g-resume-container').addEventListener('mouseup', this.windowClickEvents);
   }
